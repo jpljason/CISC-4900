@@ -1,0 +1,14 @@
+.about-us-container {
+  background-color: blue;
+}
+
+.image img{
+  width: 300px;
+}
+
+.image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
