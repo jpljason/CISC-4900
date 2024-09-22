@@ -1,14 +1,39 @@
-.about-us-container {
-  background-color: blue;
-}
-
-.image img{
-  width: 300px;
-}
-
-.image {
+.about-us {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: nowrap;
+  justify-content: center;
   align-items: center;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
 }
+
+.about-title{
+  font-family: Montserrat;
+  margin-top: 45px;
+}
+
+.about-us-cards{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.name{
+  margin-bottom: 5px;
+}
+
+.pfp{
+  width: 235px;
+  border-radius: 200px;
+}
+
+.links{
+  margin-top: 6px;
+}
+
+.links-logo{
+  width: 30px;
+  margin: 5px;
+}
+

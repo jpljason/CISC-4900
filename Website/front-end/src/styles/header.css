@@ -1,9 +1,12 @@
 .header{
   background-color: rgb(39, 40, 40);
-  height: 100px;
-  display: flex;
-  align-items: center;
+  height: 80px;
   font-family: Montserrat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .header-box{
@@ -12,7 +15,16 @@
   margin-right: auto;
   width: 1800px;
   max-width: 1800px;
+  height: 80px;
   align-items: center;
+}
+
+.header-title{
+  color: rgb(255, 233, 252);
+  font-family: Montserrat;
+  margin-left: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .navbar{
@@ -23,20 +35,19 @@
 }
 
 .navbar a{
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: white;
   text-decoration: none;
 }
 
 .navbar a:hover{
-  color: rgb(47, 200, 149);
+  color: rgb(196, 52, 179);
   transition: color 0.25s ease;
 }
 
 .logo{
-  max-width: 70px;
-  height: auto;
-  margin-left: 48.1%;
+  width: 55px;
+  margin-left: 65px;
 }
 
 
