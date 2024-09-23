@@ -15,14 +15,6 @@ export default function Evaluation() {
         />
       </MapContainer>
       </center>
-      <h1>EVALUATION</h1>
-      <h1>EVALUATION</h1>
-      <h1>EVALUATION</h1>
-      <h1>EVALUATION</h1>
-      <h1>EVALUATION</h1>
-      <h1>EVALUATION</h1>
-      <h1>EVALUATION</h1>
-
     </section>
   )
   
