@@ -5,3 +5,8 @@
   left: 0;
   right: 0;
 } */
+
+.map-container {
+  height: 50vh;
+  width: 50%;
+}
