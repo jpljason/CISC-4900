@@ -10,7 +10,7 @@ function AboutUsCards(props) {
       <div className="description">{props.description}</div>
       <div className="links">
         <a href={props.links.github} target="_blank" >
-          <img className="links-logo" src={require("../images/github-mark.png")} />
+          <img className="links-logo" src={require("../images/github-mark-white.png")} />
         </a>
         <a href={props.links.linkedIn} target="_blank">
           <img class="links-logo" src={require("../images/LI-In-Bug.png")} />
@@ -32,8 +32,7 @@ export default function AboutUs(){
   })
   return (
     <div>
-      <hr></hr>
-      <h1 className="about-title" id="about">Project Team</h1>
+      <h1 className="about-title" id="about">Meet Our Team</h1>
       <div className="about-us">
         {cards}
       </div>

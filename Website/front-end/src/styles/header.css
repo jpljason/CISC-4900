@@ -1,6 +1,7 @@
 .header{
-  background-color: rgb(39, 40, 40);
-  height: 80px;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+  height: 85px;
   font-family: Montserrat;
   position: fixed;
   top: 0;
@@ -9,13 +10,17 @@
   z-index: 1000;
 }
 
+.header.scrolled{
+  background-color: black;
+}
+
 .header-box{
   display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 1800px;
   max-width: 1800px;
-  height: 80px;
+  height: 85px;
   align-items: center;
 }
 

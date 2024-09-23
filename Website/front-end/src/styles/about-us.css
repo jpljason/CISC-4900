@@ -6,17 +6,23 @@
   max-width: 1800px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 45px;
+  margin-top: 70px;
 }
 
 .about-title{
   font-family: Montserrat;
   margin-top: 45px;
+  color: white;
+  font-weight: 600;
 }
 
 .about-us-cards{
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(24, 24, 24, 0.7);
+  padding: 60px;
+  border-radius: 7.5px;
+  color: white;
 }
 
 .name{
@@ -29,7 +35,11 @@
 }
 
 .links{
-  margin-top: 6px;
+  margin-top: 7.5px;
+}
+
+.description{
+  color: rgb(162, 162, 162);
 }
 
 .links-logo{

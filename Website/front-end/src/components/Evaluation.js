@@ -1,13 +1,13 @@
 import React from "react";
+import "../styles/evaluation.css"
 
 export default function Evaluation() {
 
   return (
-    <section>
-      <h1 id="evaluation">Evaluation</h1>
-      <div id="map">
-      </div>
+    <section id="evaluation">
+      <h1>EVALUATION</h1>
     </section>
+
   )
   
 }
