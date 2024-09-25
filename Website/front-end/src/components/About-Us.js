@@ -4,7 +4,7 @@ import about_data from "./about_data"
 
 function AboutUsCards(props) {
   return (
-    <section class="about-us-cards"> 
+    <div class="about-us-cards"> 
       <img className="pfp" src={require(`../images/${props.img}`)} />
       <h1 className="name">{props.name}</h1>  
       <div className="description">{props.description}</div>
@@ -16,7 +16,7 @@ function AboutUsCards(props) {
           <img class="links-logo" src={require("../images/LI-In-Bug.png")} />
         </a>
       </div>
-    </section>
+    </div>
   )
 }
 
@@ -31,11 +31,11 @@ export default function AboutUs(){
     )
   })
   return (
-    <div>
-      <h1 className="about-title" id="about">Meet Our Team</h1>
+    <section className="about-container" id="about">
+      <h1 className="about-title"><div className="horizontal-line-left"></div>Meet Our Team<div className="horizontal-line-right"></div></h1>
       <div className="about-us">
         {cards}
       </div>
-    </div>
+    </section>
   );
 }

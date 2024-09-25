@@ -3,17 +3,17 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  max-width: 1800px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 70px;
+  padding-bottom: 0;
 }
 
 .about-title{
   font-family: Montserrat;
-  margin-top: 45px;
-  color: white;
+  color: rgb(184, 184, 184);
   font-weight: 600;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-us-cards{
@@ -26,6 +26,7 @@
 }
 
 .name{
+  margin-top: 30px;
   margin-bottom: 5px;
 }
 
@@ -45,5 +46,19 @@
 .links-logo{
   width: 30px;
   margin: 5px;
+}
+
+.horizontal-line-left, .horizontal-line-right{
+  height: 0.5px;
+  background-color: rgba(128, 128, 128, 0.527);
+  flex-grow: 1;
+}
+
+.horizontal-line-right{
+  margin-left: 30px;
+}
+
+.horizontal-line-left{
+  margin-right: 30px;
 }
 

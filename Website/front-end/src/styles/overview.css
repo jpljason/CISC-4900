@@ -1,20 +1,15 @@
-.evaluation-title{
+.overview-container{
+  text-align: left;
+}
+
+.overview-title{
   font-family: Montserrat;
   color: rgb(184, 184, 184);
   font-weight: 600;
   font-size: 1.8rem;
+  text-align: left;
   display: flex;
   align-items: center;
-}
-
-.evaluation-container{
-  text-align: left;
-}
-
-.map-container {
-  height: 90vh;
-  width: 100%;
-  
 }
 
 .horizontal-line{
