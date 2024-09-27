@@ -2,6 +2,7 @@
   height: 100vh;
   width: 100%;
   position: relative;
+  margin-bottom: 45px;
 }
 
 .home-image::before{
@@ -50,14 +51,14 @@
   padding: 17.5px 45px 17.5px 45px;
   border: none;
   border-radius: 10px;
-  background-color: rgb(122, 0, 143);
+  background-color: rgb(181, 0, 213);
   font-family: Montserrat;
   font-weight: 600;
   color: rgb(255, 255, 255);
 }
 
 .explore-button:hover {
-  background-color: rgb(164, 0, 193);
+  background-color: rgb(123, 0, 145);
   transition: background-color 0.2s ease;
   cursor: pointer;
 }

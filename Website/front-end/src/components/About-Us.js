@@ -32,7 +32,9 @@ export default function AboutUs(){
   })
   return (
     <section className="about-container" id="about">
-      <h1 className="about-title"><div className="horizontal-line-left"></div>Meet Our Team<div className="horizontal-line-right"></div></h1>
+      <h1 className="about-title">
+        <div className="horizontal-line-left"></div>Meet Our Team<div className="horizontal-line-right"></div>
+      </h1>
       <div className="about-us">
         {cards}
       </div>
