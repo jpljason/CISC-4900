@@ -26,6 +26,66 @@
   margin-right: 3%;
 }
 
+.map-option{
+  position: absolute;
+}
+
+.toggleContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  border: 1px solid rgb(111, 111, 111);
+  background: #343434;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toggleContainer::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0%; /* Starts on the left */
+  background: rgb(181, 0, 213); /* Initial background is purple */
+  transition: all 0.3s;
+}
+
+.toggleCheckbox:checked + .toggleContainer::before {
+  left: 50%;
+  background: rgb(28, 28, 206); /* Changes to blue when toggled to the right */
+}
+
+.toggleCheckbox:checked + .toggleContainer div:first-child {
+  color: #343434;
+  transition: color 0.3s;
+}
+
+.toggleCheckbox:checked + .toggleContainer div:last-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.toggleCheckbox + .toggleContainer div:first-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.toggleCheckbox + .toggleContainer div:last-child {
+  color: #343434;
+  transition: color 0.3s;
+}
+
+.toggleContainer div {
+  padding: 12.5px;
+  text-align: center;
+  z-index: 1;
+}
+
+.toggleCheckbox {
+  display: none;
+}
+
 .map-div{
   flex-grow: 1;
 }
@@ -35,8 +95,14 @@
   width: 100%;
 }
 
-.map-title{
+.map-title1{
   color: rgb(181, 0, 213);
+  margin-top: 0;
+  font-size: 2.2rem;
+}
+
+.map-title2{
+  color: rgb(28, 28, 206);
   margin-top: 0;
   font-size: 2.2rem;
 }
@@ -48,6 +114,16 @@
 }
 
 .time{
+  font-size: 1.8rem;
+  margin-top: 10px;
+  font-weight: 650;
+}
+
+.time-frame{
+  font-size: 1.2rem;
+}
+
+.years{
   font-size: 1.8rem;
   margin-top: 10px;
   font-weight: 650;

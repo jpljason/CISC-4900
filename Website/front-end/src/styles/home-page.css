@@ -51,14 +51,14 @@
   padding: 17.5px 45px 17.5px 45px;
   border: none;
   border-radius: 10px;
-  background-color: rgb(181, 0, 213);
+  background-color: rgb(28, 28, 206);
   font-family: Montserrat;
   font-weight: 600;
   color: rgb(255, 255, 255);
 }
 
 .explore-button:hover {
-  background-color: rgb(123, 0, 145);
+  background-color: rgb(16, 16, 129);
   transition: background-color 0.2s ease;
   cursor: pointer;
 }

@@ -24,10 +24,13 @@ export default function AboutUs(){
   const cards = about_data.map(item => {
     console.log(item);
     return (
-      <AboutUsCards
-        key={item.id}
-        {...item}
-      />
+      //reminder to remove div below:
+      <div>
+        <AboutUsCards
+          key={item.id}
+          {...item}
+        />
+      </div>
     )
   })
   return (
