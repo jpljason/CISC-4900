@@ -28,6 +28,7 @@
 
 .map-option{
   position: absolute;
+  max-width: 18%;
 }
 
 .toggleContainer {

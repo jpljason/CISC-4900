@@ -4,7 +4,7 @@ import about_data from "./about_data"
 
 function AboutUsCards(props) {
   return (
-    <div class="about-us-cards"> 
+    <div className="about-us-cards"> 
       <img className="pfp" src={require(`../images/${props.img}`)} />
       <h1 className="name">{props.name}</h1>  
       <div className="description">{props.description}</div>
@@ -13,7 +13,7 @@ function AboutUsCards(props) {
           <img className="links-logo" src={require("../images/github-mark-white.png")} />
         </a>
         <a href={props.links.linkedIn} target="_blank">
-          <img class="links-logo" src={require("../images/LI-In-Bug.png")} />
+          <img className="links-logo" src={require("../images/LI-In-Bug.png")} />
         </a>
       </div>
     </div>
@@ -24,13 +24,10 @@ export default function AboutUs(){
   const cards = about_data.map(item => {
     console.log(item);
     return (
-      //reminder to remove div below:
-      <div>
-        <AboutUsCards
-          key={item.id}
-          {...item}
-        />
-      </div>
+      <AboutUsCards
+        key={item.id}
+        {...item}
+      />
     )
   })
   return (

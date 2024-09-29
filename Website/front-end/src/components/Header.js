@@ -26,11 +26,11 @@ export default function Header() {
       <div className="header-box">
         <a className="home-logo" href="#home-page"><img className="logo" src={require("../images/wrecked.png")}  /></a>
         <div className="header-title">NYC Road Risk Predictor</div>
-        <navbar className="navbar"> 
+        <nav className="navbar"> 
           <a className="overview" href="#overview">Overview</a>
           <a className="evaluation" href="#evaluation">Evaluation</a>
           <a className="about_me" href="#about">Our Team</a>
-        </navbar>
+        </nav>
       </div>
     </header>
   )

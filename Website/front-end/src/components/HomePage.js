@@ -8,7 +8,7 @@ export default function HomePage(){
         <div className="home-motto">
           Know the Risks Avoid the Crash
         </div>
-        <a href="#overview"><button class="explore-button">Explore</button></a>
+        <a href="#overview"><button className="explore-button">Explore</button></a>
       </div>
     </div>
   )
