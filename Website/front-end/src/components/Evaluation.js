@@ -1,47 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "../styles/evaluation.css"
-import map_data from "./map_data"
+import map_data from "../data/map_data"
 import { MapContainer, TileLayer, GeoJSON, CircleMarker } from "react-leaflet"
 
 const test = [40.63101, -73.95131];
 const test2 = "violet";
 
 function EvaluationCards(props){
+  
 
-  const getSeverity = (severity) => {
-    if (severity.killed > 0)
+  //returns the color of the severity of crashes
+  const getSeverity = (item) => {
+    if (item.killed > 0)
       return 'red';
-    if (severity.injured > 0)
+    if (item.injured > 0)
       return 'yellow';
     return 'green';
   }
 
+  //returns all the marker components to insert onto the map
   function putMarker(){
-    const severities = map_data.map(({latitude, longitude, injured, killed}) => 
-      [latitude, longitude, injured, killed]
-    );
-    console.log(severities);
-    for(var i=0; i<severities.length; i++){
-      var lat = severities[i][0];
-      var long = severities[i][1];
-      var severity = getSeverity(severities[i]);
-      return (
-        <CircleMarker
-          center={[40.63101, -73.95131]}  //Location
-          radius={5}  //How big the circle is
-          color={severity} // Outline
-          fillColor={severity} // Fill
-          fillOpacity={1.0}
-        />
-      )
-    }
+    const severities = map_data.map(item => (
+      <CircleMarker
+        center={[item.latitude, item.longitude]}  //Location
+        radius={5}  //How big the circle is
+        color={getSeverity(item)} // Outline
+        fillColor={getSeverity(item)} // Fill
+        fillOpacity={1.0}
+      />
+    ))
+    return severities;
   }
-
-  // center={test}  //Location
-  // radius={5}  //How big the circle is
-  // color={getSeverity} // Outline
-  // fillColor={getSeverity} // Fill
-  // fillOpacity={1.0}
 
   //Coloring streets (probably don't need)
   const streetsGeoJson = {
@@ -76,8 +65,6 @@ function EvaluationCards(props){
   };
 
   //for severity: if else statements or switch based on people injured/killed and set colors accordingly (green, orange, red)
-
-
   return (
     <div className="map-div">
       <center>
@@ -85,9 +72,8 @@ function EvaluationCards(props){
           className="map"
           id={props.id}
           center={[40.631015606268996, -73.95131852800579]} 
-          zoom={12} 
+          zoom={10} 
           zoomControl={false}
-
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -133,6 +119,7 @@ export default function Evaluation() {
   //Switch between maps in the page
   const [activeContent, setActiveContent] = useState(true);
 
+  //Function that switches the map when the toggle button is clicked
   function switchMap(){
     setActiveContent(!activeContent)
   }
@@ -141,7 +128,7 @@ export default function Evaluation() {
     return activeContent ? <Severity /> : <RecordedCrashes />
   }
 
-  
+  //Predicted severity map component
   const Severity = () => (
     <div className = "map-container">
       <div className="details-section">
@@ -154,6 +141,7 @@ export default function Evaluation() {
     </div>
   )
 
+  //Recorded crashes map component
   const RecordedCrashes = () => (
     <div className = "map-container">
       <div className="details-section">
@@ -172,10 +160,6 @@ export default function Evaluation() {
     <section className="evaluation-container" id="evaluation">
       <h1 className="evaluation-title">Evaluation<div className="horizontal-line"></div></h1>
       <div className="map-option">
-        {/* <input id="toggle-on" className="toggle toggle-left" name="toggle" value="false" type="radio" checked></input>
-        <label for="toggle-on" onClick={()=>setActiveContent('severity')} className="btn">Predicted Severity</label>
-        <input id="toggle-off" className="toggle toggle-right" name="toggle" value="true" type="radio"></input>
-        <label for="toggle-off" onClick={()=>setActiveContent('recordedCrashes')} className="btn">Recorded Crashes</label> */}
         <input type="checkbox" id="toggle" className="toggleCheckbox" />
         <label onClick={switchMap} htmlFor="toggle" className='toggleContainer'>
           <div>Predicted Severity</div>   

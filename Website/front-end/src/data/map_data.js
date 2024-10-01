@@ -31,5 +31,4 @@ export default [
     factor: "Unspecified",
     vehicleType: "Station Wagon"
   }
-
 ]

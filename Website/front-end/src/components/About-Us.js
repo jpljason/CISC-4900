@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/about-us.css'
-import about_data from "./about_data"
+import about_data from "../data/about_data"
 
 function AboutUsCards(props) {
   return (
@@ -10,10 +10,10 @@ function AboutUsCards(props) {
       <div className="description">{props.description}</div>
       <div className="links">
         <a href={props.links.github} target="_blank" >
-          <img className="links-logo" src={require("../images/github-mark-white.png")} />
+          <img className="links-logo" src={require("../images/github-mark-white.png")} alt="GitHub logo"/>
         </a>
         <a href={props.links.linkedIn} target="_blank">
-          <img className="links-logo" src={require("../images/LI-In-Bug.png")} />
+          <img className="links-logo" src={require("../images/LI-In-Bug.png")} alt="LinkedIn logo"/>
         </a>
       </div>
     </div>
