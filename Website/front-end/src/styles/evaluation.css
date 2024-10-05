@@ -160,7 +160,15 @@
   right: -15px; */
 }
 
+.circlemarker-popup {
+  /* background-color: black; */
+  color: white;
+  text-align: center;
+  align-items: center;
+}
 
-
-
+.leaflet-popup-content-wrapper {
+  background-color: black !important;
+  border-radius: 100px !important;
+}
 

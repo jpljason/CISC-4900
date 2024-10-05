@@ -1,33 +1,60 @@
 import React, { useState, useEffect } from "react";
-import "../styles/evaluation.css"
-import map_data from "../data/map_data"
-import { MapContainer, TileLayer, GeoJSON, CircleMarker } from "react-leaflet"
-
-const test = [40.63101, -73.95131];
-const test2 = "violet";
+import "../styles/evaluation.css";
+import { MapContainer, TileLayer, GeoJSON, CircleMarker, Popup } from "react-leaflet";
 
 function EvaluationCards(props){
-  
+
+  //Fetching from the backend server that contains the data from the API
+  const [collisionsData, setCollisionsData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/collisions")
+    .then(
+      res => res.json()
+    )
+    .then(
+      data => {
+        setCollisionsData(data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   //returns the color of the severity of crashes
   const getSeverity = (item) => {
-    if (item.killed > 0)
+    if (item.number_of_persons_killed > 0)
       return 'red';
-    if (item.injured > 0)
+    if (item.number_of_persons_injured > 0)
       return 'yellow';
     return 'green';
   }
-
+  
   //returns all the marker components to insert onto the map
   function putMarker(){
-    const severities = map_data.map(item => (
-      <CircleMarker
-        center={[item.latitude, item.longitude]}  //Location
-        radius={5}  //How big the circle is
-        color={getSeverity(item)} // Outline
-        fillColor={getSeverity(item)} // Fill
+    const severities = collisionsData.map((collision, index) => (
+      <CircleMarker 
+        key={index}
+        center={[collision.latitude, collision.longitude]}  //Location
+        radius={4}  //How big the circle is
+        color={getSeverity(collision)} //Outline
+        fillColor={getSeverity(collision)} //Fill
         fillOpacity={1.0}
-      />
+
+        // Ignore:
+        // eventHandlers={{
+        //   click: () => {
+        //     console.log(`${collision.latitude} clicked`);
+        //     // You can open a popup or perform another action here
+        //   },
+        // }}
+      >
+        <Popup>
+          <div className="circlemarker-popup">
+            <div>Injured: {collision.number_of_persons_injured}</div>
+            <div>Killed : {collision.number_of_persons_killed}</div>
+            <div>Total Crashes: {collision.number_of_crashes}</div>
+          </div>
+        </Popup>
+      </CircleMarker>
     ))
     return severities;
   }
@@ -71,23 +98,22 @@ function EvaluationCards(props){
         <MapContainer
           className="map"
           id={props.id}
-          center={[40.631015606268996, -73.95131852800579]} 
-          zoom={10} 
+          center={[40.631015606268996, -73.95131852800579]} //TODO: change center of view
+          zoom={11} 
           zoomControl={false}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           />
-          {/* <GeoJSON data={streetsGeoJson} style={streetStyle} /> */}
           
-          {/* <CircleMarker
-            center={test}  //Location
-            radius={5}  //How big the circle is
-            color={getSeverity} // Outline
-            fillColor={getSeverity} // Fill
-            fillOpacity={1.0}
-          /> */}
+          {/* attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" */}
+
+          {/* attribution= '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' */}
+
+          {/* <GeoJSON data={streetsGeoJson} style={streetStyle} /> */}
           {putMarker()}
         </MapContainer>
       </center>
