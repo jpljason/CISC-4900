@@ -3,6 +3,7 @@ import "../styles/evaluation.css";
 import { MapContainer, TileLayer, GeoJSON, CircleMarker, Popup } from "react-leaflet";
 
 function EvaluationCards(props){
+  
 
   //Fetching from the backend server that contains the data from the API
   const [collisionsData, setCollisionsData] = useState([]);
@@ -30,6 +31,63 @@ function EvaluationCards(props){
   
   //returns all the marker components to insert onto the map
   function putMarker(){
+    const HorizontalLine = () => {
+      return (
+        <hr style={{
+          borderColor: 'gray'
+        }}/>
+      )
+    }
+    const ZipCode = ({collision}) => {
+      if(collision.zip_code!=null){
+        return (
+          <div>
+            <HorizontalLine />
+            <div>Zip Code : {collision.zip_code}</div>
+          </div>
+        )
+      }
+    }
+    const Borough = ({collision}) => {
+      if(collision.borough!=null){
+        return (
+          <div>
+            <HorizontalLine />
+            <div>Borough : {collision.borough}</div>
+          </div>
+        )
+      }
+    }
+    const OnStreetName = ({collision}) => {
+      if(collision.on_street_name!=null){
+        return (
+          <div>
+            <HorizontalLine />
+            <div>On Street Name : {collision.on_street_name}</div>
+          </div>
+        )
+      }
+    }
+    const OffStreetName = ({collision}) => {
+      if(collision.off_street_name!=null){
+        return (
+          <div>
+            <HorizontalLine />
+            <div>Off Street Name : {collision.off_street_name}</div>
+          </div>
+        )
+      }
+    }
+    const CrossStreetName = ({collision}) => {
+      if(collision.cross_street_name!=null){
+        return (
+          <div>
+            <HorizontalLine />
+            <div>Cross Street Name : {collision.cross_street_name}</div>
+          </div>
+        )
+      }
+    }
     const severities = collisionsData.map((collision, index) => (
       <CircleMarker 
         key={index}
@@ -38,20 +96,19 @@ function EvaluationCards(props){
         color={getSeverity(collision)} //Outline
         fillColor={getSeverity(collision)} //Fill
         fillOpacity={1.0}
-
-        // Ignore:
-        // eventHandlers={{
-        //   click: () => {
-        //     console.log(`${collision.latitude} clicked`);
-        //     // You can open a popup or perform another action here
-        //   },
-        // }}
       >
         <Popup>
           <div className="circlemarker-popup">
-            <div>Injured: {collision.number_of_persons_injured}</div>
+            <div>Injured : {collision.number_of_persons_injured}</div>
+            <HorizontalLine />
             <div>Killed : {collision.number_of_persons_killed}</div>
-            <div>Total Crashes: {collision.number_of_crashes}</div>
+            <HorizontalLine />
+            <div>Total Crashes : {collision.number_of_crashes}</div>
+            <ZipCode collision={collision} />
+            <Borough collision={collision} />
+            <OnStreetName collision={collision} />
+            <OffStreetName collision={collision} />
+            <CrossStreetName collision={collision} />
           </div>
         </Popup>
       </CircleMarker>
@@ -98,7 +155,7 @@ function EvaluationCards(props){
         <MapContainer
           className="map"
           id={props.id}
-          center={[40.631015606268996, -73.95131852800579]} //TODO: change center of view
+          center={[40.7128, -74.0060]} //TODO: change center of view
           zoom={11} 
           zoomControl={false}
         >
@@ -141,6 +198,7 @@ function Clock() {
   );
 }
 
+//The main component of Evaluation
 export default function Evaluation() {
   //Switch between maps in the page
   const [activeContent, setActiveContent] = useState(true);
@@ -173,7 +231,7 @@ export default function Evaluation() {
       <div className="details-section">
         <h2 className="map-title2">Recorded Crashes</h2>
         <div className="time-frame">Time Frame:</div>
-        <div className="years">2012-2024</div>
+        <div className="years">September 2024</div>
         <p className="map-description">Details about crashes recorded in specific locations including total number of crashes, total injured/killed, most reoccuring contributing factor, etc</p>
       </div>
       <div className="vertical-line"></div>
