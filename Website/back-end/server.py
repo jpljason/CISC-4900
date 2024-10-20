@@ -1,21 +1,32 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
+from flask_caching import Cache
 import pandas as pd
 import requests
 
 app = Flask(__name__)
 
-@app.route("/api/collisions")
-def get_collisions():
-  # Fetch and process data (same as before)
-  url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json?$where=crash_date between '2024-09-01T00:00:00' and '2024-09-30T23:59:59'"
+cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache', 'CACHE_DEFAULT_TIMEOUT': 300})  #5 minute timeout
 
-  response = requests.get(url)
+def getDataAndFilter(params):
+  base_url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json"  #API
+
+  all_data = []
+  # while there is more data to retrieve
+  while True:
+    response = requests.get(base_url, params=params)  #get data from a specific month
+    data = response.json()
+    
+    if not data:
+        break  # Exit loop if no more data
+    
+    all_data.extend(data)
+    params["$offset"] += 5000  # Move to the next batch
 
   columns_to_use = ["crash_date", "crash_time", "collision_id", "borough", "zip_code", "latitude", "longitude", "location", 
                                                      "on_street_name", "cross_street_name", "off_street_name", "number_of_persons_killed", 
                                                      "number_of_persons_injured", "contributing_factor_vehicle_1"]
 
-  collisions_data = pd.DataFrame(response.json(), columns=columns_to_use)
+  collisions_data = pd.DataFrame(all_data, columns=columns_to_use)
                                  
   dtypes={
   'collision_id' : 'int64',
@@ -44,7 +55,17 @@ def get_collisions():
   #remove latitude and longitude not contained in NYC area
   collisions_data = collisions_data[(collisions_data['latitude'] >= nyc_lat_min) & (collisions_data['latitude'] <= nyc_lat_max) &
         (collisions_data['longitude'] >= nyc_lon_min) & (collisions_data['longitude'] <= nyc_lon_max)]
+  return collisions_data
 
+@app.route("/api/collisions")
+@cache.cached(timeout=3600) #Cache route for 3600s = 1 hour; If this function gets called again, it will refer to the cache in the next hour
+def get_collisions():
+  params = {
+    "$where": "crash_date between '2024-09-01T00:00:00' and '2024-09-30T23:59:59'",
+    "$limit": 5000,
+    "$offset": 0
+  }
+  collisions_data = getDataAndFilter(params)
   # Dataset for the details of latitudes and longitudes including borough, zip code, street names
   addresses = collisions_data[['latitude', 'longitude', 'borough', 'zip_code', 'on_street_name', 'cross_street_name', 'off_street_name']]
   addresses = addresses.drop_duplicates(subset=['latitude', 'longitude'])
@@ -56,7 +77,45 @@ def get_collisions():
   Xandy = Xandy.groupby(['latitude', 'longitude']).sum().reset_index()
   # Merge injured and killed and address details table together
   Xandy = pd.merge(addresses, Xandy, on=['latitude', 'longitude'], how='left')
-    
+  # Convert to JSON and return
+  return jsonify(Xandy.to_dict(orient='records'))
+  
+@app.route("/submit", methods=['POST'])
+def predict():
+  data = request.get_json()
+  latitude = data.get('latitude')
+  longitude = data.get('longitude')
+  params = {
+    "$where": f"latitude = {latitude} AND longitude = {longitude}",  # Filter by specific coordinates
+    "$limit": 5000,
+    "$offset": 0
+  }
+  collisions_data = getDataAndFilter(params)
+  # Dataset for the details of latitudes and longitudes including borough, zip code, street names
+  addresses = collisions_data[['latitude', 'longitude', 'borough', 'zip_code', 'on_street_name', 'cross_street_name', 'off_street_name']]
+  addresses = addresses.drop_duplicates(subset=['latitude', 'longitude'])
+
+  # X and y dataset
+  Xandy = collisions_data[['latitude', 'longitude', 'number_of_persons_injured', 'number_of_persons_killed']]
+  Xandy = Xandy.dropna()
+  Xandy["number_of_crashes"] = 1
+  #function for determining whether the crash has a injury
+  def calculate_injuries(row):
+      if(row['number_of_persons_injured'] > 0):
+          return 1
+      else:
+          return 0
+  #function for determining whether the crash has a kill
+  def calculate_killed(row):
+      if(row['number_of_persons_killed'] > 0):
+          return 1
+      else:
+          return 0
+  Xandy["crashes_with_injuries"] = Xandy.apply(calculate_injuries, axis=1)
+  Xandy["crashes_with_kills"] = Xandy.apply(calculate_killed, axis=1)
+  Xandy = Xandy.groupby(['latitude', 'longitude']).sum().reset_index()
+  # Merge injured and killed and address details table together
+  Xandy = pd.merge(addresses, Xandy, on=['latitude', 'longitude'], how='left')
   # Convert to JSON and return
   return jsonify(Xandy.to_dict(orient='records'))
 

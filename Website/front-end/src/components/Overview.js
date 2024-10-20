@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/overview.css"
 
 export default function Overview() {
+  //Live clock displayed on the section
+  function Clock() {
+    const [time, setTime] = useState(new Date());
+    
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setTime(new Date());
+      }, 1000);
 
+      return () => clearInterval(intervalId);
+    }, []);
+
+    return (
+      <div className="localTime">
+        Current Time: <span className="time">{time.toLocaleTimeString()}</span>
+      </div>
+    );
+  }
   return (
     <section className="overview-container" id="overview">
       <h1 className="overview-title">Overview<div className="horizontal-line"></div></h1>
@@ -16,6 +33,7 @@ export default function Overview() {
           Fusce a porta justo, ut cursus erat. Donec at purus quis sem sagittis vehicula consequat et erat. Maecenas sodales suscipit tempus. Duis at leo vitae risus placerat faucibus. Sed nec lectus fermentum, cursus sapien vel, vehicula arcu. Praesent eu augue dolor. Sed arcu purus, mattis et sem sed, elementum dignissim justo.
 
           Vivamus condimentum ex nec mauris tempor, et pretium augue efficitur. Duis dignissim magna ut lacinia aliquet. Nulla tristique auctor iaculis. Donec auctor maximus rutrum. Maecenas sodales est rutrum finibus finibus. Nunc non orci a enim egestas tincidunt. Nunc ultrices libero vitae dui pretium, a feugiat nulla aliquam. Morbi cursus lacinia sapien ut posuere. Curabitur pharetra placerat velit. Suspendisse at eros est. Etiam quis felis ante. In commodo ornare lectus, id lobortis justo lobortis sed. Sed scelerisque leo nec leo suscipit lacinia. In condimentum, est eu semper porta, velit dui congue velit, et lobortis risus nisi a turpis. Aliquam erat volutpat.
+          <Clock />
         </div>
     </section>
   )

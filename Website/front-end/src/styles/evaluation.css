@@ -133,7 +133,6 @@
 .map-description{
   color: gray;
   font-size: 1rem;
-  margin-top: 50px;
 }
 
 .horizontal-line{
@@ -156,12 +155,9 @@
 /* BOTTOM RIGHT WATERMARK */
 .leaflet-control-attribution {
   z-index: 1;
-  /* bottom: -15px;
-  right: -15px; */
 }
 
 .circlemarker-popup {
-  /* background-color: black; */
   color: white;
   text-align: center;
   align-items: center;
@@ -180,3 +176,74 @@
   background-color: rgba(25, 24, 24, 0.918) !important;
 }
 
+.predict-form{
+  display: flex;
+  flex-direction: column;
+  font-family: Montserrat;
+}
+
+.predict-form label{
+  margin-bottom: 5px;
+}
+
+.predict-form input{
+  margin-bottom: 5px;
+  background-color: rgb(181, 181, 181);
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.predict-form button{
+  margin-top: 10px;
+  font-size: 1.2rem;
+  padding-top: 17.5px;
+  padding-bottom: 17.5px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(181, 0, 213);
+  font-family: Montserrat;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
+
+.predict-form button:hover{
+  background-color: rgb(105, 3, 113);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.legend{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.color-container{
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-right: auto;
+  margin-top: 10px;
+  font-family: Montserrat;
+}
+
+.color{
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.color-description{
+  margin-left: 20px;
+}
+
+#green{
+  background-color: green;
+}
+
+#yellow{
+  background-color: yellow;
+}
+
+#red{
+  background-color: red;
+}
