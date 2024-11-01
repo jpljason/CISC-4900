@@ -1,0 +1,27 @@
+.charts-graphs-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 50px;
+}
+
+.chart-graph{
+  width: 500px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.charts_graphs_section{
+  padding-top: 2vh;
+}
+
+.comparison-chart {
+  width: 500px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+}

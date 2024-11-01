@@ -1,0 +1,145 @@
+{
+    "2013": {
+        "total_crashes": 171941,
+        "rush_hour_crashes": 71190,
+        "injured": 46954,
+        "killed": 243,
+        "boroughs": {
+            "BROOKLYN": 47024,
+            "QUEENS": 39312,
+            "BRONX": 19768,
+            "MANHATTAN": 41582,
+            "STATEN ISLAND": 8295
+        }
+    },
+    "2014": {
+        "total_crashes": 172743,
+        "rush_hour_crashes": 71537,
+        "injured": 43345,
+        "killed": 215,
+        "boroughs": {
+            "BROOKLYN": 47758,
+            "QUEENS": 41021,
+            "BRONX": 19686,
+            "MANHATTAN": 41268,
+            "STATEN ISLAND": 6614
+        }
+    },
+    "2015": {
+        "total_crashes": 182980,
+        "rush_hour_crashes": 75889,
+        "injured": 43283,
+        "killed": 201,
+        "boroughs": {
+            "BROOKLYN": 50842,
+            "QUEENS": 42487,
+            "BRONX": 21257,
+            "MANHATTAN": 42524,
+            "STATEN ISLAND": 6343
+        }
+    },
+    "2016": {
+        "total_crashes": 192150,
+        "rush_hour_crashes": 78788,
+        "injured": 49902,
+        "killed": 201,
+        "boroughs": {
+            "BROOKLYN": 42166,
+            "QUEENS": 37498,
+            "BRONX": 19245,
+            "MANHATTAN": 31725,
+            "STATEN ISLAND": 5930
+        }
+    },
+    "2017": {
+        "total_crashes": 216917,
+        "rush_hour_crashes": 89361,
+        "injured": 56965,
+        "killed": 232,
+        "boroughs": {
+            "BROOKLYN": 43932,
+            "QUEENS": 37599,
+            "BRONX": 20586,
+            "MANHATTAN": 30278,
+            "STATEN ISLAND": 6053
+        }
+    },
+    "2018": {
+        "total_crashes": 216108,
+        "rush_hour_crashes": 90114,
+        "injured": 57955,
+        "killed": 218,
+        "boroughs": {
+            "BROOKLYN": 46322,
+            "QUEENS": 40402,
+            "BRONX": 22124,
+            "MANHATTAN": 29730,
+            "STATEN ISLAND": 5989
+        }
+    },
+    "2019": {
+        "total_crashes": 193820,
+        "rush_hour_crashes": 79181,
+        "injured": 55833,
+        "killed": 227,
+        "boroughs": {
+            "BROOKLYN": 43547,
+            "QUEENS": 38856,
+            "BRONX": 21425,
+            "MANHATTAN": 25546,
+            "STATEN ISLAND": 3509
+        }
+    },
+    "2020": {
+        "total_crashes": 103836,
+        "rush_hour_crashes": 39625,
+        "injured": 40611,
+        "killed": 236,
+        "boroughs": {
+            "BROOKLYN": 24884,
+            "QUEENS": 20106,
+            "BRONX": 13750,
+            "MANHATTAN": 10467,
+            "STATEN ISLAND": 2299
+        }
+    },
+    "2021": {
+        "total_crashes": 100890,
+        "rush_hour_crashes": 37182,
+        "injured": 46870,
+        "killed": 257,
+        "boroughs": {
+            "BROOKLYN": 24355,
+            "QUEENS": 18875,
+            "BRONX": 12766,
+            "MANHATTAN": 10911,
+            "STATEN ISLAND": 2538
+        }
+    },
+    "2022": {
+        "total_crashes": 93078,
+        "rush_hour_crashes": 35207,
+        "injured": 46042,
+        "killed": 246,
+        "boroughs": {
+            "BROOKLYN": 22207,
+            "QUEENS": 17499,
+            "BRONX": 11628,
+            "MANHATTAN": 11328,
+            "STATEN ISLAND": 2573
+        }
+    },
+    "2023": {
+        "total_crashes": 88998,
+        "rush_hour_crashes": 33316,
+        "injured": 49572,
+        "killed": 247,
+        "boroughs": {
+            "BROOKLYN": 22460,
+            "QUEENS": 17437,
+            "BRONX": 10226,
+            "MANHATTAN": 11532,
+            "STATEN ISLAND": 2651
+        }
+    }
+}

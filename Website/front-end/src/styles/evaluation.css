@@ -14,7 +14,6 @@
 .map-container{
   width: 100%;
   display: flex;
-  align-items: center;
 }
 
 #map-container1{
@@ -27,8 +26,8 @@
 }
 
 .map-option{
-  position: absolute;
-  max-width: 18%;
+  font-size: 0.9rem;
+  margin-bottom: 2vh;
 }
 
 .toggleContainer {
@@ -157,7 +156,7 @@
   z-index: 1;
 }
 
-.circlemarker-popup {
+.recorded-circlemarker-popup {
   color: white;
   text-align: center;
   align-items: center;
@@ -166,6 +165,51 @@
   max-width: 130px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.predict-popup .leaflet-popup-content-wrapper{
+  width: 650px;
+}
+
+.predicted-circlemarker-popup {
+  color: white;
+  font-family: Montserrat;
+  font-size: 0.8rem;
+  width: 550px;
+  padding: 10px 15px 15px 15px;
+  margin-left: 5.5%;
+  display: flex;
+}
+
+.predicted-section:first-child{
+  margin-right: 6%;
+  width: 50%;
+}
+
+.predicted-section:nth-child(2){
+  margin-left: 6%;
+  width: 50%;
+}
+
+.predicted-circlemarker-popup div{
+  margin-top: 5px;
+}
+
+.predictions-title{
+  color: rgb(217, 0, 255);
+  font-weight: 550;
+  font-size: 1.094rem;
+}
+
+.nearest-message{
+  margin-top: 20px;
+}
+
+.details-title{
+  color: rgb(117, 117, 255);
+  font-weight: 550;
+  font-size: 17.5px;
+  
 }
 
 .line{
@@ -210,6 +254,59 @@
   background-color: rgb(105, 3, 113);
   transition: background-color 0.2s ease;
   cursor: pointer;
+}
+
+.blur{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.popupMessage{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 40vh;
+  left: 0;
+  z-index: 1050;
+  color: black;
+  font-family: Montserrat;
+  font-size: 1.2rem;
+  padding: 40px;
+  font-weight: 600;
+  background-color: white;
+}
+
+.loading-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(28, 28, 206)
+}
+
+.loading-car{
+  width: 40px;
+  margin-left: 10px;
+}
+
+.error-button1, .error-button2{
+  margin-top: 40px;
+  margin-left: auto;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(181, 0, 213);
+  color: white;
+  padding: 7.5px 20px 7.5px 20px;
+  font-weight: 600;
+  width: 70px;
+}
+
+.error-button1{
+  margin-right: 20px;
 }
 
 .legend{

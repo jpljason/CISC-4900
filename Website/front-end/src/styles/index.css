@@ -15,7 +15,7 @@ code {
 }
 
 h1{
-  margin-bottom: 4vh;
+  margin-bottom: 2.5vh;
 }
 
 section{
@@ -23,6 +23,6 @@ section{
   margin-right: auto;
   max-width: 1800px;
   width: 85%;
-  padding-top: 12.5vh;
+  padding-top: 9vh;
   padding-bottom: 7.5vh;
 }
