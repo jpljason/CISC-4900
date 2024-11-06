@@ -5,11 +5,189 @@
         "injured": 46954,
         "killed": 243,
         "boroughs": {
-            "BROOKLYN": 47024,
-            "QUEENS": 39312,
-            "BRONX": 19768,
-            "MANHATTAN": 41582,
-            "STATEN ISLAND": 8295
+            "brooklyn": 47024,
+            "queens": 39312,
+            "bronx": 19768,
+            "manhattan": 41582,
+            "staten_island": 8295
+        },
+        "pedestrians": {
+            "injured": 10811,
+            "killed": 141
+        },
+        "cyclists": {
+            "injured": 3725,
+            "killed": 8
+        },
+        "motorists": {
+            "injured": 32418,
+            "killed": 94
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    23133
+                ],
+                "2": [
+                    "Fatigued/Drowsy",
+                    9918
+                ],
+                "3": [
+                    "Failure to Yield Right-of-Way",
+                    8162
+                ],
+                "4": [
+                    "Other Vehicular",
+                    6866
+                ],
+                "5": [
+                    "Backing Unsafely",
+                    4616
+                ],
+                "6": [
+                    "Turning Improperly",
+                    4561
+                ],
+                "7": [
+                    "Lost Consciousness",
+                    4335
+                ],
+                "8": [
+                    "Prescription Medication",
+                    3732
+                ],
+                "9": [
+                    "Driver Inexperience",
+                    2562
+                ],
+                "10": [
+                    "Traffic Control Disregarded",
+                    2493
+                ],
+                "11": [
+                    "Outside Car Distraction",
+                    2480
+                ],
+                "12": [
+                    "Physical Disability",
+                    2339
+                ],
+                "13": [
+                    "Pavement Slippery",
+                    1724
+                ],
+                "14": [
+                    "Alcohol Involvement",
+                    1361
+                ],
+                "15": [
+                    "Passenger Distraction",
+                    1073
+                ],
+                "16": [
+                    "Oversized Vehicle",
+                    1057
+                ],
+                "17": [
+                    "View Obstructed/Limited",
+                    785
+                ],
+                "18": [
+                    "Aggressive Driving/Road Rage",
+                    574
+                ],
+                "19": [
+                    "Illness",
+                    536
+                ],
+                "20": [
+                    "Other",
+                    4110
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "PASSENGER VEHICLE",
+                    167829
+                ],
+                "2": [
+                    "SPORT UTILITY / STATION WAGON",
+                    67811
+                ],
+                "3": [
+                    "UNKNOWN",
+                    21664
+                ],
+                "4": [
+                    "TAXI",
+                    15138
+                ],
+                "5": [
+                    "VAN",
+                    11123
+                ],
+                "6": [
+                    "OTHER",
+                    9233
+                ],
+                "7": [
+                    "BUS",
+                    5833
+                ],
+                "8": [
+                    "SMALL COM VEH(4 TIRES) ",
+                    5695
+                ],
+                "9": [
+                    "LARGE COM VEH(6 OR MORE TIRES)",
+                    5596
+                ],
+                "10": [
+                    "PICK-UP TRUCK",
+                    4869
+                ],
+                "11": [
+                    "BICYCLE",
+                    4714
+                ],
+                "12": [
+                    "LIVERY VEHICLE",
+                    3444
+                ],
+                "13": [
+                    "MOTORCYCLE",
+                    1874
+                ],
+                "14": [
+                    "AMBULANCE",
+                    719
+                ],
+                "15": [
+                    "FIRE TRUCK",
+                    274
+                ],
+                "16": [
+                    "SCOOTER",
+                    133
+                ],
+                "17": [
+                    "PEDICAB",
+                    37
+                ],
+                "18": [
+                    "Sedan",
+                    36
+                ],
+                "19": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    27
+                ],
+                "20": [
+                    "Other",
+                    25
+                ]
+            }
         }
     },
     "2014": {
@@ -18,11 +196,189 @@
         "injured": 43345,
         "killed": 215,
         "boroughs": {
-            "BROOKLYN": 47758,
-            "QUEENS": 41021,
-            "BRONX": 19686,
-            "MANHATTAN": 41268,
-            "STATEN ISLAND": 6614
+            "brooklyn": 47758,
+            "queens": 41021,
+            "bronx": 19686,
+            "manhattan": 41268,
+            "staten_island": 6614
+        },
+        "pedestrians": {
+            "injured": 9894,
+            "killed": 115
+        },
+        "cyclists": {
+            "injured": 3681,
+            "killed": 16
+        },
+        "motorists": {
+            "injured": 29762,
+            "killed": 84
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    26152
+                ],
+                "2": [
+                    "Fatigued/Drowsy",
+                    11834
+                ],
+                "3": [
+                    "Other Vehicular",
+                    9811
+                ],
+                "4": [
+                    "Failure to Yield Right-of-Way",
+                    9430
+                ],
+                "5": [
+                    "Backing Unsafely",
+                    5903
+                ],
+                "6": [
+                    "Lost Consciousness",
+                    5485
+                ],
+                "7": [
+                    "Turning Improperly",
+                    5471
+                ],
+                "8": [
+                    "Prescription Medication",
+                    4189
+                ],
+                "9": [
+                    "Driver Inexperience",
+                    2963
+                ],
+                "10": [
+                    "Traffic Control Disregarded",
+                    2792
+                ],
+                "11": [
+                    "Outside Car Distraction",
+                    2546
+                ],
+                "12": [
+                    "Pavement Slippery",
+                    2528
+                ],
+                "13": [
+                    "Physical Disability",
+                    2429
+                ],
+                "14": [
+                    "Alcohol Involvement",
+                    1730
+                ],
+                "15": [
+                    "Oversized Vehicle",
+                    1266
+                ],
+                "16": [
+                    "Passenger Distraction",
+                    1205
+                ],
+                "17": [
+                    "View Obstructed/Limited",
+                    867
+                ],
+                "18": [
+                    "Aggressive Driving/Road Rage",
+                    683
+                ],
+                "19": [
+                    "Illness",
+                    671
+                ],
+                "20": [
+                    "Other",
+                    4961
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "PASSENGER VEHICLE",
+                    161422
+                ],
+                "2": [
+                    "SPORT UTILITY / STATION WAGON",
+                    71075
+                ],
+                "3": [
+                    "UNKNOWN",
+                    22501
+                ],
+                "4": [
+                    "TAXI",
+                    15066
+                ],
+                "5": [
+                    "VAN",
+                    11263
+                ],
+                "6": [
+                    "OTHER",
+                    10431
+                ],
+                "7": [
+                    "BUS",
+                    6273
+                ],
+                "8": [
+                    "LARGE COM VEH(6 OR MORE TIRES)",
+                    6272
+                ],
+                "9": [
+                    "SMALL COM VEH(4 TIRES) ",
+                    6244
+                ],
+                "10": [
+                    "BICYCLE",
+                    4712
+                ],
+                "11": [
+                    "PICK-UP TRUCK",
+                    4678
+                ],
+                "12": [
+                    "LIVERY VEHICLE",
+                    4365
+                ],
+                "13": [
+                    "MOTORCYCLE",
+                    1746
+                ],
+                "14": [
+                    "AMBULANCE",
+                    764
+                ],
+                "15": [
+                    "FIRE TRUCK",
+                    291
+                ],
+                "16": [
+                    "SCOOTER",
+                    114
+                ],
+                "17": [
+                    "Sedan",
+                    100
+                ],
+                "18": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    45
+                ],
+                "19": [
+                    "PEDICAB",
+                    26
+                ],
+                "20": [
+                    "Other",
+                    43
+                ]
+            }
         }
     },
     "2015": {
@@ -31,11 +387,189 @@
         "injured": 43283,
         "killed": 201,
         "boroughs": {
-            "BROOKLYN": 50842,
-            "QUEENS": 42487,
-            "BRONX": 21257,
-            "MANHATTAN": 42524,
-            "STATEN ISLAND": 6343
+            "brooklyn": 50842,
+            "queens": 42487,
+            "bronx": 21257,
+            "manhattan": 42524,
+            "staten_island": 6343
+        },
+        "pedestrians": {
+            "injured": 9030,
+            "killed": 114
+        },
+        "cyclists": {
+            "injured": 3884,
+            "killed": 15
+        },
+        "motorists": {
+            "injured": 30368,
+            "killed": 72
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    34603
+                ],
+                "2": [
+                    "Fatigued/Drowsy",
+                    15472
+                ],
+                "3": [
+                    "Other Vehicular",
+                    14826
+                ],
+                "4": [
+                    "Failure to Yield Right-of-Way",
+                    10873
+                ],
+                "5": [
+                    "Lost Consciousness",
+                    6921
+                ],
+                "6": [
+                    "Backing Unsafely",
+                    6870
+                ],
+                "7": [
+                    "Turning Improperly",
+                    6703
+                ],
+                "8": [
+                    "Prescription Medication",
+                    4738
+                ],
+                "9": [
+                    "Traffic Control Disregarded",
+                    3335
+                ],
+                "10": [
+                    "Driver Inexperience",
+                    3109
+                ],
+                "11": [
+                    "Pavement Slippery",
+                    2874
+                ],
+                "12": [
+                    "Outside Car Distraction",
+                    2798
+                ],
+                "13": [
+                    "Physical Disability",
+                    2797
+                ],
+                "14": [
+                    "Alcohol Involvement",
+                    1680
+                ],
+                "15": [
+                    "Oversized Vehicle",
+                    1600
+                ],
+                "16": [
+                    "Passenger Distraction",
+                    1388
+                ],
+                "17": [
+                    "View Obstructed/Limited",
+                    899
+                ],
+                "18": [
+                    "Other Electronic Device",
+                    853
+                ],
+                "19": [
+                    "Aggressive Driving/Road Rage",
+                    846
+                ],
+                "20": [
+                    "Other",
+                    5344
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "PASSENGER VEHICLE",
+                    165405
+                ],
+                "2": [
+                    "SPORT UTILITY / STATION WAGON",
+                    81717
+                ],
+                "3": [
+                    "UNKNOWN",
+                    25531
+                ],
+                "4": [
+                    "TAXI",
+                    14589
+                ],
+                "5": [
+                    "VAN",
+                    11745
+                ],
+                "6": [
+                    "OTHER",
+                    11455
+                ],
+                "7": [
+                    "LARGE COM VEH(6 OR MORE TIRES)",
+                    6709
+                ],
+                "8": [
+                    "SMALL COM VEH(4 TIRES) ",
+                    6506
+                ],
+                "9": [
+                    "BUS",
+                    6304
+                ],
+                "10": [
+                    "LIVERY VEHICLE",
+                    5513
+                ],
+                "11": [
+                    "PICK-UP TRUCK",
+                    5464
+                ],
+                "12": [
+                    "BICYCLE",
+                    5002
+                ],
+                "13": [
+                    "MOTORCYCLE",
+                    1866
+                ],
+                "14": [
+                    "AMBULANCE",
+                    878
+                ],
+                "15": [
+                    "FIRE TRUCK",
+                    319
+                ],
+                "16": [
+                    "SCOOTER",
+                    118
+                ],
+                "17": [
+                    "Sedan",
+                    83
+                ],
+                "18": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    75
+                ],
+                "19": [
+                    "PEDICAB",
+                    29
+                ],
+                "20": [
+                    "Other",
+                    76
+                ]
+            }
         }
     },
     "2016": {
@@ -44,11 +578,189 @@
         "injured": 49902,
         "killed": 201,
         "boroughs": {
-            "BROOKLYN": 42166,
-            "QUEENS": 37498,
-            "BRONX": 19245,
-            "MANHATTAN": 31725,
-            "STATEN ISLAND": 5930
+            "brooklyn": 42166,
+            "queens": 37498,
+            "bronx": 19245,
+            "manhattan": 31725,
+            "staten_island": 5930
+        },
+        "pedestrians": {
+            "injured": 9582,
+            "killed": 124
+        },
+        "cyclists": {
+            "injured": 4294,
+            "killed": 13
+        },
+        "motorists": {
+            "injured": 35728,
+            "killed": 59
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    52262
+                ],
+                "2": [
+                    "Following Too Closely",
+                    16241
+                ],
+                "3": [
+                    "Failure to Yield Right-of-Way",
+                    14119
+                ],
+                "4": [
+                    "Backing Unsafely",
+                    9749
+                ],
+                "5": [
+                    "Other Vehicular",
+                    8879
+                ],
+                "6": [
+                    "Passing or Lane Usage Improper",
+                    8310
+                ],
+                "7": [
+                    "Passing Too Closely",
+                    7401
+                ],
+                "8": [
+                    "Unsafe Lane Changing",
+                    6579
+                ],
+                "9": [
+                    "Turning Improperly",
+                    5975
+                ],
+                "10": [
+                    "Driver Inexperience",
+                    3921
+                ],
+                "11": [
+                    "Traffic Control Disregarded",
+                    3827
+                ],
+                "12": [
+                    "Fatigued/Drowsy",
+                    3149
+                ],
+                "13": [
+                    "Unsafe Speed",
+                    3146
+                ],
+                "14": [
+                    "Reaction to Uninvolved Vehicle",
+                    2876
+                ],
+                "15": [
+                    "Alcohol Involvement",
+                    2327
+                ],
+                "16": [
+                    "Pavement Slippery",
+                    1914
+                ],
+                "17": [
+                    "Oversized Vehicle",
+                    1683
+                ],
+                "18": [
+                    "View Obstructed/Limited",
+                    1637
+                ],
+                "19": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1529
+                ],
+                "20": [
+                    "Other",
+                    11654
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    89010
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    86216
+                ],
+                "3": [
+                    "4 dr sedan",
+                    48771
+                ],
+                "4": [
+                    "PASSENGER VEHICLE",
+                    30463
+                ],
+                "5": [
+                    "SPORT UTILITY / STATION WAGON",
+                    16428
+                ],
+                "6": [
+                    "Taxi",
+                    11579
+                ],
+                "7": [
+                    "Pick-up Truck",
+                    7756
+                ],
+                "8": [
+                    "Box Truck",
+                    6113
+                ],
+                "9": [
+                    "UNKNOWN",
+                    5646
+                ],
+                "10": [
+                    "Bike",
+                    5082
+                ],
+                "11": [
+                    "Bus",
+                    4912
+                ],
+                "12": [
+                    "2 dr sedan",
+                    3141
+                ],
+                "13": [
+                    "Van",
+                    3072
+                ],
+                "14": [
+                    "TAXI",
+                    2820
+                ],
+                "15": [
+                    "Tractor Truck Diesel",
+                    2639
+                ],
+                "16": [
+                    "OTHER",
+                    2257
+                ],
+                "17": [
+                    "VAN",
+                    2101
+                ],
+                "18": [
+                    "Motorcycle",
+                    1613
+                ],
+                "19": [
+                    "SMALL COM VEH(4 TIRES) ",
+                    1349
+                ],
+                "20": [
+                    "Other",
+                    15764
+                ]
+            }
         }
     },
     "2017": {
@@ -57,11 +769,189 @@
         "injured": 56965,
         "killed": 232,
         "boroughs": {
-            "BROOKLYN": 43932,
-            "QUEENS": 37599,
-            "BRONX": 20586,
-            "MANHATTAN": 30278,
-            "STATEN ISLAND": 6053
+            "brooklyn": 43932,
+            "queens": 37599,
+            "bronx": 20586,
+            "manhattan": 30278,
+            "staten_island": 6053
+        },
+        "pedestrians": {
+            "injured": 10696,
+            "killed": 117
+        },
+        "cyclists": {
+            "injured": 4578,
+            "killed": 24
+        },
+        "motorists": {
+            "injured": 41690,
+            "killed": 94
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    62502
+                ],
+                "2": [
+                    "Following Too Closely",
+                    24380
+                ],
+                "3": [
+                    "Failure to Yield Right-of-Way",
+                    17143
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    12451
+                ],
+                "5": [
+                    "Backing Unsafely",
+                    11655
+                ],
+                "6": [
+                    "Passing Too Closely",
+                    11014
+                ],
+                "7": [
+                    "Unsafe Lane Changing",
+                    9675
+                ],
+                "8": [
+                    "Other Vehicular",
+                    8870
+                ],
+                "9": [
+                    "Turning Improperly",
+                    6425
+                ],
+                "10": [
+                    "Traffic Control Disregarded",
+                    4849
+                ],
+                "11": [
+                    "Driver Inexperience",
+                    4770
+                ],
+                "12": [
+                    "Reaction to Uninvolved Vehicle",
+                    4306
+                ],
+                "13": [
+                    "Unsafe Speed",
+                    4132
+                ],
+                "14": [
+                    "Pavement Slippery",
+                    2670
+                ],
+                "15": [
+                    "Alcohol Involvement",
+                    2565
+                ],
+                "16": [
+                    "View Obstructed/Limited",
+                    2116
+                ],
+                "17": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1771
+                ],
+                "18": [
+                    "Oversized Vehicle",
+                    1753
+                ],
+                "19": [
+                    "Aggressive Driving/Road Rage",
+                    1091
+                ],
+                "20": [
+                    "Other",
+                    7302
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    186761
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    129606
+                ],
+                "3": [
+                    "Taxi",
+                    17727
+                ],
+                "4": [
+                    "Pick-up Truck",
+                    12310
+                ],
+                "5": [
+                    "Box Truck",
+                    8707
+                ],
+                "6": [
+                    "Bus",
+                    6852
+                ],
+                "7": [
+                    "Bike",
+                    5987
+                ],
+                "8": [
+                    "Tractor Truck Diesel",
+                    3415
+                ],
+                "9": [
+                    "Van",
+                    3150
+                ],
+                "10": [
+                    "Motorcycle",
+                    1933
+                ],
+                "11": [
+                    "Dump",
+                    1230
+                ],
+                "12": [
+                    "Convertible",
+                    1169
+                ],
+                "13": [
+                    "Carry All",
+                    847
+                ],
+                "14": [
+                    "Flat Bed",
+                    807
+                ],
+                "15": [
+                    "Ambulance",
+                    764
+                ],
+                "16": [
+                    "PK",
+                    760
+                ],
+                "17": [
+                    "Garbage or Refuse",
+                    705
+                ],
+                "18": [
+                    "Tractor Truck Gasoline",
+                    607
+                ],
+                "19": [
+                    "Tow Truck / Wrecker",
+                    395
+                ],
+                "20": [
+                    "Other",
+                    4977
+                ]
+            }
         }
     },
     "2018": {
@@ -70,11 +960,189 @@
         "injured": 57955,
         "killed": 218,
         "boroughs": {
-            "BROOKLYN": 46322,
-            "QUEENS": 40402,
-            "BRONX": 22124,
-            "MANHATTAN": 29730,
-            "STATEN ISLAND": 5989
+            "brooklyn": 46322,
+            "queens": 40402,
+            "bronx": 22124,
+            "manhattan": 29730,
+            "staten_island": 5989
+        },
+        "pedestrians": {
+            "injured": 10737,
+            "killed": 117
+        },
+        "cyclists": {
+            "injured": 4455,
+            "killed": 9
+        },
+        "motorists": {
+            "injured": 42740,
+            "killed": 91
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    65698
+                ],
+                "2": [
+                    "Following Too Closely",
+                    23430
+                ],
+                "3": [
+                    "Failure to Yield Right-of-Way",
+                    17393
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    12329
+                ],
+                "5": [
+                    "Backing Unsafely",
+                    11929
+                ],
+                "6": [
+                    "Passing Too Closely",
+                    11211
+                ],
+                "7": [
+                    "Unsafe Lane Changing",
+                    8757
+                ],
+                "8": [
+                    "Other Vehicular",
+                    8565
+                ],
+                "9": [
+                    "Turning Improperly",
+                    5967
+                ],
+                "10": [
+                    "Traffic Control Disregarded",
+                    4387
+                ],
+                "11": [
+                    "Reaction to Uninvolved Vehicle",
+                    4260
+                ],
+                "12": [
+                    "Driver Inexperience",
+                    3921
+                ],
+                "13": [
+                    "Unsafe Speed",
+                    3721
+                ],
+                "14": [
+                    "Pavement Slippery",
+                    2598
+                ],
+                "15": [
+                    "Alcohol Involvement",
+                    2268
+                ],
+                "16": [
+                    "View Obstructed/Limited",
+                    2263
+                ],
+                "17": [
+                    "Oversized Vehicle",
+                    1707
+                ],
+                "18": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1589
+                ],
+                "19": [
+                    "Aggressive Driving/Road Rage",
+                    1081
+                ],
+                "20": [
+                    "Other",
+                    7091
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    174983
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    137667
+                ],
+                "3": [
+                    "Taxi",
+                    19703
+                ],
+                "4": [
+                    "Pick-up Truck",
+                    12889
+                ],
+                "5": [
+                    "Box Truck",
+                    9197
+                ],
+                "6": [
+                    "Bus",
+                    6602
+                ],
+                "7": [
+                    "Bike",
+                    5837
+                ],
+                "8": [
+                    "Tractor Truck Diesel",
+                    3412
+                ],
+                "9": [
+                    "Van",
+                    2775
+                ],
+                "10": [
+                    "Motorcycle",
+                    1879
+                ],
+                "11": [
+                    "Dump",
+                    1270
+                ],
+                "12": [
+                    "Convertible",
+                    1143
+                ],
+                "13": [
+                    "Flat Bed",
+                    822
+                ],
+                "14": [
+                    "Ambulance",
+                    740
+                ],
+                "15": [
+                    "Garbage or Refuse",
+                    730
+                ],
+                "16": [
+                    "PK",
+                    628
+                ],
+                "17": [
+                    "Tractor Truck Gasoline",
+                    524
+                ],
+                "18": [
+                    "Carry All",
+                    522
+                ],
+                "19": [
+                    "Tow Truck / Wrecker",
+                    400
+                ],
+                "20": [
+                    "Other",
+                    4382
+                ]
+            }
         }
     },
     "2019": {
@@ -83,11 +1151,189 @@
         "injured": 55833,
         "killed": 227,
         "boroughs": {
-            "BROOKLYN": 43547,
-            "QUEENS": 38856,
-            "BRONX": 21425,
-            "MANHATTAN": 25546,
-            "STATEN ISLAND": 3509
+            "brooklyn": 43547,
+            "queens": 38856,
+            "bronx": 21425,
+            "manhattan": 25546,
+            "staten_island": 3509
+        },
+        "pedestrians": {
+            "injured": 10183,
+            "killed": 123
+        },
+        "cyclists": {
+            "injured": 4710,
+            "killed": 29
+        },
+        "motorists": {
+            "injured": 40939,
+            "killed": 75
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    62943
+                ],
+                "2": [
+                    "Following Too Closely",
+                    18671
+                ],
+                "3": [
+                    "Failure to Yield Right-of-Way",
+                    15575
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    10153
+                ],
+                "5": [
+                    "Backing Unsafely",
+                    9892
+                ],
+                "6": [
+                    "Passing Too Closely",
+                    9608
+                ],
+                "7": [
+                    "Other Vehicular",
+                    8202
+                ],
+                "8": [
+                    "Unsafe Lane Changing",
+                    6583
+                ],
+                "9": [
+                    "Turning Improperly",
+                    4715
+                ],
+                "10": [
+                    "Traffic Control Disregarded",
+                    3649
+                ],
+                "11": [
+                    "Driver Inexperience",
+                    3509
+                ],
+                "12": [
+                    "Reaction to Uninvolved Vehicle",
+                    3269
+                ],
+                "13": [
+                    "Unsafe Speed",
+                    3197
+                ],
+                "14": [
+                    "Alcohol Involvement",
+                    2100
+                ],
+                "15": [
+                    "View Obstructed/Limited",
+                    2037
+                ],
+                "16": [
+                    "Pavement Slippery",
+                    1705
+                ],
+                "17": [
+                    "Oversized Vehicle",
+                    1386
+                ],
+                "18": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1352
+                ],
+                "19": [
+                    "Aggressive Driving/Road Rage",
+                    1009
+                ],
+                "20": [
+                    "Other",
+                    6073
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    149702
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    129191
+                ],
+                "3": [
+                    "Taxi",
+                    15991
+                ],
+                "4": [
+                    "Pick-up Truck",
+                    11220
+                ],
+                "5": [
+                    "Box Truck",
+                    8601
+                ],
+                "6": [
+                    "Bus",
+                    6198
+                ],
+                "7": [
+                    "Bike",
+                    5651
+                ],
+                "8": [
+                    "Tractor Truck Diesel",
+                    2900
+                ],
+                "9": [
+                    "Van",
+                    2287
+                ],
+                "10": [
+                    "Motorcycle",
+                    1742
+                ],
+                "11": [
+                    "Dump",
+                    1136
+                ],
+                "12": [
+                    "Convertible",
+                    979
+                ],
+                "13": [
+                    "Flat Bed",
+                    837
+                ],
+                "14": [
+                    "Ambulance",
+                    805
+                ],
+                "15": [
+                    "Garbage or Refuse",
+                    694
+                ],
+                "16": [
+                    "Carry All",
+                    537
+                ],
+                "17": [
+                    "PK",
+                    506
+                ],
+                "18": [
+                    "Tractor Truck Gasoline",
+                    399
+                ],
+                "19": [
+                    "Tow Truck / Wrecker",
+                    366
+                ],
+                "20": [
+                    "Other",
+                    4983
+                ]
+            }
         }
     },
     "2020": {
@@ -96,11 +1342,189 @@
         "injured": 40611,
         "killed": 236,
         "boroughs": {
-            "BROOKLYN": 24884,
-            "QUEENS": 20106,
-            "BRONX": 13750,
-            "MANHATTAN": 10467,
-            "STATEN ISLAND": 2299
+            "brooklyn": 24884,
+            "queens": 20106,
+            "bronx": 13750,
+            "manhattan": 10467,
+            "staten_island": 2299
+        },
+        "pedestrians": {
+            "injured": 6398,
+            "killed": 92
+        },
+        "cyclists": {
+            "injured": 5266,
+            "killed": 24
+        },
+        "motorists": {
+            "injured": 28947,
+            "killed": 120
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    31568
+                ],
+                "2": [
+                    "Following Too Closely",
+                    7469
+                ],
+                "3": [
+                    "Failure to Yield Right-of-Way",
+                    7437
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    4591
+                ],
+                "5": [
+                    "Passing Too Closely",
+                    4345
+                ],
+                "6": [
+                    "Other Vehicular",
+                    4328
+                ],
+                "7": [
+                    "Backing Unsafely",
+                    4120
+                ],
+                "8": [
+                    "Unsafe Speed",
+                    3359
+                ],
+                "9": [
+                    "Traffic Control Disregarded",
+                    2719
+                ],
+                "10": [
+                    "Unsafe Lane Changing",
+                    2490
+                ],
+                "11": [
+                    "Turning Improperly",
+                    2199
+                ],
+                "12": [
+                    "Driver Inexperience",
+                    2026
+                ],
+                "13": [
+                    "Reaction to Uninvolved Vehicle",
+                    1742
+                ],
+                "14": [
+                    "Alcohol Involvement",
+                    1518
+                ],
+                "15": [
+                    "Pavement Slippery",
+                    1091
+                ],
+                "16": [
+                    "View Obstructed/Limited",
+                    1090
+                ],
+                "17": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1021
+                ],
+                "18": [
+                    "Aggressive Driving/Road Rage",
+                    873
+                ],
+                "19": [
+                    "Oversized Vehicle",
+                    612
+                ],
+                "20": [
+                    "Other",
+                    3567
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    79471
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    61661
+                ],
+                "3": [
+                    "Taxi",
+                    5476
+                ],
+                "4": [
+                    "Bike",
+                    4896
+                ],
+                "5": [
+                    "Pick-up Truck",
+                    4368
+                ],
+                "6": [
+                    "Box Truck",
+                    3965
+                ],
+                "7": [
+                    "Bus",
+                    2514
+                ],
+                "8": [
+                    "Tractor Truck Diesel",
+                    1498
+                ],
+                "9": [
+                    "Motorcycle",
+                    1366
+                ],
+                "10": [
+                    "Van",
+                    1082
+                ],
+                "11": [
+                    "E-Scooter",
+                    1020
+                ],
+                "12": [
+                    "E-Bike",
+                    859
+                ],
+                "13": [
+                    "Ambulance",
+                    749
+                ],
+                "14": [
+                    "Dump",
+                    594
+                ],
+                "15": [
+                    "Convertible",
+                    471
+                ],
+                "16": [
+                    "Flat Bed",
+                    388
+                ],
+                "17": [
+                    "PK",
+                    368
+                ],
+                "18": [
+                    "Garbage or Refuse",
+                    354
+                ],
+                "19": [
+                    "Moped",
+                    298
+                ],
+                "20": [
+                    "Other",
+                    3511
+                ]
+            }
         }
     },
     "2021": {
@@ -109,11 +1533,189 @@
         "injured": 46870,
         "killed": 257,
         "boroughs": {
-            "BROOKLYN": 24355,
-            "QUEENS": 18875,
-            "BRONX": 12766,
-            "MANHATTAN": 10911,
-            "STATEN ISLAND": 2538
+            "brooklyn": 24355,
+            "queens": 18875,
+            "bronx": 12766,
+            "manhattan": 10911,
+            "staten_island": 2538
+        },
+        "pedestrians": {
+            "injured": 7058,
+            "killed": 117
+        },
+        "cyclists": {
+            "injured": 4640,
+            "killed": 17
+        },
+        "motorists": {
+            "injured": 33162,
+            "killed": 112
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    28498
+                ],
+                "2": [
+                    "Failure to Yield Right-of-Way",
+                    7555
+                ],
+                "3": [
+                    "Following Too Closely",
+                    6972
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    5076
+                ],
+                "5": [
+                    "Passing Too Closely",
+                    4482
+                ],
+                "6": [
+                    "Unsafe Speed",
+                    4073
+                ],
+                "7": [
+                    "Other Vehicular",
+                    3852
+                ],
+                "8": [
+                    "Backing Unsafely",
+                    3504
+                ],
+                "9": [
+                    "Traffic Control Disregarded",
+                    3337
+                ],
+                "10": [
+                    "Turning Improperly",
+                    2396
+                ],
+                "11": [
+                    "Driver Inexperience",
+                    2282
+                ],
+                "12": [
+                    "Unsafe Lane Changing",
+                    2080
+                ],
+                "13": [
+                    "Alcohol Involvement",
+                    1670
+                ],
+                "14": [
+                    "Reaction to Uninvolved Vehicle",
+                    1462
+                ],
+                "15": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1156
+                ],
+                "16": [
+                    "View Obstructed/Limited",
+                    1101
+                ],
+                "17": [
+                    "Aggressive Driving/Road Rage",
+                    868
+                ],
+                "18": [
+                    "Pavement Slippery",
+                    849
+                ],
+                "19": [
+                    "Oversized Vehicle",
+                    567
+                ],
+                "20": [
+                    "Other",
+                    3722
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    76671
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    56198
+                ],
+                "3": [
+                    "Bike",
+                    4740
+                ],
+                "4": [
+                    "Box Truck",
+                    3792
+                ],
+                "5": [
+                    "Pick-up Truck",
+                    3596
+                ],
+                "6": [
+                    "Taxi",
+                    3573
+                ],
+                "7": [
+                    "Bus",
+                    3004
+                ],
+                "8": [
+                    "E-Bike",
+                    2558
+                ],
+                "9": [
+                    "Motorcycle",
+                    1545
+                ],
+                "10": [
+                    "Tractor Truck Diesel",
+                    1396
+                ],
+                "11": [
+                    "E-Scooter",
+                    1239
+                ],
+                "12": [
+                    "Van",
+                    1178
+                ],
+                "13": [
+                    "Ambulance",
+                    903
+                ],
+                "14": [
+                    "Dump",
+                    589
+                ],
+                "15": [
+                    "Moped",
+                    558
+                ],
+                "16": [
+                    "PK",
+                    413
+                ],
+                "17": [
+                    "Garbage or Refuse",
+                    360
+                ],
+                "18": [
+                    "Flat Bed",
+                    358
+                ],
+                "19": [
+                    "Convertible",
+                    344
+                ],
+                "20": [
+                    "Other",
+                    3608
+                ]
+            }
         }
     },
     "2022": {
@@ -122,11 +1724,189 @@
         "injured": 46042,
         "killed": 246,
         "boroughs": {
-            "BROOKLYN": 22207,
-            "QUEENS": 17499,
-            "BRONX": 11628,
-            "MANHATTAN": 11328,
-            "STATEN ISLAND": 2573
+            "brooklyn": 22207,
+            "queens": 17499,
+            "bronx": 11628,
+            "manhattan": 11328,
+            "staten_island": 2573
+        },
+        "pedestrians": {
+            "injured": 8285,
+            "killed": 119
+        },
+        "cyclists": {
+            "injured": 4621,
+            "killed": 16
+        },
+        "motorists": {
+            "injured": 30913,
+            "killed": 92
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    27334
+                ],
+                "2": [
+                    "Failure to Yield Right-of-Way",
+                    7425
+                ],
+                "3": [
+                    "Following Too Closely",
+                    6265
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    4816
+                ],
+                "5": [
+                    "Passing Too Closely",
+                    4092
+                ],
+                "6": [
+                    "Unsafe Speed",
+                    3705
+                ],
+                "7": [
+                    "Other Vehicular",
+                    3347
+                ],
+                "8": [
+                    "Backing Unsafely",
+                    3149
+                ],
+                "9": [
+                    "Traffic Control Disregarded",
+                    3059
+                ],
+                "10": [
+                    "Turning Improperly",
+                    2411
+                ],
+                "11": [
+                    "Unsafe Lane Changing",
+                    2037
+                ],
+                "12": [
+                    "Driver Inexperience",
+                    1947
+                ],
+                "13": [
+                    "Alcohol Involvement",
+                    1700
+                ],
+                "14": [
+                    "Reaction to Uninvolved Vehicle",
+                    1264
+                ],
+                "15": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1219
+                ],
+                "16": [
+                    "View Obstructed/Limited",
+                    1032
+                ],
+                "17": [
+                    "Pavement Slippery",
+                    853
+                ],
+                "18": [
+                    "Aggressive Driving/Road Rage",
+                    773
+                ],
+                "19": [
+                    "Fell Asleep",
+                    484
+                ],
+                "20": [
+                    "Other",
+                    3433
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    68773
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    50975
+                ],
+                "3": [
+                    "Bike",
+                    4903
+                ],
+                "4": [
+                    "Box Truck",
+                    3713
+                ],
+                "5": [
+                    "Pick-up Truck",
+                    3503
+                ],
+                "6": [
+                    "Taxi",
+                    3386
+                ],
+                "7": [
+                    "Bus",
+                    3248
+                ],
+                "8": [
+                    "E-Bike",
+                    2379
+                ],
+                "9": [
+                    "Motorcycle",
+                    1485
+                ],
+                "10": [
+                    "E-Scooter",
+                    1403
+                ],
+                "11": [
+                    "Tractor Truck Diesel",
+                    1276
+                ],
+                "12": [
+                    "Van",
+                    973
+                ],
+                "13": [
+                    "Ambulance",
+                    883
+                ],
+                "14": [
+                    "Moped",
+                    681
+                ],
+                "15": [
+                    "Dump",
+                    596
+                ],
+                "16": [
+                    "PK",
+                    394
+                ],
+                "17": [
+                    "Garbage or Refuse",
+                    376
+                ],
+                "18": [
+                    "Flat Bed",
+                    337
+                ],
+                "19": [
+                    "Convertible",
+                    258
+                ],
+                "20": [
+                    "Other",
+                    3268
+                ]
+            }
         }
     },
     "2023": {
@@ -135,11 +1915,189 @@
         "injured": 49572,
         "killed": 247,
         "boroughs": {
-            "BROOKLYN": 22460,
-            "QUEENS": 17437,
-            "BRONX": 10226,
-            "MANHATTAN": 11532,
-            "STATEN ISLAND": 2651
+            "brooklyn": 22460,
+            "queens": 17437,
+            "bronx": 10226,
+            "manhattan": 11532,
+            "staten_island": 2651
+        },
+        "pedestrians": {
+            "injured": 8667,
+            "killed": 92
+        },
+        "cyclists": {
+            "injured": 4903,
+            "killed": 28
+        },
+        "motorists": {
+            "injured": 33692,
+            "killed": 114
+        },
+        "top_20": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    26528
+                ],
+                "2": [
+                    "Failure to Yield Right-of-Way",
+                    6823
+                ],
+                "3": [
+                    "Following Too Closely",
+                    5940
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    4578
+                ],
+                "5": [
+                    "Unsafe Speed",
+                    4020
+                ],
+                "6": [
+                    "Other Vehicular",
+                    3702
+                ],
+                "7": [
+                    "Passing Too Closely",
+                    3474
+                ],
+                "8": [
+                    "Traffic Control Disregarded",
+                    3220
+                ],
+                "9": [
+                    "Backing Unsafely",
+                    2938
+                ],
+                "10": [
+                    "Turning Improperly",
+                    2333
+                ],
+                "11": [
+                    "Driver Inexperience",
+                    2246
+                ],
+                "12": [
+                    "Alcohol Involvement",
+                    1754
+                ],
+                "13": [
+                    "Unsafe Lane Changing",
+                    1708
+                ],
+                "14": [
+                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+                    1210
+                ],
+                "15": [
+                    "Reaction to Uninvolved Vehicle",
+                    1049
+                ],
+                "16": [
+                    "View Obstructed/Limited",
+                    939
+                ],
+                "17": [
+                    "Aggressive Driving/Road Rage",
+                    883
+                ],
+                "18": [
+                    "Pavement Slippery",
+                    558
+                ],
+                "19": [
+                    "Fell Asleep",
+                    421
+                ],
+                "20": [
+                    "Other",
+                    3224
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    63714
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    48666
+                ],
+                "3": [
+                    "Bike",
+                    5083
+                ],
+                "4": [
+                    "Pick-up Truck",
+                    3566
+                ],
+                "5": [
+                    "Taxi",
+                    3378
+                ],
+                "6": [
+                    "Box Truck",
+                    3325
+                ],
+                "7": [
+                    "Bus",
+                    3162
+                ],
+                "8": [
+                    "E-Bike",
+                    2468
+                ],
+                "9": [
+                    "Motorcycle",
+                    1838
+                ],
+                "10": [
+                    "Moped",
+                    1612
+                ],
+                "11": [
+                    "E-Scooter",
+                    1459
+                ],
+                "12": [
+                    "Tractor Truck Diesel",
+                    1132
+                ],
+                "13": [
+                    "Van",
+                    981
+                ],
+                "14": [
+                    "Ambulance",
+                    880
+                ],
+                "15": [
+                    "Dump",
+                    494
+                ],
+                "16": [
+                    "PK",
+                    379
+                ],
+                "17": [
+                    "Garbage or Refuse",
+                    367
+                ],
+                "18": [
+                    "Flat Bed",
+                    305
+                ],
+                "19": [
+                    "Motorscooter",
+                    294
+                ],
+                "20": [
+                    "Other",
+                    3354
+                ]
+            }
         }
     }
 }

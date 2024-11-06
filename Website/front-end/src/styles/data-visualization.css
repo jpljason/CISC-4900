@@ -1,3 +1,15 @@
+.horizontal-line2{
+  height: 0.5px;
+  background-color: rgba(128, 128, 128, 0.527);
+  flex-grow: 1;
+}
+
+.charts-graphs-option{
+  font-size: 0.9rem;
+  margin-bottom: 2vh;
+  margin-top: 4vh;
+}
+
 .charts-graphs-container {
   width: 100%;
   display: flex;
@@ -6,6 +18,7 @@
   flex-wrap: wrap;
   text-align: center;
   gap: 50px;
+  margin-top: 25px;
 }
 
 .chart-graph{
@@ -13,15 +26,43 @@
   max-width: 100%;
   align-items: center;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 .charts_graphs_section{
   padding-top: 2vh;
 }
 
-.comparison-chart {
-  width: 500px;
-  max-width: 100%;
-  align-items: center;
-  justify-content: center;
+.select{
+  background-color: rgb(51, 51, 51);
+  padding: 8px;
+  font-size: 0.8rem;
+  border: none;
+  width: 150px;
+  color: white;
+}
+
+.compare-years select{
+  margin: 15px;
+}
+
+.compare-years select:focus{
+  outline: none;
+}
+
+.compare-button{
+  font-size: 0.8rem;
+  padding: 10px 15px 10px 15px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(181, 0, 213);
+  font-family: Montserrat;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  margin-left: 10px;
+}
+
+.compare-button:hover{
+  background-color: rgb(105, 3, 113);
+  transition: background-color 0.2s ease;
 }
