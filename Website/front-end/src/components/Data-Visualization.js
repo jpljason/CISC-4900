@@ -25,6 +25,7 @@ const totalKilled = (years) => years.map((year) => {
 })
 
 // display number of people killed each borough for recent 12 years
+const boroughsLabel = ['Brooklyn', 'Bronx', 'Queens', 'Manhattan', 'Staten Island']
 const totalBoroughs = (years) => {
   const boroughCounts = [0, 0, 0, 0, 0];
   years.forEach((year) => {
@@ -134,8 +135,8 @@ const RushHourPercentagesChart = ({years}) => {
                 return (value*100) + '%'; //Convert y-axis to percent format
               },
             },
-            min: 0,
-            max: 1, //1 = 100%
+            min: 0.3,
+            max: 0.5, //1 = 100%
           },
         },
         plugins: {
@@ -267,37 +268,77 @@ const TotalKilledChart = ({years}) => {
 }
 
 // pie graph displaying number of pedestrians/cyclists/motorists injured throughout the recent 12 years
-const PedestriansMotoristsCyclistsInjuredChart = ({years}) => {
-  return (
-    <Pie //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-      data={{
-        labels: pmcInjuredLabel,
-        datasets: [
-          {
-            label: "Number of Injured",
-            data: pedestrianMotoristCyclistInjured(years),
-            backgroundColor: ['rgb(28, 28, 206)', 'rgb(32,32,150)', 'rgb(30,30,130)'],
-            borderColor: 'navy',
-            borderWidth: 1,
-            borderRadius: 3,
-            // hoverBackgroundColor: 'orange',
+const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
+  //data for Pie
+  const pieData = {
+    labels: pmcInjuredLabel,
+    datasets: [
+      {
+        label: "Number of Injured",
+        data: pedestrianMotoristCyclistInjured(years),
+        backgroundColor: ['rgb(28, 28, 206)', 'rgb(32,32,150)', 'rgb(30,30,110)'],
+        borderColor: 'navy',
+        borderWidth: 1,
+        borderRadius: 3,
+      }
+    ]
+  };
+
+  const yearLabel = years.map((year) => year);
+  //data for Bar
+  //REMINDER: understand why its [years[0]] instead of years[0] below
+  const barData = {
+    labels: pmcInjuredLabel,
+    datasets: [
+      {
+        label: yearLabel[0],
+        data: pedestrianMotoristCyclistInjured([years[0]]),
+        backgroundColor: 'rgb(28, 28, 206)',
+        borderColor: 'navy',
+        borderWidth: 1,
+        borderRadius: 3
+      },
+      {
+        label: yearLabel[1],
+        data: pedestrianMotoristCyclistInjured([years[1]]),
+        backgroundColor: 'rgb(32, 32, 150)',
+        borderColor: 'navy',
+        borderWidth: 1,
+        borderRadius: 3
+      }
+    ]
+  }
+
+  //when toggle to Comparison section, render Bar instead of Pie
+  if (isCompare) {
+    return (
+      <Bar
+        data={barData}
+        options={{
+          aspectRatio: 1,
+          plugins: {
+            title: {
+              display: true,
+              text: `Number of Injured (Pedestrians, Motorists, Cyclists) in ${yearLabel[0]} and ${yearLabel[1]}`,
+              font: {
+                size: 16,
+              }
+            },
+            tooltip: {
+              padding: 10,
+            }
           }
-        ],
-      }}
+        }}
+      />
+    );
+  }
+
+  //render Pie by default AND when toggle to Recent 12 Years section
+  return (
+    <Pie
+      data={pieData}
       options={{
         aspectRatio: 1,
-        layout: {
-          padding: 10,
-        },
-        // scales: {
-        //   y: {
-        //     type: 'linear',
-        //     beginAtZero: true,
-        //     title: {
-        //       display: true,
-        //     },
-        //   }
-        // },
         plugins: {
           legend: {
             position: 'left',
@@ -309,12 +350,9 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years}) => {
               }
             }
           },
-          tooltip: {
-            padding: 10,  //hover box
-          },
           title: {
             display: true,
-            text: "Number of Pedestrians, Motorists, Cyclists Injured",
+            text: "Number of Injured (Pedestrians, Motorists, Cyclists)",
             font: {
               size: 16,
             }
@@ -322,27 +360,76 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years}) => {
         }
       }}
     />
-  )
+  );
 }
 
-// pie graph displaying number of pedestrians/cyclists/motorists killed throughout the recent 12 years
-const PedestriansMotoristsCyclistsKilledChart = ({years}) => {
-  return (
-    <Pie //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-      data={{
-        labels: pmcKilledLabel,
-        datasets: [
-          {
-            label: "Number of Killed",
-            data: pedestrianMotoristCyclistKilled(years),
-            backgroundColor: ['rgb(255,70,50)', 'lightcoral', 'lightsalmon'],
-            borderColor: 'red',
-            borderWidth: 1,
-            borderRadius: 3,
-            // hoverBackgroundColor: 'orange',
+const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
+  const pieData = {
+    labels: pmcKilledLabel,
+    datasets: [
+      {
+        label: "Number of Killed",
+        data: pedestrianMotoristCyclistKilled(years),
+        backgroundColor: ['rgb(255,70,50)', 'lightcoral', 'lightsalmon'],
+        borderColor: 'red',
+        borderWidth: 1,
+        borderRadius: 3,
+      }
+    ]
+  };
+
+  const yearLabel = years.map((year) => year);
+
+  const barData = {
+    labels: pmcKilledLabel,
+    datasets: [
+      {
+        label: yearLabel[0],
+        data: pedestrianMotoristCyclistKilled([years[0]]),
+        backgroundColor: 'rgb(255, 70, 50)',
+        borderColor: 'red',
+        borderWidth: 1,
+        borderRadius: 3
+      },
+      {
+        label: yearLabel[1],
+        data: pedestrianMotoristCyclistKilled([years[1]]),
+        backgroundColor: 'lightcoral',
+        borderColor: 'red',
+        borderWidth: 1,
+        borderRadius: 3
+      }
+    ]
+  }
+
+  //when toggle to Comparison section, render Bar instead of Pie
+  if (isCompare) {
+    return (
+      <Bar
+        data={barData}
+        options={{
+          aspectRatio: 1,
+          plugins: {
+            title: {
+              display: true,
+              text: `Number of Killed (Pedestrians, Motorists, Cyclists) in ${yearLabel[0]} and ${yearLabel[1]}`,
+              font: {
+                size: 16,
+              }
+            },
+            tooltip: {
+              padding: 10,
+            }
           }
-        ],
-      }}
+        }}
+      />
+    );
+  }
+
+  //render Pie by default AND when toggle to Recent 12 Years section
+  return (
+    <Pie
+      data={pieData}
       options={{
         aspectRatio: 1,
         plugins: {
@@ -358,7 +445,7 @@ const PedestriansMotoristsCyclistsKilledChart = ({years}) => {
           },
           title: {
             display: true,
-            text: "Number of Pedestrians, Motorists, Cyclists Killed",
+            text: "Number of Killed (Pedestrians, Motorists, Cyclists)",
             font: {
               size: 16,
             }
@@ -366,27 +453,78 @@ const PedestriansMotoristsCyclistsKilledChart = ({years}) => {
         }
       }}
     />
-  )
+  );
+  
 }
 
 // pie graph displaying number of crashes in each borough in the recent 12 years
-const CrashesByBoroughChart = ({years}) => {
-  return (
-    <Pie //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-      data={{
-        labels: ['Brooklyn', 'Bronx', 'Queens', 'Manhattan', 'Staten Island'],
-        datasets: [
-          {
-            label: "Number of People Killed",
-            data: totalBoroughs(years),
-            backgroundColor: ['indigo', 'purple', 'darkviolet', 'blueviolet', 'slateblue'],
-            borderColor: 'indigo',
-            borderWidth: 1,
-            borderRadius: 3,
-            // hoverBackgroundColor: 'orange',
+const CrashesByBoroughChart = ({years, isCompare}) => {
+  const pieData = {
+    labels: boroughsLabel,
+    datasets: [
+      {
+        label: "Number of People Killed",
+        data: totalBoroughs(years),
+        backgroundColor: ['indigo', 'purple', 'darkviolet', 'blueviolet', 'slateblue'],
+        borderColor: 'indigo',
+        borderWidth: 1,
+        borderRadius: 3,
+      }
+    ]
+  }
+
+  const yearLabel = years.map((year) => year);
+
+  const barData = {
+    labels: boroughsLabel,
+    datasets: [
+      {
+        label: yearLabel[0],
+        data: totalBoroughs([years[0]]),
+        backgroundColor: 'indigo',
+        borderColor: 'indigo',
+        borderWidth: 1,
+        borderRadius: 3,
+      },
+      {
+        label: yearLabel[1],
+        data: totalBoroughs([years[1]]),
+        backgroundColor: 'blueviolet',
+        borderColor: 'indigo',
+        borderWidth: 1,
+        borderRadius: 3,
+      }
+    ]
+  }
+
+  //when toggle to Comparison section, render Bar instead of Pie
+  if (isCompare) {
+    return (
+      <Bar
+        data={barData}
+        options={{
+          aspectRatio: 1,
+          plugins: {
+            title: {
+              display: true,
+              text: `Number of Crashes in Each Borough in ${yearLabel[0]} and ${yearLabel[1]}`,
+              font: {
+                size: 16,
+              }
+            },
+            tooltip: {
+              padding: 10,
+            }
           }
-        ],
-      }}
+        }}
+      />
+    );
+  }
+
+  //render Pie by default AND when toggle to Recent 12 Years section
+  return (
+    <Pie
+      data={pieData}
       options={{
         aspectRatio: 1,
         plugins: {
@@ -410,7 +548,7 @@ const CrashesByBoroughChart = ({years}) => {
         }
       }}
     />
-  )
+  );
 }
 
 function RecentTwelveYears(){
@@ -432,13 +570,13 @@ function RecentTwelveYears(){
         <TotalKilledChart years={years}/>
       </div>
       <div className="chart-graph">
-        <PedestriansMotoristsCyclistsInjuredChart years={years}/>
+        <PedestriansMotoristsCyclistsInjuredChart years={years} isCompare={false}/> {/*when toggle to Recent 12 Years section, set isCompare to false*/}
       </div>
       <div className="chart-graph">
-        <PedestriansMotoristsCyclistsKilledChart years={years}/>
+        <PedestriansMotoristsCyclistsKilledChart years={years} isCompare={false}/>
       </div>
       <div className="chart-graph">
-        <CrashesByBoroughChart years={years}/>
+        <CrashesByBoroughChart years={years} isCompare={false}/>
       </div>
     </div>
   )
@@ -503,13 +641,13 @@ function CompareTwoYears(){
           <TotalKilledChart years={twoYears}/>
         </div>
         <div className="chart-graph">
-          <PedestriansMotoristsCyclistsInjuredChart years={twoYears}/>
+          <PedestriansMotoristsCyclistsInjuredChart years={twoYears} isCompare={true}/> {/*when toggle to Compare Charts section, set isCompare to true*/}
         </div>
         <div className="chart-graph">
-          <PedestriansMotoristsCyclistsKilledChart years={twoYears}/>
+          <PedestriansMotoristsCyclistsKilledChart years={twoYears} isCompare={true}/>
         </div>
         <div className="chart-graph">
-          <CrashesByBoroughChart years={twoYears}/>
+          <CrashesByBoroughChart years={twoYears} isCompare={true}/>
         </div>
       </div>
     </div>
