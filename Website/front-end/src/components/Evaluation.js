@@ -111,7 +111,7 @@ function PredictedSeveritiesMap(props){
               <HorizontalLine />
               <div>Likelihood of Injury in a Crash : {Math.ceil((props.prediction.crashes_with_injuries/props.prediction.number_of_crashes)*100)} %</div>
               <HorizontalLine />
-              <div>Likelihood of Death in a Crash : {Math.ceil(props.prediction.crashes_with_kills/props.prediction.number_of_crashes)*100} %</div>
+              <div>Likelihood of Death in a Crash : {Math.ceil((props.prediction.crashes_with_kills/props.prediction.number_of_crashes)*100)} %</div>
             </div>
           </div>
         </Popup>
@@ -237,7 +237,6 @@ function RecordedCrashesMap(props){
           
           {/* <GeoJSON data={streetsGeoJson} style={streetStyle} /> */}
           <PutMarker />
-          {/* {panMarker && <PanToMarker lat={panMarker.lat} long={panMarker.long} />} */}
         </MapContainer>
       </center>
     </div>
@@ -431,32 +430,74 @@ export default function Evaluation() {
   };
 
   //Recorded crashes map component
-  const RecordedCrashes = () => (
-    <div className = "map-container">
-      <div className="details-section">
-        <h2 className="map-title2">Recorded Crashes</h2>
-        <div className="time-frame">Time Frame:</div>
-        <div className="years">September 2024</div>
-        <div className="legend">
-          <div className="color-container">
-            <div className="color" id="green"></div>
-            <div className="color-description">No injuries/deaths</div>
+  const RecordedCrashes = () => {
+    const dataMonthAndYear = () => {
+      const date = new Date();
+      let currentMonth = date.getMonth();
+      let currentDay = date.getDate();
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      let previousMonth = currentMonth == 0 ? 11 : currentMonth-1
+      let currentYear = currentMonth == 0 ? date.getFullYear()-1 : date.getFullYear()
+      const twoMonthsAgo = () => {
+        if(currentMonth == 0){
+          return 10;
+        }
+        else if(currentMonth == 1){
+          return 11;
+        }
+        else{
+          return currentMonth-2;
+        }
+      }
+      const twoMonthsAgoYear = () => {
+        if(currentMonth == 0 || currentMonth == 1){
+          return date.getFullYear()-1;
+        }
+        else{
+          return date.getFullYear();
+        }
+      }
+      if(currentDay >= 5){
+        return (
+          <div>{monthNames[previousMonth]} {currentYear}</div>
+        )
+      }
+      else{
+        return (
+          <div>{monthNames[twoMonthsAgo()]} {twoMonthsAgoYear()}</div>
+        )
+      }
+    }
+    return (
+      <div className = "map-container">
+        <div className="details-section">
+          <h2 className="map-title2">Recorded Crashes</h2>
+          <div className="time-frame">Time Frame:</div>
+          <div className="years">{dataMonthAndYear()}</div>
+          <div className="legend">
+            <div className="color-container">
+              <div className="color" id="green"></div>
+              <div className="color-description">No injuries/deaths</div>
+            </div>
+            <div className="color-container">
+              <div className="color" id="yellow"></div>
+              <div className="color-description">Has injuries, no deaths</div>
+            </div>
+            <div className="color-container">
+              <div className="color" id="red"></div>
+              <div className="color-description">Has deaths</div>
+            </div>
           </div>
-          <div className="color-container">
-            <div className="color" id="yellow"></div>
-            <div className="color-description">Has injuries, no deaths</div>
-          </div>
-          <div className="color-container">
-            <div className="color" id="red"></div>
-            <div className="color-description">Has deaths</div>
-          </div>
+          <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc</p>
         </div>
-        <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc</p>
+        <div className="vertical-line"></div>
+        <RecordedCrashesMap />
       </div>
-      <div className="vertical-line"></div>
-      <RecordedCrashesMap />
-    </div>
-  )
+    )
+  }
 
   return (
     <section className="evaluation-container" id="evaluation">

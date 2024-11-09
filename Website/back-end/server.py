@@ -3,6 +3,7 @@ from flask_caching import Cache
 from scipy.spatial import distance
 import pandas as pd
 import requests
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -45,13 +46,22 @@ def filterData(all_data):
         (collisions_data['longitude'] >= nyc_lon_min) & (collisions_data['longitude'] <= nyc_lon_max)]
   return collisions_data
 
+#function to get previous month
+def get_previous_month_dates():
+    today = datetime.today()
+    first_day_of_current_month = today.replace(day=5) #5th day of month (due to how the dataset is updated)
+    last_day_of_previous_month = first_day_of_current_month - timedelta(days=5) #subtract 5 days to get last day of prev month
+    first_day_of_previous_month = last_day_of_previous_month.replace(day=1) #first day of prev month
+    return first_day_of_previous_month.strftime('%Y-%m-%d'), last_day_of_previous_month.strftime('%Y-%m-%d')
+
 @app.route("/api/collisions")
 @cache.cached(timeout=3600) #Cache route for 3600s = 1 hour; If this function gets called again, it will refer to the cache in the next hour
 def get_collisions():
+  start_date, end_date = get_previous_month_dates()
   base_url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json"  #API
   # parameters for selecting data for the previous month only
   params = {
-    "$where": "crash_date between '2024-09-01T00:00:00' and '2024-09-30T23:59:59'",
+    "$where": f"crash_date between '{start_date}T00:00:00' and '{end_date}T23:59:59'",
     "$limit": 5000,
     "$offset": 0
   }

@@ -65,7 +65,8 @@ const pedestrianMotoristCyclistKilled = (years) => {
 }
 
 // bar displaying total number of crashes each year
-const TotalCrashesChart = ({years}) => {
+const TotalCrashesChart = ({years, isCompare}) => {
+  //data property for <Bar />
   const data = {
     labels: years,
     datasets: [
@@ -78,8 +79,8 @@ const TotalCrashesChart = ({years}) => {
         borderRadius: 3,
       },
     ],
-  };
-
+  }
+  //options property for <Bar />
   const options = {
     aspectRatio: 1,
     scales: {
@@ -96,224 +97,324 @@ const TotalCrashesChart = ({years}) => {
         },
       },
     },
-  };
+  }
+  // compare text 
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalCrashes1 = totalCrashes(years)[0];
+    const totalCrashes2 = totalCrashes(years)[1];
+    const difference = Math.abs(totalCrashes1-totalCrashes2);
+    const percentage = (((difference)/totalCrashes1)*100).toFixed(2);
+    const increaseOrDecrease = totalCrashes1 >= totalCrashes2 ? difference + " or approximately " + percentage + "% more" : difference + " or approximately " + percentage + "% less";
+    
+    return (
+      <div className="compare-desc">
+        There are {increaseOrDecrease} crashes in {year1} compared to {year2}.
+      </div>
+    )
+  }
 
   return (
-      <Bar data={data} options={options} />
+      <div>
+        <Bar data={data} options={options} />
+        {isCompare && <CompareDescription />}
+      </div>
   )
 }
 
 // line graph displaying percentages of crashes during rush hour in each year
-const RushHourPercentagesChart = ({years}) => {
+const RushHourPercentagesChart = ({years, isCompare}) => {
+  //data property for <Line />
+  const data = {
+    labels: years,
+    datasets: [
+      {
+        // label: "Number of Crashes",
+        data: rushHourCrashes(years),
+        backgroundColor: 'lightblue',
+        borderColor: 'blue',
+        borderWidth: 1,
+        borderRadius: 3,
+        pointBackgroundColor: 'lightblue',
+        pointBorderColor: 'blue',
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        pointHoverBorderWidth: 3,
+      },
+    ],
+  }
+  //options property for <Line />
+  const options = {
+    aspectRatio: 1,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: function(value) {
+            return (value*100) + '%'; //convert y-axis to percent format
+          },
+        },
+        min: 0.3,
+        max: 0.5, //1 = 100%
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: 'Percentage of Crashes Occuring During Rush Hour in NYC',
+        font: {
+          size: 16,
+        }
+      },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function(context) {  //context=when user hovers each bar/plot
+            const year = context.label;
+            // const percentage = (crashes_data_visualization[2013].rush_hour_crashes / crashes_data_visualization[2013].total_crashes * 100).toFixed(3);
+            const rushHourCrashes = crashes_data_visualization[year].rush_hour_crashes;
+            return `Number of Crashes During Rush Hour: ${rushHourCrashes}`
+          },
+        },
+      }
+    },
+  }
+
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalCrashes1 = crashes_data_visualization[year1].rush_hour_crashes;
+    const totalCrashes2 = crashes_data_visualization[year2].rush_hour_crashes;
+    const totalPercentage1 = rushHourCrashes(years)[0]*100;
+    const totalPercentage2 = rushHourCrashes(years)[1]*100;
+    const difference = Math.abs(totalCrashes1-totalCrashes2);
+    const percentageDifference = (Math.abs(totalPercentage1 - totalPercentage2)).toFixed(2);
+    const increaseOrDecrease = totalPercentage1 >= totalPercentage2 ? percentageDifference + "% higher" : percentageDifference + "% lower";
+    const increaseOrDecrease2 = totalCrashes1 >= totalCrashes2 ? difference + " more" : difference + " less";
+    
+    return (
+      <div className="compare-desc">
+        The percentage of rush hour crashes relative to the total number of crashes in {year1} is approximately {increaseOrDecrease} compared to {year2}. Overall, there are {increaseOrDecrease2} rush hour crashes in {year1} compared to {year2}.
+        {/* There is approximately {percentageDifference}% more crashes that occured in rush hour based on the total amount of crashes that occured in {year1} compared to {year2}. Overall, there are {increaseOrDecrease} rush hour crashes in {year1} compared to {year2}. */}
+      </div>
+    )
+  }
   return (
-    <Line //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-      data={{
-        labels: years,
-        datasets: [
-          {
-            label: "Number of Crashes",
-            data: rushHourCrashes(years),
-            backgroundColor: 'lightblue',
-            borderColor: 'blue',
-            borderWidth: 1,
-            borderRadius: 3,
-            pointBackgroundColor: 'lightblue',
-            pointBorderColor: 'blue',
-            pointRadius: 5,
-            pointHoverRadius: 8,
-            pointHoverBorderWidth: 3,
-          }
-        ],
-      }}
-      options={{
-        aspectRatio: 1,
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              callback: function(value) {
-                return (value*100) + '%'; //Convert y-axis to percent format
-              },
-            },
-            min: 0.3,
-            max: 0.5, //1 = 100%
-          },
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: 'Percentage of Crashes Occuring During Rush Hour in NYC',
-            font: {
-              size: 16,
-            }
-          },
-          legend: {
-            display: true,
-          },
-          tooltip: {
-            enabled: true,
-            callbacks: {
-              label: function(context) {  //context=when user hovers each bar/plot
-                const year = context.label;
-                // const percentage = crashes_data_visualization[2013].rush_hour_crashes / crashes_data_visualization[2013].total_crashes * 100;
-                const rushHourCrashes = crashes_data_visualization[year].rush_hour_crashes;
-                // Customize message shown in the tooltip
-                return `Number of Crashes During Rush Hour: ${rushHourCrashes}`;
-                
-                // ${percentage.toFixed(3)}%`
-              },
-              // PROBABLY UNNECESSARY:
-              // title: function(context) {
-              //   return "Crash Data Details"; // Optional: Custom title text
-              // }
-            },
-          }
-        },
-      }}
-    />
+    <div>
+      <Line data={data} options={options} />
+      {isCompare && <CompareDescription />}
+    </div>
   )
 }
 
 // bar graph displaying total number injured each year
-const TotalInjuredChart = ({years}) => {
-  return (
-    <Bar //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-      data={{
-        labels: years,
-        datasets: [
-          {
-            label: "Number of People Injured",
-            data: totalInjured(years),
-            backgroundColor: 'rgb(255,70,50)',
-            borderColor: 'rgb(255,70,50)',
-            borderWidth: 1,
-            borderRadius: 3,
-            pointBackgroundColor: 'lightblue',
-            pointBorderColor: 'blue',
-            pointRadius: 5,
-            pointHoverRadius: 8,
-            pointHoverBorderWidth: 3,
-            // hoverBackgroundColor: 'yellow',
-          }
-        ],
-      }}
-      options={{
-        aspectRatio: 1,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: "Number of People Injured Each Year in NYC",
-            font: {
-              size: 16,
-            }
-            // color: 'pink'
-          }
+const TotalInjuredChart = ({years, isCompare}) => {
+  //data property for <Bar />
+  const data = {
+    labels: years,
+    datasets: [
+      {
+        label: "Number of People Injured",
+        data: totalInjured(years),
+        backgroundColor: 'rgb(255,70,50)',
+        borderColor: 'rgb(255,70,50)',
+        borderWidth: 1,
+        borderRadius: 3,
+        pointBackgroundColor: 'lightblue',
+        pointBorderColor: 'blue',
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        pointHoverBorderWidth: 3,
+        // hoverBackgroundColor: 'yellow',
+      }
+    ],
+  }
+  //options property for <Bar />
+  const options = {
+    aspectRatio: 1,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: "Number of People Injured Each Year in NYC",
+        font: {
+          size: 16,
         }
-      }}
-    />
-  )  
+        // color: 'pink'
+      }
+    }
+  }
+  
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalInjured1 = totalInjured(years)[0];
+    const totalInjured2 = totalInjured(years)[1];
+    const difference = Math.abs(totalInjured1-totalInjured2);
+    const percentage = (((difference)/totalInjured1)*100).toFixed(2);
+    const increaseOrDecrease = totalInjured1 >= totalInjured2 ? difference + " or approximately " + percentage + "% more" : difference + " or approximately " + percentage + "% less";
+    return (
+      <div className="compare-desc">
+        There are {increaseOrDecrease} people injured in {year1} compared to {year2}.
+      </div>
+    )
+  }
+  return (
+    <div>
+      <Bar data={data} options={options} />
+      {isCompare && <CompareDescription />}
+    </div>
+  )
 }
 
 // bar graph displaying total number killed each year
-const TotalKilledChart = ({years}) => {
-  return (
-    <Bar //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-      data={{
-        labels: years,
-        datasets: [
-          {
-            label: "Number of People Killed",
-            data: totalKilled(years),
-            backgroundColor: 'blueviolet',
-            borderColor: 'blueviolet',
-            borderWidth: 1,
-            borderRadius: 3,
-            pointBackgroundColor: 'lightcoral',
-            pointBorderColor: 'red',
-            pointRadius: 5,
-            pointHoverRadius: 8,
-            pointHoverBorderWidth: 3,
-            // hoverBackgroundColor: 'orange',
-          }
-        ],
-      }}
-      options={{
-        aspectRatio: 1,
-        scales: {
-          y: {
-            type: 'linear',
-            beginAtZero: true,
-            title: {
-              display: true,
-            },
-          }
+const TotalKilledChart = ({years, isCompare}) => {
+  //data property for <Bar />
+  const data = {
+    labels: years,
+    datasets: [
+      {
+        label: "Number of People Killed",
+        data: totalKilled(years),
+        backgroundColor: 'blueviolet',
+        borderColor: 'blueviolet',
+        borderWidth: 1,
+        borderRadius: 3,
+        pointBackgroundColor: 'lightcoral',
+        pointBorderColor: 'red',
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        pointHoverBorderWidth: 3,
+        // hoverBackgroundColor: 'orange',
+      }
+    ],
+  }
+  //options property for <Bar />
+  const options = {
+    aspectRatio: 1,
+    scales: {
+      y: {
+        type: 'linear',
+        beginAtZero: true,
+        title: {
+          display: true,
         },
-        plugins: {
-          title: {
-            display: true,
-            text: "Number of People Killed Each Year in NYC",
-            font: {
-              size: 16,
-            }
-          }
+      }
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: "Number of People Killed Each Year in NYC",
+        font: {
+          size: 16,
         }
-      }}
-    />
+      }
+    }
+  }
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalInjured1 = totalKilled(years)[0];
+    const totalInjured2 = totalKilled(years)[1];
+    const difference = Math.abs(totalInjured1-totalInjured2);
+    const percentage = (((difference)/totalInjured1)*100).toFixed(2);
+    const increaseOrDecrease = totalInjured1 >= totalInjured2 ? difference + " or approximately " + percentage + "% more" : difference + " or approximately " + percentage + "% less";
+    return (
+      <div className="compare-desc">
+        There are {increaseOrDecrease} people killed in {year1} compared to {year2}.
+      </div>
+    )
+  }
+  return (
+    <div>
+      <Bar data={data} options={options} />
+      {isCompare && <CompareDescription />}
+    </div>
   )
 }
 
 // pie graph displaying number of pedestrians/cyclists/motorists injured throughout the recent 12 years
 const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
   //data for Pie
-  const pieData = {
-    labels: pmcInjuredLabel,
-    datasets: [
-      {
-        label: "Number of Injured",
-        data: pedestrianMotoristCyclistInjured(years),
-        backgroundColor: ['rgb(28, 28, 206)', 'rgb(32,32,150)', 'rgb(30,30,110)'],
-        borderColor: 'navy',
-        borderWidth: 1,
-        borderRadius: 3,
-      }
-    ]
+  const pieData = () => {
+    const data = {
+      labels: pmcInjuredLabel,
+      datasets: [
+        {
+          label: "Number of Injured",
+          data: pedestrianMotoristCyclistInjured(years),
+          backgroundColor: ['rgb(28, 28, 206)', 'rgb(32,32,150)', 'rgb(30,30,105)'],
+          borderColor: 'navy',
+          borderWidth: 1,
+          borderRadius: 3,
+        }
+      ]
+    }
+    return (
+      <Pie
+        data={data}
+        options={{
+          aspectRatio: 1,
+          plugins: {
+            legend: {
+              position: 'left',
+              labels: {
+                padding: 20,  //within legend box
+                font: {
+                  // size: 16,
+                  weight: 'bold',
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: `Number of Injured (Pedestrians, Motorists, Cyclists) ${years[0]} - ${years[9]}`,
+              font: {
+                size: 16,
+              }
+            }
+          }
+        }}
+      />
+    );
   };
 
   const yearLabel = years.map((year) => year);
   //data for Bar
   //REMINDER: understand why its [years[0]] instead of years[0] below
-  const barData = {
-    labels: pmcInjuredLabel,
-    datasets: [
-      {
-        label: yearLabel[0],
-        data: pedestrianMotoristCyclistInjured([years[0]]),
-        backgroundColor: 'rgb(28, 28, 206)',
-        borderColor: 'navy',
-        borderWidth: 1,
-        borderRadius: 3
-      },
-      {
-        label: yearLabel[1],
-        data: pedestrianMotoristCyclistInjured([years[1]]),
-        backgroundColor: 'rgb(32, 32, 150)',
-        borderColor: 'navy',
-        borderWidth: 1,
-        borderRadius: 3
-      }
-    ]
-  }
-
-  //when toggle to Comparison section, render Bar instead of Pie
-  if (isCompare) {
+  const barData = () => {
+    const data = {
+      labels: pmcInjuredLabel,
+      datasets: [
+        {
+          label: yearLabel[0],
+          data: pedestrianMotoristCyclistInjured([years[0]]),
+          backgroundColor: 'rgb(28, 28, 206)',
+          borderColor: 'navy',
+          borderWidth: 1,
+          borderRadius: 3
+        },
+        {
+          label: yearLabel[1],
+          data: pedestrianMotoristCyclistInjured([years[1]]),
+          backgroundColor: 'rgb(32, 32, 150)',
+          borderColor: 'navy',
+          borderWidth: 1,
+          borderRadius: 3
+        }
+      ]
+    }
     return (
       <Bar
-        data={barData}
+        data={data}
         options={{
           aspectRatio: 1,
           plugins: {
@@ -332,81 +433,64 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
       />
     );
   }
+  
+  //compare text 
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalInjured1 = pedestrianMotoristCyclistInjured([year1]);
+    const totalInjured2 = pedestrianMotoristCyclistInjured([year2]);
+    console.log(totalInjured1);
+    const pedestrians = Math.abs(totalInjured1[0]-totalInjured2[0]);
+    const motorists = Math.abs(totalInjured1[1]-totalInjured2[1]);
+    const cyclists = Math.abs(totalInjured1[2]-totalInjured2[2]);
+    const pedestriansDifference = totalInjured1[0] >= totalInjured2[0] ? pedestrians + " more pedestrians" : pedestrians + " less pedestrians";
+    const motoristsDifference = totalInjured1[1] >= totalInjured2[1] ? motorists + " more motorists" : motorists + " less motorists";
+    const cyclistDifference = totalInjured1[2] >= totalInjured2[2] ? cyclists + " more cyclists" : cyclists + " less cyclists";
+    return (
+      <div className="compare-desc">
+        There are {pedestriansDifference}, {motoristsDifference}, and {cyclistDifference} injured in {year1} compared to {year2}
+      </div>
+    )
+  }
 
-  //render Pie by default AND when toggle to Recent 12 Years section
   return (
-    <Pie
-      data={pieData}
-      options={{
-        aspectRatio: 1,
-        plugins: {
-          legend: {
-            position: 'left',
-            labels: {
-              padding: 20,  //within legend box
-              font: {
-                // size: 16,
-                weight: 'bold',
-              }
-            }
-          },
-          title: {
-            display: true,
-            text: "Number of Injured (Pedestrians, Motorists, Cyclists)",
-            font: {
-              size: 16,
-            }
-          }
-        }
-      }}
-    />
-  );
+    <div>
+      {isCompare && barData()} {/*When toggle to Comparison section, render Bar instead of Pie*/}
+      {isCompare && <CompareDescription />}
+      {!isCompare && pieData()} {/*Default is pie*/}
+    </div>
+  )
 }
 
 const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
-  const pieData = {
-    labels: pmcKilledLabel,
-    datasets: [
-      {
-        label: "Number of Killed",
-        data: pedestrianMotoristCyclistKilled(years),
-        backgroundColor: ['rgb(255,70,50)', 'lightcoral', 'lightsalmon'],
-        borderColor: 'red',
-        borderWidth: 1,
-        borderRadius: 3,
-      }
-    ]
-  };
-
   const yearLabel = years.map((year) => year);
-
-  const barData = {
-    labels: pmcKilledLabel,
-    datasets: [
-      {
-        label: yearLabel[0],
-        data: pedestrianMotoristCyclistKilled([years[0]]),
-        backgroundColor: 'rgb(255, 70, 50)',
-        borderColor: 'red',
-        borderWidth: 1,
-        borderRadius: 3
-      },
-      {
-        label: yearLabel[1],
-        data: pedestrianMotoristCyclistKilled([years[1]]),
-        backgroundColor: 'lightcoral',
-        borderColor: 'red',
-        borderWidth: 1,
-        borderRadius: 3
-      }
-    ]
-  }
-
-  //when toggle to Comparison section, render Bar instead of Pie
-  if (isCompare) {
+  
+  const barData = () => {
+    const data = {
+      labels: pmcKilledLabel,
+      datasets: [
+        {
+          label: yearLabel[0],
+          data: pedestrianMotoristCyclistKilled([years[0]]),
+          backgroundColor: 'rgb(255, 70, 50)',
+          borderColor: 'red',
+          borderWidth: 1,
+          borderRadius: 3
+        },
+        {
+          label: yearLabel[1],
+          data: pedestrianMotoristCyclistKilled([years[1]]),
+          backgroundColor: 'lightcoral',
+          borderColor: 'red',
+          borderWidth: 1,
+          borderRadius: 3
+        }
+      ]
+    }
     return (
       <Bar
-        data={barData}
+        data={data}
         options={{
           aspectRatio: 1,
           plugins: {
@@ -426,82 +510,148 @@ const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
     );
   }
 
-  //render Pie by default AND when toggle to Recent 12 Years section
-  return (
-    <Pie
-      data={pieData}
-      options={{
-        aspectRatio: 1,
-        plugins: {
-          legend: {
-            position: 'left',
-            labels: {
-              padding: 20,  //within legend box
+  const pieData = () => {
+    const data = {
+      labels: pmcKilledLabel,
+      datasets: [
+        {
+          label: "Number of Killed",
+          data: pedestrianMotoristCyclistKilled(years),
+          backgroundColor: ['rgb(255,70,50)', 'lightcoral', 'lightsalmon'],
+          borderColor: 'red',
+          borderWidth: 1,
+          borderRadius: 3,
+        }
+      ]
+    }
+    return (
+      <Pie
+        data={data}
+        options={{
+          aspectRatio: 1,
+          plugins: {
+            legend: {
+              position: 'left',
+              labels: {
+                padding: 20,  //within legend box
+                font: {
+                  // size: 16,
+                  weight: 'bold',
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: `Number of Killed (Pedestrians, Motorists, Cyclists) ${years[0]} - ${years[9]}`,
               font: {
-                // size: 16,
-                weight: 'bold',
+                size: 16,
               }
             }
-          },
-          title: {
-            display: true,
-            text: "Number of Killed (Pedestrians, Motorists, Cyclists)",
-            font: {
-              size: 16,
-            }
           }
-        }
-      }}
-    />
-  );
-  
+        }}
+      />
+    );
+  }
+
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalKilled1 = pedestrianMotoristCyclistKilled([year1]);
+    const totalKilled2 = pedestrianMotoristCyclistKilled([year2]);
+    const pedestrians = Math.abs(totalKilled1[0]-totalKilled2[0]);
+    const motorists = Math.abs(totalKilled1[1]-totalKilled2[1]);
+    const cyclists = Math.abs(totalKilled1[2]-totalKilled2[2]);
+    const pedestriansDifference = totalKilled1[0] >= totalKilled2[0] ? pedestrians + " more pedestrians" : pedestrians + " less pedestrians";
+    const motoristsDifference = totalKilled1[1] >= totalKilled2[1] ? motorists + " more motorists" : motorists + " less motorists";
+    const cyclistDifference = totalKilled1[2] >= totalKilled2[2] ? cyclists + " more cyclists" : cyclists + " less cyclists";
+    return (
+      <div className="compare-desc">
+        There are {pedestriansDifference}, {motoristsDifference}, and {cyclistDifference} killed in {year1} compared to {year2}
+      </div>
+    )
+  }
+
+  //when toggle to Comparison section, render Bar instead of Pie
+  return (
+    <div>
+      {isCompare && barData()} {/*When toggle to Comparison section, render Bar instead of Pie*/}
+      {isCompare && <CompareDescription />}
+      {!isCompare && pieData()} {/*Default is pie*/}
+    </div>
+  )
 }
 
 // pie graph displaying number of crashes in each borough in the recent 12 years
 const CrashesByBoroughChart = ({years, isCompare}) => {
-  const pieData = {
-    labels: boroughsLabel,
-    datasets: [
-      {
-        label: "Number of People Killed",
-        data: totalBoroughs(years),
-        backgroundColor: ['indigo', 'purple', 'darkviolet', 'blueviolet', 'slateblue'],
-        borderColor: 'indigo',
-        borderWidth: 1,
-        borderRadius: 3,
-      }
-    ]
-  }
-
   const yearLabel = years.map((year) => year);
-
-  const barData = {
-    labels: boroughsLabel,
-    datasets: [
-      {
-        label: yearLabel[0],
-        data: totalBoroughs([years[0]]),
-        backgroundColor: 'indigo',
-        borderColor: 'indigo',
-        borderWidth: 1,
-        borderRadius: 3,
-      },
-      {
-        label: yearLabel[1],
-        data: totalBoroughs([years[1]]),
-        backgroundColor: 'blueviolet',
-        borderColor: 'indigo',
-        borderWidth: 1,
-        borderRadius: 3,
-      }
-    ]
+  const pieData = () => {
+    const data = {
+      labels: boroughsLabel,
+      datasets: [
+        {
+          label: "Number of People Killed",
+          data: totalBoroughs(years),
+          backgroundColor: ['indigo', 'purple', 'darkviolet', 'blueviolet', 'slateblue'],
+          borderColor: 'indigo',
+          borderWidth: 1,
+          borderRadius: 3,
+        }
+      ]
+    }
+    return (
+      <Pie
+        data={data}
+        options={{
+          aspectRatio: 1,
+          plugins: {
+            legend: {
+              position: 'left',
+              labels: {
+                padding: 20,  //within legend box
+                font: {
+                  // size: 16,
+                  weight: 'bold',
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: `Number of Crashes in Each Borough ${years[0]} - ${years[9]}`,
+              font: {
+                size: 16,
+              }
+            }
+          }
+        }}
+      />
+    );
   }
 
-  //when toggle to Comparison section, render Bar instead of Pie
-  if (isCompare) {
+  const barData = () => {
+    const data = {
+      labels: boroughsLabel,
+      datasets: [
+        {
+          label: yearLabel[0],
+          data: totalBoroughs([years[0]]),
+          backgroundColor: 'indigo',
+          borderColor: 'indigo',
+          borderWidth: 1,
+          borderRadius: 3,
+        },
+        {
+          label: yearLabel[1],
+          data: totalBoroughs([years[1]]),
+          backgroundColor: 'blueviolet',
+          borderColor: 'indigo',
+          borderWidth: 1,
+          borderRadius: 3,
+        }
+      ]
+    }
     return (
       <Bar
-        data={barData}
+        data={data}
         options={{
           aspectRatio: 1,
           plugins: {
@@ -521,39 +671,41 @@ const CrashesByBoroughChart = ({years, isCompare}) => {
     );
   }
 
-  //render Pie by default AND when toggle to Recent 12 Years section
+  //brooklyn, bronx, queens, manhattan, staten island
+  const CompareDescription = () => {
+    const year1 = years[0];
+    const year2 = years[1];
+    const totalCrashes1 = totalBoroughs([year1]);
+    const totalCrashes2 = totalBoroughs([year2]);
+    const brooklyn = Math.abs(totalCrashes1[0]-totalCrashes2[0]);
+    const bronx = Math.abs(totalCrashes1[1]-totalCrashes2[1]);
+    const queens = Math.abs(totalCrashes1[2]-totalCrashes2[2]);
+    const manhattan = Math.abs(totalCrashes1[3]-totalCrashes2[3]);
+    const staten_island = Math.abs(totalCrashes1[4]-totalCrashes2[4]);
+    const brooklynDifference = totalCrashes1[0] >= totalCrashes2[0] ? brooklyn + " more crashes in Brooklyn" : brooklyn + " less crashes in Brooklyn";
+    const bronxDifference = totalCrashes1[1] >= totalCrashes2[1] ? bronx + " more crashes in Bronx" : bronx + " less crashes in Bronx";
+    const queensDifference = totalCrashes1[2] >= totalCrashes2[2] ? queens + " more crashes in Queens" : queens + " less crashes in Queens";
+    const manhattanDifference = totalCrashes1[3] >= totalCrashes2[3] ? manhattan + " more crashes in Manhattan" : manhattan + " less crashes in Manhattan";
+    const statenIslandDifference = totalCrashes1[4] >= totalCrashes2[4] ? staten_island + " more crashes in Staten Island" : staten_island + " less crashes in Staten Island";
+    return (
+      <div className="compare-desc">
+        There are {brooklynDifference}, {bronxDifference}, {queensDifference}, {manhattanDifference} and {statenIslandDifference} in {year1} compared to {year2}
+      </div>
+    )
+  }
+
   return (
-    <Pie
-      data={pieData}
-      options={{
-        aspectRatio: 1,
-        plugins: {
-          legend: {
-            position: 'left',
-            labels: {
-              padding: 20,  //within legend box
-              font: {
-                // size: 16,
-                weight: 'bold',
-              }
-            }
-          },
-          title: {
-            display: true,
-            text: "Number of Crashes in Each Borough",
-            font: {
-              size: 16,
-            }
-          }
-        }
-      }}
-    />
-  );
+    <div>
+      {isCompare && barData()} {/*When toggle to Comparison section, render Bar instead of Pie*/}
+      {isCompare && <CompareDescription />}
+      {!isCompare && pieData()} {/*Default is pie*/}
+    </div>
+  )
 }
 
 function RecentTwelveYears(){
   // get the keys (year indexes) from the data and taking most recent 12 items
-  const years = Object.keys(crashes_data_visualization).slice(-12);
+  const years = Object.keys(crashes_data_visualization).slice(-10);
 
   return (
     <div className="charts-graphs-container">
@@ -629,16 +781,16 @@ function CompareTwoYears(){
       <CompareDropDown />
       <div className="charts-graphs-container">
         <div className="chart-graph">
-          <TotalCrashesChart years={twoYears}/>
+          <TotalCrashesChart years={twoYears} isCompare={true}/>
         </div>
         <div className="chart-graph">
-          <RushHourPercentagesChart years={twoYears}/>
+          <RushHourPercentagesChart years={twoYears} isCompare={true}/>
         </div>
         <div className="chart-graph">
-          <TotalInjuredChart years={twoYears}/>
+          <TotalInjuredChart years={twoYears} isCompare={true}/>
         </div>
         <div className="chart-graph">
-          <TotalKilledChart years={twoYears}/>
+          <TotalKilledChart years={twoYears} isCompare={true}/>
         </div>
         <div className="chart-graph">
           <PedestriansMotoristsCyclistsInjuredChart years={twoYears} isCompare={true}/> {/*when toggle to Compare Charts section, set isCompare to true*/}
@@ -667,7 +819,7 @@ export default function DataVisualization() {
       <div className="charts-graphs-option">
         <input type="checkbox" id="toggle2" className="toggleCheckbox" />
         <label onClick={switchData} htmlFor="toggle2" className='toggleContainer'>
-          <div>Recent Twelve Years</div>   
+          <div>Recent Ten Years</div>   
           <div>Compare Two Years</div>
         </label>
       </div>
