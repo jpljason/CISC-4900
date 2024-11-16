@@ -17,16 +17,15 @@
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
-  gap: 50px;
+  gap: 2.5%;
   margin-top: 25px;
 }
 
 .chart-graph{
   width: 500px;
   max-width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .charts_graphs_section{
@@ -73,4 +72,16 @@
   font-size: 0.9rem;
   font-family: Montserrat;
   color: rgb(196, 196, 196);
+}
+
+.compare-chart-graph{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: 1px solid white;
+  padding-left: 15px;
+  padding-right: 15px; 
 }

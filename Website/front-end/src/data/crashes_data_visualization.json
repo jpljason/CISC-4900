@@ -23,7 +23,7 @@
             "injured": 32418,
             "killed": 94
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -64,46 +64,6 @@
                 "10": [
                     "Traffic Control Disregarded",
                     2493
-                ],
-                "11": [
-                    "Outside Car Distraction",
-                    2480
-                ],
-                "12": [
-                    "Physical Disability",
-                    2339
-                ],
-                "13": [
-                    "Pavement Slippery",
-                    1724
-                ],
-                "14": [
-                    "Alcohol Involvement",
-                    1361
-                ],
-                "15": [
-                    "Passenger Distraction",
-                    1073
-                ],
-                "16": [
-                    "Oversized Vehicle",
-                    1057
-                ],
-                "17": [
-                    "View Obstructed/Limited",
-                    785
-                ],
-                "18": [
-                    "Aggressive Driving/Road Rage",
-                    574
-                ],
-                "19": [
-                    "Illness",
-                    536
-                ],
-                "20": [
-                    "Other",
-                    4110
                 ]
             },
             "vehicle_types": {
@@ -116,76 +76,36 @@
                     67811
                 ],
                 "3": [
-                    "UNKNOWN",
-                    21664
-                ],
-                "4": [
                     "TAXI",
                     15138
                 ],
-                "5": [
+                "4": [
                     "VAN",
                     11123
                 ],
-                "6": [
+                "5": [
                     "OTHER",
                     9233
                 ],
-                "7": [
+                "6": [
                     "BUS",
                     5833
                 ],
-                "8": [
+                "7": [
                     "SMALL COM VEH(4 TIRES) ",
                     5695
                 ],
-                "9": [
+                "8": [
                     "LARGE COM VEH(6 OR MORE TIRES)",
                     5596
                 ],
-                "10": [
+                "9": [
                     "PICK-UP TRUCK",
                     4869
                 ],
-                "11": [
+                "10": [
                     "BICYCLE",
                     4714
-                ],
-                "12": [
-                    "LIVERY VEHICLE",
-                    3444
-                ],
-                "13": [
-                    "MOTORCYCLE",
-                    1874
-                ],
-                "14": [
-                    "AMBULANCE",
-                    719
-                ],
-                "15": [
-                    "FIRE TRUCK",
-                    274
-                ],
-                "16": [
-                    "SCOOTER",
-                    133
-                ],
-                "17": [
-                    "PEDICAB",
-                    37
-                ],
-                "18": [
-                    "Sedan",
-                    36
-                ],
-                "19": [
-                    "Station Wagon/Sport Utility Vehicle",
-                    27
-                ],
-                "20": [
-                    "Other",
-                    25
                 ]
             }
         }
@@ -214,7 +134,7 @@
             "injured": 29762,
             "killed": 84
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -255,46 +175,6 @@
                 "10": [
                     "Traffic Control Disregarded",
                     2792
-                ],
-                "11": [
-                    "Outside Car Distraction",
-                    2546
-                ],
-                "12": [
-                    "Pavement Slippery",
-                    2528
-                ],
-                "13": [
-                    "Physical Disability",
-                    2429
-                ],
-                "14": [
-                    "Alcohol Involvement",
-                    1730
-                ],
-                "15": [
-                    "Oversized Vehicle",
-                    1266
-                ],
-                "16": [
-                    "Passenger Distraction",
-                    1205
-                ],
-                "17": [
-                    "View Obstructed/Limited",
-                    867
-                ],
-                "18": [
-                    "Aggressive Driving/Road Rage",
-                    683
-                ],
-                "19": [
-                    "Illness",
-                    671
-                ],
-                "20": [
-                    "Other",
-                    4961
                 ]
             },
             "vehicle_types": {
@@ -307,76 +187,36 @@
                     71075
                 ],
                 "3": [
-                    "UNKNOWN",
-                    22501
-                ],
-                "4": [
                     "TAXI",
                     15066
                 ],
-                "5": [
+                "4": [
                     "VAN",
                     11263
                 ],
-                "6": [
+                "5": [
                     "OTHER",
                     10431
                 ],
-                "7": [
+                "6": [
                     "BUS",
                     6273
                 ],
-                "8": [
+                "7": [
                     "LARGE COM VEH(6 OR MORE TIRES)",
                     6272
                 ],
-                "9": [
+                "8": [
                     "SMALL COM VEH(4 TIRES) ",
                     6244
                 ],
-                "10": [
+                "9": [
                     "BICYCLE",
                     4712
                 ],
-                "11": [
+                "10": [
                     "PICK-UP TRUCK",
                     4678
-                ],
-                "12": [
-                    "LIVERY VEHICLE",
-                    4365
-                ],
-                "13": [
-                    "MOTORCYCLE",
-                    1746
-                ],
-                "14": [
-                    "AMBULANCE",
-                    764
-                ],
-                "15": [
-                    "FIRE TRUCK",
-                    291
-                ],
-                "16": [
-                    "SCOOTER",
-                    114
-                ],
-                "17": [
-                    "Sedan",
-                    100
-                ],
-                "18": [
-                    "Station Wagon/Sport Utility Vehicle",
-                    45
-                ],
-                "19": [
-                    "PEDICAB",
-                    26
-                ],
-                "20": [
-                    "Other",
-                    43
                 ]
             }
         }
@@ -405,7 +245,7 @@
             "injured": 30368,
             "killed": 72
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -446,46 +286,6 @@
                 "10": [
                     "Driver Inexperience",
                     3109
-                ],
-                "11": [
-                    "Pavement Slippery",
-                    2874
-                ],
-                "12": [
-                    "Outside Car Distraction",
-                    2798
-                ],
-                "13": [
-                    "Physical Disability",
-                    2797
-                ],
-                "14": [
-                    "Alcohol Involvement",
-                    1680
-                ],
-                "15": [
-                    "Oversized Vehicle",
-                    1600
-                ],
-                "16": [
-                    "Passenger Distraction",
-                    1388
-                ],
-                "17": [
-                    "View Obstructed/Limited",
-                    899
-                ],
-                "18": [
-                    "Other Electronic Device",
-                    853
-                ],
-                "19": [
-                    "Aggressive Driving/Road Rage",
-                    846
-                ],
-                "20": [
-                    "Other",
-                    5344
                 ]
             },
             "vehicle_types": {
@@ -498,76 +298,36 @@
                     81717
                 ],
                 "3": [
-                    "UNKNOWN",
-                    25531
-                ],
-                "4": [
                     "TAXI",
                     14589
                 ],
-                "5": [
+                "4": [
                     "VAN",
                     11745
                 ],
-                "6": [
+                "5": [
                     "OTHER",
                     11455
                 ],
-                "7": [
+                "6": [
                     "LARGE COM VEH(6 OR MORE TIRES)",
                     6709
                 ],
-                "8": [
+                "7": [
                     "SMALL COM VEH(4 TIRES) ",
                     6506
                 ],
-                "9": [
+                "8": [
                     "BUS",
                     6304
                 ],
-                "10": [
+                "9": [
                     "LIVERY VEHICLE",
                     5513
                 ],
-                "11": [
+                "10": [
                     "PICK-UP TRUCK",
                     5464
-                ],
-                "12": [
-                    "BICYCLE",
-                    5002
-                ],
-                "13": [
-                    "MOTORCYCLE",
-                    1866
-                ],
-                "14": [
-                    "AMBULANCE",
-                    878
-                ],
-                "15": [
-                    "FIRE TRUCK",
-                    319
-                ],
-                "16": [
-                    "SCOOTER",
-                    118
-                ],
-                "17": [
-                    "Sedan",
-                    83
-                ],
-                "18": [
-                    "Station Wagon/Sport Utility Vehicle",
-                    75
-                ],
-                "19": [
-                    "PEDICAB",
-                    29
-                ],
-                "20": [
-                    "Other",
-                    76
                 ]
             }
         }
@@ -596,7 +356,7 @@
             "injured": 35728,
             "killed": 59
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -637,46 +397,6 @@
                 "10": [
                     "Driver Inexperience",
                     3921
-                ],
-                "11": [
-                    "Traffic Control Disregarded",
-                    3827
-                ],
-                "12": [
-                    "Fatigued/Drowsy",
-                    3149
-                ],
-                "13": [
-                    "Unsafe Speed",
-                    3146
-                ],
-                "14": [
-                    "Reaction to Uninvolved Vehicle",
-                    2876
-                ],
-                "15": [
-                    "Alcohol Involvement",
-                    2327
-                ],
-                "16": [
-                    "Pavement Slippery",
-                    1914
-                ],
-                "17": [
-                    "Oversized Vehicle",
-                    1683
-                ],
-                "18": [
-                    "View Obstructed/Limited",
-                    1637
-                ],
-                "19": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1529
-                ],
-                "20": [
-                    "Other",
-                    11654
                 ]
             },
             "vehicle_types": {
@@ -713,52 +433,12 @@
                     6113
                 ],
                 "9": [
-                    "UNKNOWN",
-                    5646
-                ],
-                "10": [
                     "Bike",
                     5082
                 ],
-                "11": [
+                "10": [
                     "Bus",
                     4912
-                ],
-                "12": [
-                    "2 dr sedan",
-                    3141
-                ],
-                "13": [
-                    "Van",
-                    3072
-                ],
-                "14": [
-                    "TAXI",
-                    2820
-                ],
-                "15": [
-                    "Tractor Truck Diesel",
-                    2639
-                ],
-                "16": [
-                    "OTHER",
-                    2257
-                ],
-                "17": [
-                    "VAN",
-                    2101
-                ],
-                "18": [
-                    "Motorcycle",
-                    1613
-                ],
-                "19": [
-                    "SMALL COM VEH(4 TIRES) ",
-                    1349
-                ],
-                "20": [
-                    "Other",
-                    15764
                 ]
             }
         }
@@ -787,7 +467,7 @@
             "injured": 41690,
             "killed": 94
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -828,46 +508,6 @@
                 "10": [
                     "Traffic Control Disregarded",
                     4849
-                ],
-                "11": [
-                    "Driver Inexperience",
-                    4770
-                ],
-                "12": [
-                    "Reaction to Uninvolved Vehicle",
-                    4306
-                ],
-                "13": [
-                    "Unsafe Speed",
-                    4132
-                ],
-                "14": [
-                    "Pavement Slippery",
-                    2670
-                ],
-                "15": [
-                    "Alcohol Involvement",
-                    2565
-                ],
-                "16": [
-                    "View Obstructed/Limited",
-                    2116
-                ],
-                "17": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1771
-                ],
-                "18": [
-                    "Oversized Vehicle",
-                    1753
-                ],
-                "19": [
-                    "Aggressive Driving/Road Rage",
-                    1091
-                ],
-                "20": [
-                    "Other",
-                    7302
                 ]
             },
             "vehicle_types": {
@@ -910,46 +550,6 @@
                 "10": [
                     "Motorcycle",
                     1933
-                ],
-                "11": [
-                    "Dump",
-                    1230
-                ],
-                "12": [
-                    "Convertible",
-                    1169
-                ],
-                "13": [
-                    "Carry All",
-                    847
-                ],
-                "14": [
-                    "Flat Bed",
-                    807
-                ],
-                "15": [
-                    "Ambulance",
-                    764
-                ],
-                "16": [
-                    "PK",
-                    760
-                ],
-                "17": [
-                    "Garbage or Refuse",
-                    705
-                ],
-                "18": [
-                    "Tractor Truck Gasoline",
-                    607
-                ],
-                "19": [
-                    "Tow Truck / Wrecker",
-                    395
-                ],
-                "20": [
-                    "Other",
-                    4977
                 ]
             }
         }
@@ -978,7 +578,7 @@
             "injured": 42740,
             "killed": 91
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -1019,46 +619,6 @@
                 "10": [
                     "Traffic Control Disregarded",
                     4387
-                ],
-                "11": [
-                    "Reaction to Uninvolved Vehicle",
-                    4260
-                ],
-                "12": [
-                    "Driver Inexperience",
-                    3921
-                ],
-                "13": [
-                    "Unsafe Speed",
-                    3721
-                ],
-                "14": [
-                    "Pavement Slippery",
-                    2598
-                ],
-                "15": [
-                    "Alcohol Involvement",
-                    2268
-                ],
-                "16": [
-                    "View Obstructed/Limited",
-                    2263
-                ],
-                "17": [
-                    "Oversized Vehicle",
-                    1707
-                ],
-                "18": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1589
-                ],
-                "19": [
-                    "Aggressive Driving/Road Rage",
-                    1081
-                ],
-                "20": [
-                    "Other",
-                    7091
                 ]
             },
             "vehicle_types": {
@@ -1101,46 +661,6 @@
                 "10": [
                     "Motorcycle",
                     1879
-                ],
-                "11": [
-                    "Dump",
-                    1270
-                ],
-                "12": [
-                    "Convertible",
-                    1143
-                ],
-                "13": [
-                    "Flat Bed",
-                    822
-                ],
-                "14": [
-                    "Ambulance",
-                    740
-                ],
-                "15": [
-                    "Garbage or Refuse",
-                    730
-                ],
-                "16": [
-                    "PK",
-                    628
-                ],
-                "17": [
-                    "Tractor Truck Gasoline",
-                    524
-                ],
-                "18": [
-                    "Carry All",
-                    522
-                ],
-                "19": [
-                    "Tow Truck / Wrecker",
-                    400
-                ],
-                "20": [
-                    "Other",
-                    4382
                 ]
             }
         }
@@ -1169,7 +689,7 @@
             "injured": 40939,
             "killed": 75
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -1210,46 +730,6 @@
                 "10": [
                     "Traffic Control Disregarded",
                     3649
-                ],
-                "11": [
-                    "Driver Inexperience",
-                    3509
-                ],
-                "12": [
-                    "Reaction to Uninvolved Vehicle",
-                    3269
-                ],
-                "13": [
-                    "Unsafe Speed",
-                    3197
-                ],
-                "14": [
-                    "Alcohol Involvement",
-                    2100
-                ],
-                "15": [
-                    "View Obstructed/Limited",
-                    2037
-                ],
-                "16": [
-                    "Pavement Slippery",
-                    1705
-                ],
-                "17": [
-                    "Oversized Vehicle",
-                    1386
-                ],
-                "18": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1352
-                ],
-                "19": [
-                    "Aggressive Driving/Road Rage",
-                    1009
-                ],
-                "20": [
-                    "Other",
-                    6073
                 ]
             },
             "vehicle_types": {
@@ -1292,46 +772,6 @@
                 "10": [
                     "Motorcycle",
                     1742
-                ],
-                "11": [
-                    "Dump",
-                    1136
-                ],
-                "12": [
-                    "Convertible",
-                    979
-                ],
-                "13": [
-                    "Flat Bed",
-                    837
-                ],
-                "14": [
-                    "Ambulance",
-                    805
-                ],
-                "15": [
-                    "Garbage or Refuse",
-                    694
-                ],
-                "16": [
-                    "Carry All",
-                    537
-                ],
-                "17": [
-                    "PK",
-                    506
-                ],
-                "18": [
-                    "Tractor Truck Gasoline",
-                    399
-                ],
-                "19": [
-                    "Tow Truck / Wrecker",
-                    366
-                ],
-                "20": [
-                    "Other",
-                    4983
                 ]
             }
         }
@@ -1360,7 +800,7 @@
             "injured": 28947,
             "killed": 120
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -1401,46 +841,6 @@
                 "10": [
                     "Unsafe Lane Changing",
                     2490
-                ],
-                "11": [
-                    "Turning Improperly",
-                    2199
-                ],
-                "12": [
-                    "Driver Inexperience",
-                    2026
-                ],
-                "13": [
-                    "Reaction to Uninvolved Vehicle",
-                    1742
-                ],
-                "14": [
-                    "Alcohol Involvement",
-                    1518
-                ],
-                "15": [
-                    "Pavement Slippery",
-                    1091
-                ],
-                "16": [
-                    "View Obstructed/Limited",
-                    1090
-                ],
-                "17": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1021
-                ],
-                "18": [
-                    "Aggressive Driving/Road Rage",
-                    873
-                ],
-                "19": [
-                    "Oversized Vehicle",
-                    612
-                ],
-                "20": [
-                    "Other",
-                    3567
                 ]
             },
             "vehicle_types": {
@@ -1483,46 +883,6 @@
                 "10": [
                     "Van",
                     1082
-                ],
-                "11": [
-                    "E-Scooter",
-                    1020
-                ],
-                "12": [
-                    "E-Bike",
-                    859
-                ],
-                "13": [
-                    "Ambulance",
-                    749
-                ],
-                "14": [
-                    "Dump",
-                    594
-                ],
-                "15": [
-                    "Convertible",
-                    471
-                ],
-                "16": [
-                    "Flat Bed",
-                    388
-                ],
-                "17": [
-                    "PK",
-                    368
-                ],
-                "18": [
-                    "Garbage or Refuse",
-                    354
-                ],
-                "19": [
-                    "Moped",
-                    298
-                ],
-                "20": [
-                    "Other",
-                    3511
                 ]
             }
         }
@@ -1551,7 +911,7 @@
             "injured": 33162,
             "killed": 112
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -1592,46 +952,6 @@
                 "10": [
                     "Turning Improperly",
                     2396
-                ],
-                "11": [
-                    "Driver Inexperience",
-                    2282
-                ],
-                "12": [
-                    "Unsafe Lane Changing",
-                    2080
-                ],
-                "13": [
-                    "Alcohol Involvement",
-                    1670
-                ],
-                "14": [
-                    "Reaction to Uninvolved Vehicle",
-                    1462
-                ],
-                "15": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1156
-                ],
-                "16": [
-                    "View Obstructed/Limited",
-                    1101
-                ],
-                "17": [
-                    "Aggressive Driving/Road Rage",
-                    868
-                ],
-                "18": [
-                    "Pavement Slippery",
-                    849
-                ],
-                "19": [
-                    "Oversized Vehicle",
-                    567
-                ],
-                "20": [
-                    "Other",
-                    3722
                 ]
             },
             "vehicle_types": {
@@ -1674,46 +994,6 @@
                 "10": [
                     "Tractor Truck Diesel",
                     1396
-                ],
-                "11": [
-                    "E-Scooter",
-                    1239
-                ],
-                "12": [
-                    "Van",
-                    1178
-                ],
-                "13": [
-                    "Ambulance",
-                    903
-                ],
-                "14": [
-                    "Dump",
-                    589
-                ],
-                "15": [
-                    "Moped",
-                    558
-                ],
-                "16": [
-                    "PK",
-                    413
-                ],
-                "17": [
-                    "Garbage or Refuse",
-                    360
-                ],
-                "18": [
-                    "Flat Bed",
-                    358
-                ],
-                "19": [
-                    "Convertible",
-                    344
-                ],
-                "20": [
-                    "Other",
-                    3608
                 ]
             }
         }
@@ -1742,7 +1022,7 @@
             "injured": 30913,
             "killed": 92
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -1783,46 +1063,6 @@
                 "10": [
                     "Turning Improperly",
                     2411
-                ],
-                "11": [
-                    "Unsafe Lane Changing",
-                    2037
-                ],
-                "12": [
-                    "Driver Inexperience",
-                    1947
-                ],
-                "13": [
-                    "Alcohol Involvement",
-                    1700
-                ],
-                "14": [
-                    "Reaction to Uninvolved Vehicle",
-                    1264
-                ],
-                "15": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1219
-                ],
-                "16": [
-                    "View Obstructed/Limited",
-                    1032
-                ],
-                "17": [
-                    "Pavement Slippery",
-                    853
-                ],
-                "18": [
-                    "Aggressive Driving/Road Rage",
-                    773
-                ],
-                "19": [
-                    "Fell Asleep",
-                    484
-                ],
-                "20": [
-                    "Other",
-                    3433
                 ]
             },
             "vehicle_types": {
@@ -1865,46 +1105,6 @@
                 "10": [
                     "E-Scooter",
                     1403
-                ],
-                "11": [
-                    "Tractor Truck Diesel",
-                    1276
-                ],
-                "12": [
-                    "Van",
-                    973
-                ],
-                "13": [
-                    "Ambulance",
-                    883
-                ],
-                "14": [
-                    "Moped",
-                    681
-                ],
-                "15": [
-                    "Dump",
-                    596
-                ],
-                "16": [
-                    "PK",
-                    394
-                ],
-                "17": [
-                    "Garbage or Refuse",
-                    376
-                ],
-                "18": [
-                    "Flat Bed",
-                    337
-                ],
-                "19": [
-                    "Convertible",
-                    258
-                ],
-                "20": [
-                    "Other",
-                    3268
                 ]
             }
         }
@@ -1933,7 +1133,7 @@
             "injured": 33692,
             "killed": 114
         },
-        "top_20": {
+        "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
@@ -1974,46 +1174,6 @@
                 "10": [
                     "Turning Improperly",
                     2333
-                ],
-                "11": [
-                    "Driver Inexperience",
-                    2246
-                ],
-                "12": [
-                    "Alcohol Involvement",
-                    1754
-                ],
-                "13": [
-                    "Unsafe Lane Changing",
-                    1708
-                ],
-                "14": [
-                    "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-                    1210
-                ],
-                "15": [
-                    "Reaction to Uninvolved Vehicle",
-                    1049
-                ],
-                "16": [
-                    "View Obstructed/Limited",
-                    939
-                ],
-                "17": [
-                    "Aggressive Driving/Road Rage",
-                    883
-                ],
-                "18": [
-                    "Pavement Slippery",
-                    558
-                ],
-                "19": [
-                    "Fell Asleep",
-                    421
-                ],
-                "20": [
-                    "Other",
-                    3224
                 ]
             },
             "vehicle_types": {
@@ -2056,46 +1216,6 @@
                 "10": [
                     "Moped",
                     1612
-                ],
-                "11": [
-                    "E-Scooter",
-                    1459
-                ],
-                "12": [
-                    "Tractor Truck Diesel",
-                    1132
-                ],
-                "13": [
-                    "Van",
-                    981
-                ],
-                "14": [
-                    "Ambulance",
-                    880
-                ],
-                "15": [
-                    "Dump",
-                    494
-                ],
-                "16": [
-                    "PK",
-                    379
-                ],
-                "17": [
-                    "Garbage or Refuse",
-                    367
-                ],
-                "18": [
-                    "Flat Bed",
-                    305
-                ],
-                "19": [
-                    "Motorscooter",
-                    294
-                ],
-                "20": [
-                    "Other",
-                    3354
                 ]
             }
         }

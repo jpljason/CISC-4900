@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import "../styles/data-visualization.css"
 import {Chart as ChartJS, Colors } from "chart.js/auto"
 import { Line, Bar, Pie, Doughnut, Radar, PolarArea, Bubble, Scatter } from 'react-chartjs-2';
-import crashes_data_visualization from "../data/crashes_data_visualization.json"
+import crashes_data_visualization from "../data/crashes_data_visualization.json";
+import factors_vehicles_visualization from "../data/factors_vehicles_visualization.json";
 
 // display total crashes for recent 12 year
 const totalCrashes = (years) => years.map((year) => {
@@ -83,6 +84,10 @@ const TotalCrashesChart = ({years, isCompare}) => {
   //options property for <Bar />
   const options = {
     aspectRatio: 1,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
     scales: {
       y: {
         beginAtZero: true,
@@ -144,9 +149,16 @@ const RushHourPercentagesChart = ({years, isCompare}) => {
       },
     ],
   }
+  if (isCompare) {
+
+  }
   //options property for <Line />
   const options = {
     aspectRatio: 1,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
     scales: {
       y: {
         beginAtZero: true,
@@ -236,6 +248,10 @@ const TotalInjuredChart = ({years, isCompare}) => {
   //options property for <Bar />
   const options = {
     aspectRatio: 1,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
     scales: {
       y: {
         beginAtZero: true
@@ -300,6 +316,10 @@ const TotalKilledChart = ({years, isCompare}) => {
   //options property for <Bar />
   const options = {
     aspectRatio: 1,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
     scales: {
       y: {
         type: 'linear',
@@ -341,7 +361,7 @@ const TotalKilledChart = ({years, isCompare}) => {
   )
 }
 
-// pie graph displaying number of pedestrians/cyclists/motorists injured throughout the recent 12 years
+// bar/pie graph displaying number of pedestrians/cyclists/motorists injured throughout the years
 const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
   //data for Pie
   const pieData = () => {
@@ -417,6 +437,10 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
         data={data}
         options={{
           aspectRatio: 1,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
           plugins: {
             title: {
               display: true,
@@ -463,6 +487,7 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
   )
 }
 
+// bar/pie graph displaying number of pedestrians/cyclists/motorists killed throughout the years
 const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
   const yearLabel = years.map((year) => year);
   
@@ -493,6 +518,10 @@ const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
         data={data}
         options={{
           aspectRatio: 1,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
           plugins: {
             title: {
               display: true,
@@ -581,7 +610,7 @@ const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
   )
 }
 
-// pie graph displaying number of crashes in each borough in the recent 12 years
+// pie/bar graph displaying number of crashes in each borough throughout the years
 const CrashesByBoroughChart = ({years, isCompare}) => {
   const yearLabel = years.map((year) => year);
   const pieData = () => {
@@ -654,6 +683,10 @@ const CrashesByBoroughChart = ({years, isCompare}) => {
         data={data}
         options={{
           aspectRatio: 1,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
           plugins: {
             title: {
               display: true,
@@ -703,8 +736,222 @@ const CrashesByBoroughChart = ({years, isCompare}) => {
   )
 }
 
+const ContributingFactorsChart = ({years, isCompare}) => {
+  if(!isCompare){
+    const allFactors = factors_vehicles_visualization["contributing_factors"];
+    // take first 20 keys of contributing factors
+    const contriFactorRec10 = Object.keys(allFactors).slice(0, 10);
+    // access each contributing factor's name
+    const factorNames = contriFactorRec10.map((factor) => allFactors[factor][0]);
+    // access each count of the factor
+    const counts = contriFactorRec10.map((factor) => allFactors[factor][1]);
+    const data = {
+      labels: factorNames,
+      datasets: [
+        {
+          label: 'Occurrences',
+          data: counts,
+          backgroundColor: ['indigo', 'rgb(28, 28, 206)', 'red', 'purple', 'blue', 'rgb(255,70,50)', 'darkviolet', 'royalblue', 'lightcoral', 'violet'],
+          borderColor: 'black',
+          borderWidth: 1,
+          borderRadius: 3,
+        },
+      ],
+    }
+    
+    const options = {
+      indexAxis: 'y', //horizontal bar
+      scales: {
+        x: {
+          display: false,
+        },
+      },
+      aspectRatio: 1,
+      plugins: {
+        // legend: {
+        //   position: 'top',
+        //   labels: {
+        //     padding: 10,  //within legend box
+        //     font: {
+        //       size: 11,
+        //       weight: 'bold',
+        //     }
+        //   }
+        // },
+        legend: false,
+        
+        title: {
+          display: true,
+          text: `Top 10 Contributing Factors of Crashes in NYC from ${years[0]} to ${years[9]}`,
+          font: {
+            size: 16,
+          }
+        }
+      }
+    }
+    return (
+      <Bar data={data} options={options} />
+    );
+  }
+  // if the user is comparing 2 different years,
+  else{
+    const bothCharts = years.map((year) => {
+      const factors = crashes_data_visualization[year]["top_10"]["contributing_factors"];
+      // get the keys of all the factors for the year
+      const factorKeys = Object.keys(factors);
+      // access each factor name using the key
+      const factorNames = factorKeys.map((factorKey) => factors[factorKey][0]);
+      // access each count of the factor using the key
+      const counts = factorKeys.map((factorKey) => factors[factorKey][1]);
+      const data = {
+        labels: factorNames,
+        datasets: [
+          {
+            label: 'Occurrences',
+            data: counts,
+            backgroundColor: ['indigo', 'rgb(28, 28, 206)', 'red', 'purple', 'blue', 'rgb(255,70,50)', 'darkviolet', 'royalblue', 'lightcoral', 'violet'],
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 3,
+          }
+        ],
+      }
+      //options property for <Bar />
+      const options = {
+        indexAxis: 'y', //horizontal bar
+        scales: {
+          x: {
+            display: false,
+          },
+        },
+        aspectRatio: 1,
+        plugins: {
+          legend: false,
+          title: {
+            display: true,
+            text: `Top 10 Contributing Factors of Crashes in NYC in ${year}`,
+            font: {
+              size: 16,
+            }
+          }
+        }
+      }
+      return (
+        <Bar data={data} options={options} />
+      );
+    })
+    return bothCharts;
+  }
+}
+
+const VehicleTypesChart = ({years, isCompare}) => {
+  if(!isCompare){
+    const allVehicles = factors_vehicles_visualization["vehicle_types"];
+    // take first 20 keys of contributing factors
+    const vehicleTypesRec10 = Object.keys(allVehicles).slice(0, 10);
+    // access each vehicle type's name
+    const vehicleTypes = vehicleTypesRec10.map((vehicle) => allVehicles[vehicle][0]);
+    // access each count of the type
+    const counts = vehicleTypesRec10.map((vehicle) => allVehicles[vehicle][1]);
+    const data = {
+      labels: vehicleTypes,
+      datasets: [
+        {
+          label: 'Occurrences',
+          data: counts,
+          backgroundColor: ['indigo', 'rgb(28, 28, 206)', 'red', 'purple', 'blue', 'rgb(255,70,50)', 'darkviolet', 'royalblue', 'lightcoral', 'violet'],
+          borderColor: 'black',
+          borderWidth: 1,
+          borderRadius: 3,
+        }
+      ],
+    }
+    
+    const options = {
+      indexAxis: 'y', //horizontal bar
+      scales: {
+        x: {
+          display: false,
+        },
+      },
+      aspectRatio: 1,
+      plugins: {
+        // legend: {
+        //   position: 'left',
+        //   labels: {
+        //     padding: 10,  //within legend box
+        //     font: {
+        //       size: 11,
+        //       weight: 'bold',
+        //     }
+        //   }
+        // },
+        legend: false,
+        title: {
+          display: true,
+          text: `Top 10 Vehicle Types of Crashes in NYC from ${years[0]} to ${years[9]}`,
+          font: {
+            size: 16,
+          }
+        }
+      }
+    }
+    return (
+      <Bar data={data} options={options} />
+    );
+  }
+  else{
+    const bothCharts = years.map((year) => {
+      const vehicles = crashes_data_visualization[year]["top_10"]["vehicle_types"];
+      // get the keys of all the factors for the year
+      const vehicleKeys = Object.keys(vehicles);
+      // access each factor name using the key
+      const vehicleNames = vehicleKeys.map((vehicleKey) => vehicles[vehicleKey][0]);
+      // access each count of the factor using the key
+      const counts = vehicleKeys.map((vehicleKey) => vehicles[vehicleKey][1]);
+      const data = {
+        labels: vehicleNames,
+        datasets: [
+          {
+            label: 'Occurrences',
+            data: counts,
+            backgroundColor: ['indigo', 'rgb(28, 28, 206)', 'red', 'purple', 'blue', 'rgb(255,70,50)', 'darkviolet', 'royalblue', 'lightcoral', 'violet'],
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 3,
+          }
+        ],
+      }
+      //options property for <Bar />
+      const options = {
+        indexAxis: 'y', //horizontal bar
+        scales: {
+          x: {
+            display: false,
+          },
+        },
+        aspectRatio: 1,
+        plugins: {
+          legend: false,
+          title: {
+            display: true,
+            text: `Top 10 Vehicle Types for Crashes in NYC in ${year}`,
+            font: {
+              size: 16,
+            }
+          }
+        }
+      }
+      return (
+        <Bar data={data} options={options} />
+      );
+    })
+    return bothCharts;
+  }
+}
+
 function RecentTwelveYears(){
-  // get the keys (year indexes) from the data and taking most recent 12 items
+  // get the keys (year indexes) from the data and taking most recent 10 items
   const years = Object.keys(crashes_data_visualization).slice(-10);
 
   return (
@@ -722,13 +969,19 @@ function RecentTwelveYears(){
         <TotalKilledChart years={years}/>
       </div>
       <div className="chart-graph">
-        <PedestriansMotoristsCyclistsInjuredChart years={years} isCompare={false}/> {/*when toggle to Recent 12 Years section, set isCompare to false*/}
+        <PedestriansMotoristsCyclistsInjuredChart years={years} /> {/*when toggle to Recent 12 Years section, set isCompare to false*/}
       </div>
       <div className="chart-graph">
-        <PedestriansMotoristsCyclistsKilledChart years={years} isCompare={false}/>
+        <PedestriansMotoristsCyclistsKilledChart years={years} />
       </div>
       <div className="chart-graph">
-        <CrashesByBoroughChart years={years} isCompare={false}/>
+        <CrashesByBoroughChart years={years} />
+      </div>
+      <div className="chart-graph">
+        <ContributingFactorsChart years={years} isCompare={false}/>
+      </div>
+      <div className="chart-graph">
+        <VehicleTypesChart years={years} isCompare={false}/>
       </div>
     </div>
   )
@@ -736,7 +989,7 @@ function RecentTwelveYears(){
 
 function CompareTwoYears(){
   // get the keys (year indexes) from the data
-  const years = Object.keys(crashes_data_visualization);
+  const years = Object.keys(crashes_data_visualization); //ignore first 2 keys/indexes
   // set state of two years being compared and set default to the 2 most recent years
   const [twoYears, setTwoYears] = useState(Object.keys(crashes_data_visualization).slice(-2));
   // set state for 1st year
@@ -800,6 +1053,22 @@ function CompareTwoYears(){
         </div>
         <div className="chart-graph">
           <CrashesByBoroughChart years={twoYears} isCompare={true}/>
+        </div>
+        <div className="compare-chart-graph"> 
+          <div className="chart-graph">
+            <ContributingFactorsChart years={[twoYears[0]]} isCompare={true}/>
+          </div>
+          <div className="chart-graph">
+            <ContributingFactorsChart years={[twoYears[1]]} isCompare={true}/>
+          </div>
+        </div>
+        <div className="compare-chart-graph"> 
+          <div className="chart-graph">
+            <VehicleTypesChart years={[twoYears[0]]} isCompare={true}/>
+          </div>
+          <div className="chart-graph">
+            <VehicleTypesChart years={[twoYears[1]]} isCompare={true}/>
+          </div>
         </div>
       </div>
     </div>

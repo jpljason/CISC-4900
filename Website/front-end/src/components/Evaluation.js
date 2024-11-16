@@ -513,35 +513,3 @@ export default function Evaluation() {
     </section>
   );
 }
-
-// //Coloring streets (probably don't need)
-  // const streetsGeoJson = {
-  //   "type": "FeatureCollection",
-  //   "features": [
-  //     {
-  //       "type": "Feature",
-  //       "properties": {
-  //         "name": "BROOKLYN QUEENS EXPRESSWAY"
-  //       },
-  //       "geometry" : {
-  //         "type": "LineString",
-  //         "coordinates": [
-  //           [-73.95131852800579, 40.631015606268996],
-  //           [-73.96031852800579, 40.640015606268996],
-  //           [-73.97031852800579, 40.645015606268996]
-  //         ]
-  //       }
-  //     }
-  //   ]
-  // }
-  
-  // const streetStyle = (feature) => {
-  //   switch (feature.properties.name) {
-  //     case "BROOKLYN QUEENS EXPRESSWAY":
-  //       return { color: "red", weight: 5 };
-  //     case "1211 LORING AVENUE":
-  //         return { color: "blue", weight: 5 };
-  //     default:
-  //       return { color: "black", weight: 5 };
-  //   }
-  // };

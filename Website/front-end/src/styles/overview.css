@@ -1,5 +1,10 @@
 .overview-container{
   text-align: left;
+  font-family: Montserrat;
+}
+
+.overview-container div{
+  color: rgb(195, 195, 195);
 }
 
 .overview-title{
@@ -17,4 +22,34 @@
   background-color: rgba(128, 128, 128, 0.527);
   flex-grow: 1;
   margin-left: 30px;
+}
+
+.dataset-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.title{
+  font-size: 1.25rem;
+  color: rgb(28, 28, 206);
+}
+
+.dataset-logo{
+  width: 250px;
+  border-radius: 7.5px;
+}
+
+.dataset-desc{
+  font-size: 1rem;
+  margin-top: 20px;
+  width: 20%;
+  color: rgb(181, 181, 181);
+  text-align: center;
+}
+
+.map-section{
+  margin-top: 20px;
 }
