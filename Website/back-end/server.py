@@ -3,6 +3,7 @@ from flask_caching import Cache
 from scipy.spatial import distance
 import pandas as pd
 import requests
+import calendar
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
@@ -54,14 +55,23 @@ def get_previous_month_dates():
     first_day_of_previous_month = last_day_of_previous_month.replace(day=1) #first day of prev month
     return first_day_of_previous_month.strftime('%Y-%m-%d'), last_day_of_previous_month.strftime('%Y-%m-%d')
 
-@app.route("/api/collisions")
-@cache.cached(timeout=3600) #Cache route for 3600s = 1 hour; If this function gets called again, it will refer to the cache in the next hour
+@app.route("/api/collisions", methods=['POST'])
+# @cache.cached(timeout=3600) #Cache route for 3600s = 1 hour; If this function gets called again, it will refer to the cache in the next hour
 def get_collisions():
+  data = request.get_json()
+  def get_last_day_of_month(month, year):
+     _, last_day = calendar.monthrange(year, month)
+     return last_day
+  month = int(data.get('month'))
+  year = int(data.get('year'))
+  last_day_of_month = get_last_day_of_month(month, year)
+  monthString = str(month).zfill(2)
+  yearString = str(year)
   start_date, end_date = get_previous_month_dates()
   base_url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json"  #API
   # parameters for selecting data for the previous month only
   params = {
-    "$where": f"crash_date between '{start_date}T00:00:00' and '{end_date}T23:59:59'",
+    "$where": f"crash_date between '{yearString}-{monthString}-01T00:00:00' and '{yearString}-{monthString}-{last_day_of_month}T23:59:59'",
     "$limit": 5000,
     "$offset": 0
   }
@@ -238,4 +248,4 @@ def predict_nearest():
   return jsonify(Xandy.to_dict(orient='records'))
 
 if __name__ == '__main__':
-  app.run(debug=True) 
+  app.run(debug=True)  

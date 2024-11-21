@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import "../styles/evaluation.css";
 import { useMap, MapContainer, TileLayer, GeoJSON, CircleMarker, Popup } from "react-leaflet";
+import L from "leaflet";
 
 const HorizontalLine = () => {
   return (
@@ -66,7 +67,7 @@ const CrossStreetName = ({collision}) => {
 }
 
 //Map for the predicted severities
-function PredictedSeveritiesMap(props){
+const PredictedSeveritiesMap = (props) => {
   function PutMarker(){
     const markerRef = useRef();
 
@@ -163,20 +164,8 @@ function PredictedSeveritiesMap(props){
   )
 }
 //Map for the recorded crashes
-function RecordedCrashesMap(props){
-  const [collisionsData, setCollisionsData] = useState([]);
-  //Fetching from the backend server that contains the data from the API
-  useEffect(() => {
-    fetch("/api/collisions")
-    .then(
-      res => res.json()
-    )
-    .then(
-      data => {
-        setCollisionsData(data);
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+const RecordedCrashesMap = memo(({data}, props) => {
+  const collisionsData = data;
 
   //returns the color of the severity of crashes
   const getSeverity = (item) => {
@@ -186,9 +175,10 @@ function RecordedCrashesMap(props){
       return 'yellow';
     return 'green';
   }
-  
+
   //returns all the marker components to insert onto the map
   function PutMarker(){
+    const canvasRenderer = L.canvas();
     const severities = collisionsData.map((collision, index) => (
       <CircleMarker 
         key={index}
@@ -197,6 +187,7 @@ function RecordedCrashesMap(props){
         color={getSeverity(collision)} //Outline
         fillColor={getSeverity(collision)} //Fill
         fillOpacity={1.0}
+        renderer={canvasRenderer}
       >
       <Popup>
         <div className="recorded-circlemarker-popup">
@@ -234,14 +225,12 @@ function RecordedCrashesMap(props){
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           />
-          
-          {/* <GeoJSON data={streetsGeoJson} style={streetStyle} /> */}
           <PutMarker />
         </MapContainer>
       </center>
     </div>
   )
-}
+});
 
 //The main component of Evaluation
 export default function Evaluation() {
@@ -354,7 +343,7 @@ export default function Evaluation() {
       setLoading(false);
     }
 
-    const Modal = () => {
+    const ErrorMessage = () => {
       const latitude = latRef.current.value;
       const longitude = longRef.current.value;
       //if latitude/longitude is within NYC bounds, return no predictions message
@@ -422,7 +411,7 @@ export default function Evaluation() {
           </form>
         </div>
         <div className="vertical-line"></div>
-        {errorMessage && <Modal />}
+        {errorMessage && <ErrorMessage />}
         {loading && <Loading />}
        <PredictedSeveritiesMap prediction={prediction ? prediction[0] : null}/>
       </div>
@@ -431,52 +420,146 @@ export default function Evaluation() {
 
   //Recorded crashes map component
   const RecordedCrashes = () => {
-    const dataMonthAndYear = () => {
-      const date = new Date();
-      let currentMonth = date.getMonth();
-      let currentDay = date.getDate();
-      const monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-      let previousMonth = currentMonth == 0 ? 11 : currentMonth-1
-      let currentYear = currentMonth == 0 ? date.getFullYear()-1 : date.getFullYear()
-      const twoMonthsAgo = () => {
-        if(currentMonth == 0){
-          return 10;
+    const date = new Date();
+    // initial month for the map is this month
+    const [month, setMonth] = useState(date.getMonth()+1);
+    // initial year for the map is this year
+    const [year, setYear] = useState(date.getFullYear());
+    // determines whether user chose a month so that it can display the year dropdown after
+    const [monthSet, setMonthSet] = useState(false);
+    // holds the data for the specific time frame
+    const [data, setData] = useState([]);
+    const monthLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    // determines whether map is still loading or not
+    const [loading, setLoading] = useState(false);
+    // display date on website after user searches for a specific time frame
+    const [displayDate, setDisplayDate] = useState(`${monthLabels[month-1]} ${year}`)
+    const [errorMessage, setErrorMessage] = useState(false);
+
+    // intitial fetch of data for the current month and year
+    useEffect( () => {
+      const fetchData = async () => {
+        try {
+          setLoading(true);
+          const data = { month, year }
+          console.log(month, " ", year)
+          const response = await fetch('/api/collisions', {
+            method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
+            headers: {
+              'Content-Type': 'application/json', // Informing the server that the data in body is JSON
+            },
+            body: JSON.stringify(data)  // Convert data to a JSON string
+          });
+    
+          // Check if the response is ok (status code 200-299)
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const jsonResponse = await response.json(); // Parse the JSON response
+          setData(jsonResponse) // Update the state with the response data
+          setLoading(false);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setLoading(false);
+          setErrorMessage(true);
         }
-        else if(currentMonth == 1){
-          return 11;
-        }
-        else{
-          return currentMonth-2;
-        }
-      }
-      const twoMonthsAgoYear = () => {
-        if(currentMonth == 0 || currentMonth == 1){
-          return date.getFullYear()-1;
-        }
-        else{
-          return date.getFullYear();
-        }
-      }
-      if(currentDay >= 5){
+      };
+      fetchData();
+    }, []);
+    
+    // displays all the avaliable months in the dropdown
+    const monthOptions = () => {
+      const options = monthLabels.map((month, index) => {
         return (
-          <div>{monthNames[previousMonth]} {currentYear}</div>
-        )
+          <option key={index} value={index + 1}>
+            {month}
+          </option>
+        );
+      });
+      return options;
+    };
+
+    // displays all the avaliable years for the month chosen in the dropdown
+    const yearOptions = () => {
+      const startingYear = month >= 7 ? 2012 : 2013
+      const endingYear = month <= date.getMonth()+1 ? date.getFullYear() : date.getFullYear()-1
+      const allYears = [];
+      for(let year = startingYear; year <= endingYear; year++){
+        allYears.push(year);
       }
-      else{
+      const options = allYears.map(year => {
         return (
-          <div>{monthNames[twoMonthsAgo()]} {twoMonthsAgoYear()}</div>
-        )
+          <option value={year}>
+            {year}
+          </option>
+        );
+      });
+      return options;
+    }
+
+    // fetch the data for the specific month and year the user chose
+    const handleSubmit = async (event) => {
+      event.preventDefault(); // Prevent the default form submission
+      setLoading(true);
+      // Create an object with the month and year
+      const data = { month, year };
+      console.log(month, " ", year);
+      try {
+        const response = await fetch('/api/collisions', {
+          method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
+          headers: {
+            'Content-Type': 'application/json', // Informing the server that the data in body is JSON
+          },
+          body: JSON.stringify(data)  // Convert data to a JSON string
+        });
+
+        // Check if the response is ok (status code 200-299)
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonResponse = await response.json(); // Parse the JSON response
+        setData(jsonResponse) // Update the state with the response data
+        setLoading(false);
+        setDisplayDate(`${monthLabels[month-1]} ${year}`);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+        setErrorMessage(true);
       }
     }
+
+    const ErrorMessage = () => {
+      return (
+        <div>
+          <div className="blur"></div>
+          <dialog open className="popupMessage">
+            <div>No avaliable data for {monthLabels[month-1]} {year}</div>
+            <button onClick={() => setErrorMessage(false)} className="error-button1">Close</button>
+          </dialog>
+        </div>
+      )
+    }
+
+    // display loading screen when the map is not rendered yet
+    const Loading = () => {
+      return (
+        <div>
+          <div className="blur"></div>
+          <dialog open className="popupMessage">
+            <div className="loading-container">
+              Loading the map...<img className="loading-car" src={require("../images/mini-car.gif")} alt="Loading Car"/>
+            </div>
+          </dialog>
+        </div>
+      )
+    }
+
     return (
       <div className = "map-container">
         <div className="details-section">
           <h2 className="map-title2">Recorded Crashes</h2>
           <div className="time-frame">Time Frame:</div>
-          <div className="years">{dataMonthAndYear()}</div>
+          <div className="years">{displayDate}</div>
           <div className="legend">
             <div className="color-container">
               <div className="color" id="green"></div>
@@ -492,9 +575,35 @@ export default function Evaluation() {
             </div>
           </div>
           <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc</p>
+          <form className="recorded-crash-search" onSubmit={handleSubmit}>
+            <label for="month">Select a month:  </label>
+            <select className="select" onChange={(e) => {
+              setMonth(e.target.value);
+              setMonthSet(true);
+              }}>
+              <option disabled selected value></option>
+              {monthOptions()}
+            </select>
+            {monthSet && (
+            <div className="recorded-search">
+              <div>
+                <label for="year">Select a year:  </label>
+                <select className="select" onChange={(e) => setYear(e.target.value)}>
+                  <option disabled selected value></option>
+                  {yearOptions()}
+                </select>
+              </div>
+              <button className="recorded-crashes-button" type="submit">
+                Go
+              </button>
+            </div>
+            )}
+          </form>
         </div>
         <div className="vertical-line"></div>
-        <RecordedCrashesMap />
+        <RecordedCrashesMap data={data}/>
+        {loading && <Loading />}
+        {errorMessage && <ErrorMessage />}
       </div>
     )
   }

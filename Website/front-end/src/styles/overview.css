@@ -3,7 +3,40 @@
   font-family: Montserrat;
 }
 
+.overview-nav{
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 50px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 3%;
+}
+
+.overview-nav li{
+  width: 10%;
+  background-color: rgb(23, 23, 23);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.overview-nav li:hover{
+  background-color: rgb(37, 37, 37);
+  transition: background-color 0.2s ease;
+}
+
 .overview-container div{
+  color: rgb(195, 195, 195);
+}
+
+.overview-container ul{
   color: rgb(195, 195, 195);
 }
 
@@ -29,12 +62,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
+}
+
+.dataset-section .title {
+  font-size: 2rem;
 }
 
 .title{
-  font-size: 1.25rem;
+  font-size: 3rem;
   color: rgb(28, 28, 206);
+  margin-bottom: 4rem;
+}
+
+.description{
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.limitations-description{
+  margin-bottom: 1rem;
 }
 
 .dataset-logo{
@@ -42,14 +89,40 @@
   border-radius: 7.5px;
 }
 
-.dataset-desc{
+.dataset-section .description{
   font-size: 1rem;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   width: 20%;
   color: rgb(181, 181, 181);
   text-align: center;
 }
 
-.map-section{
+.dataset-section .title{
+  margin-bottom: 1rem;
+  margin-top: 10vh;
+}
+
+.spacing{
   margin-top: 20px;
+}
+
+.overview-section{
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.overview-section .image{
+  width: 40rem;
+  height: 68vh;
+  object-fit: cover;
+}
+
+.overview-section .text{
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 4rem;
+  /* max-width: 100%; */
 }
