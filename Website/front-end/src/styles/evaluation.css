@@ -25,65 +25,33 @@
   margin-right: 3%;
 }
 
-.map-option{
-  font-size: 0.9rem;
-  margin-bottom: 2vh;
-}
-
-.toggleContainer {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: fit-content;
-  border: 1px solid rgb(111, 111, 111);
-  background: #343434;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.toggleContainer::before {
-  content: '';
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  left: 0%; /* Starts on the left */
-  background: rgb(181, 0, 213); /* Initial background is purple */
-  transition: all 0.3s;
-}
-
-.toggleCheckbox:checked + .toggleContainer::before {
-  left: 50%;
-  background: rgb(28, 28, 206); /* Changes to blue when toggled to the right */
-}
-
-.toggleCheckbox:checked + .toggleContainer div:first-child {
-  color: #343434;
-  transition: color 0.3s;
-}
-
-.toggleCheckbox:checked + .toggleContainer div:last-child {
-  color: white;
-  transition: color 0.3s;
-}
-
-.toggleCheckbox + .toggleContainer div:first-child {
-  color: white;
-  transition: color 0.3s;
-}
-
-.toggleCheckbox + .toggleContainer div:last-child {
-  color: #343434;
-  transition: color 0.3s;
-}
-
-.toggleContainer div {
-  padding: 12.5px;
+.toggle-section2{
+  list-style-type: none;
+  align-items: center;
+  display: flex;
+  height: 50px;
   text-align: center;
-  z-index: 1;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 22.5px;
 }
 
-.toggleCheckbox {
-  display: none;
+.toggle-section2 li{
+  width: 12%;
+  background-color: rgb(23, 23, 23);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.toggle-section2 li:hover{
+  background-color: rgb(37, 37, 37);
+  transition: background-color 0.2s ease;
 }
 
 .map-div{
@@ -280,6 +248,31 @@
 .recorded-crashes-button:hover{
   background-color: rgb(16, 16, 129);
   cursor: pointer;
+}
+
+.recorded-crashes-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  font-size: 0.9rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: rgb(205, 205, 205);
+  z-index: 1040;
+  font-weight: 600;
+  color: rgb(117, 117, 117);
+}
+
+.total-crashes{
+  color: rgb(28, 28, 206);
+}
+
+.recorded-crashes-info div{
+  display: flex;
+  gap: 7px;
 }
 
 .blur{

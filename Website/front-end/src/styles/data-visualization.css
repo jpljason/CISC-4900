@@ -4,6 +4,34 @@
   flex-grow: 1;
 }
 
+.toggle-section{
+  list-style-type: none;
+  align-items: center;
+  display: flex;
+  height: 50px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.toggle-section li{
+  width: 12%;
+  background-color: rgb(23, 23, 23);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.toggle-section li:hover{
+  background-color: rgb(37, 37, 37);
+  transition: background-color 0.2s ease;
+}
+
 .charts-graphs-option{
   font-size: 0.9rem;
   margin-bottom: 2vh;

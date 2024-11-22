@@ -166,13 +166,37 @@ const PredictedSeveritiesMap = (props) => {
 //Map for the recorded crashes
 const RecordedCrashesMap = memo(({data}, props) => {
   const collisionsData = data;
+  const [red, setRed] = useState(0);
+  const [yellow, setYellow] = useState(0);
+  const [green, setGreen] = useState(0);
+
+  useEffect(() => {
+    const getColorCount = () => {
+      let redCount = 0, yellowCount = 0, greenCount = 0;
+      collisionsData.forEach(collision => {
+        if(getSeverity(collision) === 'red')
+          redCount++;
+        else if(getSeverity(collision) === 'yellow')
+          yellowCount++;
+        else
+          greenCount++;
+      })
+      setRed(redCount);
+      setYellow(yellowCount);
+      setGreen(greenCount);
+      console.log(red, " ", yellow, " ", green);
+    }
+    getColorCount();
+  }, [data]);
 
   //returns the color of the severity of crashes
   const getSeverity = (item) => {
-    if (item.number_of_persons_killed > 0)
+    if (item.number_of_persons_killed > 0){
       return 'red';
-    if (item.number_of_persons_injured > 0)
+    }
+    if (item.number_of_persons_injured > 0){
       return 'yellow';
+    }
     return 'green';
   }
 
@@ -221,6 +245,12 @@ const RecordedCrashesMap = memo(({data}, props) => {
           maxBounds={[[40.4, -74.5], [41.2, -73.4]]}  //[South, West] [North, East]
           maxBoundsViscosity={1.0}
         >
+          <div className="recorded-crashes-info">
+            <div><div className="total-crashes">Total: </div>{collisionsData.length}</div>
+            <div><div className="color" id="red"></div>{red}</div>
+            <div><div className="color" id="yellow"></div>{yellow}</div>
+            <div><div className="color" id="green"></div>{green}</div>
+          </div>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -235,15 +265,21 @@ const RecordedCrashesMap = memo(({data}, props) => {
 //The main component of Evaluation
 export default function Evaluation() {
   //Switch between maps in the page
-  const [activeContent, setActiveContent] = useState(true);
+  const [activeContent, setActiveContent] = useState(() => {
+    // get the recent active content from local storage
+    const savedContent = localStorage.getItem('activeContent');
+    // default is predicted severities map (true) if no recent active content was found
+    return savedContent ? JSON.parse(savedContent) : "predict"
+  });
 
-  //Function that switches the map when the toggle button is clicked
-  function switchMap(){
-    setActiveContent(!activeContent)
-  }
+  useEffect(() => {
+    // save the recent active content to local storage whenever it changes
+    localStorage.setItem('activeContent', JSON.stringify(activeContent));
+  }, [activeContent]);
 
+  // switch between maps
   const RenderContent = () => {
-    return activeContent ? <Severity /> : <RecordedCrashes />
+    return activeContent === 'predict' ? <Severity /> : <RecordedCrashes />
   }
 
   //Predicted severity map component
@@ -442,7 +478,6 @@ export default function Evaluation() {
         try {
           setLoading(true);
           const data = { month, year }
-          console.log(month, " ", year)
           const response = await fetch('/api/collisions', {
             method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
             headers: {
@@ -547,7 +582,7 @@ export default function Evaluation() {
           <div className="blur"></div>
           <dialog open className="popupMessage">
             <div className="loading-container">
-              Loading the map...<img className="loading-car" src={require("../images/mini-car.gif")} alt="Loading Car"/>
+              Loading data into map...<img className="loading-car" src={require("../images/mini-car.gif")} alt="Loading Car"/>
             </div>
           </dialog>
         </div>
@@ -574,7 +609,9 @@ export default function Evaluation() {
               <div className="color-description">Has deaths</div>
             </div>
           </div>
-          <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc</p>
+          <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc. Default
+            timeframe is current month and year.
+          </p>
           <form className="recorded-crash-search" onSubmit={handleSubmit}>
             <label for="month">Select a month:  </label>
             <select className="select" onChange={(e) => {
@@ -611,13 +648,18 @@ export default function Evaluation() {
   return (
     <section className="evaluation-container" id="evaluation">
       <h1 className="evaluation-title">Evaluation<div className="horizontal-line"></div></h1>
-      <div className="map-option">
-        <input type="checkbox" id="toggle" className="toggleCheckbox" />
-        <label onClick={switchMap} htmlFor="toggle" className='toggleContainer'>
-          <div>Predicted Severity</div>   
-          <div>Recorded Crashes</div>
-        </label>
-      </div>
+      <ul className="toggle-section2">
+        <li
+        style={{ backgroundColor: activeContent === "predict" ? "rgb(181, 0, 213)" : "rgb(23, 23, 23)"}}
+        onMouseEnter={(e) => e.target.style.backgroundColor = (activeContent !== "predict" ? "rgb(37, 37, 37)" : "rgb(181, 0, 213)")}
+        onMouseLeave = {(e) => e.target.style.backgroundColor = (activeContent !== "predict" ? "rgb(23, 23, 23)" : "rgb(181, 0, 213)")} 
+        onClick={() => setActiveContent("predict")}>Predict Severity</li>
+        <li 
+        style={{ backgroundColor: activeContent === "recorded" ? "rgb(28, 28, 206)" : "rgb(23, 23, 23)"}}
+        onMouseEnter={(e) => e.target.style.backgroundColor = (activeContent !== "recorded" ? "rgb(37, 37, 37)" : "rgb(28, 28, 206)")}
+        onMouseLeave = {(e) => e.target.style.backgroundColor = (activeContent !== "recorded" ? "rgb(23, 23, 23)" : "rgb(28, 28, 206)")}
+        onClick={() => setActiveContent("recorded")}>Recorded Crashes</li>
+      </ul>
       <RenderContent />
     </section>
   );

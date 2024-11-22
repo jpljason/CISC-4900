@@ -2,7 +2,16 @@ import React, { useState, useEffect } from "react";
 import "../styles/overview.css"
 
 export default function Overview() {
-  const [section, setSection] = useState("goals")
+  const [section, setSection] = useState(() => {
+    // load the recent section from local storage, default is goals if not found
+    const savedSection = localStorage.getItem('section')
+    return savedSection ? JSON.parse(savedSection) : "goals"
+  })
+
+  useEffect(() => {
+    // save the recent section to local storage
+    localStorage.setItem('section', JSON.stringify(section));
+  }, [section]);
   
   // navigation bar for our overview section
   const OverviewNavigation = () => {

@@ -1076,7 +1076,16 @@ function CompareTwoYears(){
 }
 
 export default function DataVisualization() {
-  const [activeData, setActiveData] = useState(true);
+  const [activeData, setActiveData] = useState(() => {
+    // get the most recent graphs/charts section from local storage, default to recent 10 years
+    const savedData = localStorage.getItem('savedData');
+    return savedData ? JSON.parse(savedData) : "recent"
+  });
+
+  useEffect(() => {
+    // save the current graphs/charts section to local storage whenever it changes
+    localStorage.setItem('savedData', JSON.stringify(activeData));
+  }, [activeData]);
 
   const switchData = () => {
     setActiveData(prevActiveData => !prevActiveData);
@@ -1086,13 +1095,20 @@ export default function DataVisualization() {
     <section className="charts_graphs_section">
       <div className="horizontal-line2"></div>
       <div className="charts-graphs-option">
-        <input type="checkbox" id="toggle2" className="toggleCheckbox" />
-        <label onClick={switchData} htmlFor="toggle2" className='toggleContainer'>
-          <div>Recent Ten Years</div>   
-          <div>Compare Two Years</div>
-        </label>
+        <ul className="toggle-section">
+          <li
+          style={{ backgroundColor: activeData === "recent" ? "rgb(181, 0, 213)" : "rgb(23, 23, 23)"}}
+          onMouseEnter={(e) => e.target.style.backgroundColor = (activeData !== "recent" ? "rgb(37, 37, 37)" : "rgb(181, 0, 213)")}
+          onMouseLeave = {(e) => e.target.style.backgroundColor = (activeData !== "recent" ? "rgb(23, 23, 23)" : "rgb(181, 0, 213)")} 
+          onClick={() => setActiveData("recent")}>Recent Ten Years</li>
+          <li 
+          style={{ backgroundColor: activeData === "compare" ? "rgb(28, 28, 206)" : "rgb(23, 23, 23)"}}
+          onMouseEnter={(e) => e.target.style.backgroundColor = (activeData !== "compare" ? "rgb(37, 37, 37)" : "rgb(28, 28, 206)")}
+          onMouseLeave = {(e) => e.target.style.backgroundColor = (activeData !== "compare" ? "rgb(23, 23, 23)" : "rgb(28, 28, 206)")}
+          onClick={() => setActiveData("compare")}>Compare Two Years</li>
+        </ul>
       </div>
-      {activeData ? <RecentTwelveYears /> : <CompareTwoYears />}
+      {activeData === "recent" ? <RecentTwelveYears /> : <CompareTwoYears />}
     </section>
   )
 }
