@@ -154,7 +154,11 @@ def predict():
   # Merge injured and killed and address details table together
   Xandy = pd.merge(addresses, Xandy, on=['latitude', 'longitude'], how='left')
   # Convert to JSON and return
-  return jsonify(Xandy.to_dict(orient='records'))
+  records = Xandy.to_dict(orient='records')
+  if records:
+     return jsonify(records[0])
+  else:
+     return {}
 
 @app.route("/nearest", methods=['POST'])
 def predict_nearest():
@@ -245,7 +249,11 @@ def predict_nearest():
   # Merge injured and killed and address details table together
   Xandy = pd.merge(addresses, Xandy, on=['latitude', 'longitude'], how='left')
   # Convert to JSON and return
-  return jsonify(Xandy.to_dict(orient='records'))
+  records = Xandy.to_dict(orient='records')
+  if records:
+     return jsonify(records[0])
+  else:
+     return {}
 
 if __name__ == '__main__':
   app.run(debug=True)  
