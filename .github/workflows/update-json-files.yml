@@ -2,7 +2,13 @@ name: Update JSON files
 
 on:
   schedule:
-    - cron: '12 5 1-7 * *'  #runs at 12:12 A.M U.S EST each day for the first week of each month
+    #Runs on January 7th
+    - cron: '12 5 7 1 *' #12:12 AM / 1:12 AM U.S EST
+    - cron: '12 11 7 1 *' #6:12 AM / 7:12 AM U.S EST
+    - cron: '12 17 7 1 *' #12:12 PM / 1:12 PM U.S EST
+    - cron: '12 23 7 1 *' #6:12 PM / 7:12 PM U.S EST
+    
+    - cron: '12 10 1 2-12 *' #12:12 AM / 1:12 AM U.S EST on first day of each month after January
 
 jobs:
   run_script:
