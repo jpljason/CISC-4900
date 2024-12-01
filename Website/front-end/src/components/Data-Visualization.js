@@ -187,7 +187,6 @@ const RushHourPercentagesChart = ({years, isCompare}) => {
         callbacks: {
           label: function(context) {  //context=when user hovers each bar/plot
             const year = context.label;
-            // const percentage = (crashes_data_visualization[2013].rush_hour_crashes / crashes_data_visualization[2013].total_crashes * 100).toFixed(3);
             const rushHourCrashes = crashes_data_visualization[year].rush_hour_crashes;
             return `Number of Crashes During Rush Hour: ${rushHourCrashes}`
           },
@@ -241,7 +240,6 @@ const TotalInjuredChart = ({years, isCompare}) => {
         pointRadius: 5,
         pointHoverRadius: 8,
         pointHoverBorderWidth: 3,
-        // hoverBackgroundColor: 'yellow',
       }
     ],
   }
@@ -264,7 +262,6 @@ const TotalInjuredChart = ({years, isCompare}) => {
         font: {
           size: 16,
         }
-        // color: 'pink'
       }
     }
   }
@@ -463,7 +460,6 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
     const year2 = years[1];
     const totalInjured1 = pedestrianMotoristCyclistInjured([year1]);
     const totalInjured2 = pedestrianMotoristCyclistInjured([year2]);
-    console.log(totalInjured1);
     const pedestrians = Math.abs(totalInjured1[0]-totalInjured2[0]);
     const motorists = Math.abs(totalInjured1[1]-totalInjured2[1]);
     const cyclists = Math.abs(totalInjured1[2]-totalInjured2[2]);

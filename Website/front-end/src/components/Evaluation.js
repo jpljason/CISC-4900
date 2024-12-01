@@ -89,7 +89,7 @@ export default function Evaluation() {
     return null;
   }
 
-  //Map for the predicted severities
+  //Map for the By Location section
   const ByLocationMap = memo(({id, byLocation, setByLocation}) => {
     function PutMarker(){
       const markerRef = useRef();
@@ -202,7 +202,7 @@ export default function Evaluation() {
     )
   });
 
-  //By Location section's map component
+  //By Location section
   const ByLocationSection = () => {
     const latRef = useRef();
     const longRef = useRef();
@@ -227,7 +227,8 @@ export default function Evaluation() {
       setErrorMessage(false);
     };
 
-    const fetchLatest = async() => {
+    // fetch data for the default location (near Brooklyn College)
+    const fetchDefault = async() => {
       const latitude = 40.631046
       const longitude = -73.95252
       const data = { latitude,longitude };
@@ -251,10 +252,10 @@ export default function Evaluation() {
       }
     }
 
+    // fetch data for default location if it's the 1st time entering the site
     useEffect(() => {
-      console.log(byLocation);
       if(byLocation.length == 0){
-        fetchLatest();
+        fetchDefault();
       }
     }, []);
 
@@ -662,7 +663,6 @@ export default function Evaluation() {
       setLoading(true);
       // Create an object with the month and year
       const data = { month, year };
-      console.log(month, " ", year);
       try {
         const response = await fetch('/api/collisions', {
           method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
