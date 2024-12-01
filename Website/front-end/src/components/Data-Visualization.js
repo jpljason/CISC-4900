@@ -8,22 +8,22 @@ import factors_vehicles_visualization from "../data/factors_vehicles_visualizati
 // display total crashes for recent 12 year
 const totalCrashes = (years) => years.map((year) => {
   return crashes_data_visualization[year].total_crashes;
-})
+});
 
 // display rush hour crash percentages for recent 12 years
 const rushHourCrashes = (years) => years.map((year) => {
   return crashes_data_visualization[year].rush_hour_crashes / crashes_data_visualization[year].total_crashes;
-})
+});
 
 // display total number of people injured for recent 12 years
 const totalInjured = (years) => years.map((year) => {
   return crashes_data_visualization[year].injured;
-})
+});
 
 // display total number of people killed for recent 12 years
 const totalKilled = (years) => years.map((year) => {
   return crashes_data_visualization[year].killed
-})
+});
 
 // display number of people killed each borough for recent 12 years
 const boroughsLabel = ['Brooklyn', 'Bronx', 'Queens', 'Manhattan', 'Staten Island']
@@ -37,7 +37,7 @@ const totalBoroughs = (years) => {
     boroughCounts[4] += crashes_data_visualization[year].boroughs.staten_island;
   })
   return boroughCounts;
-}
+};
 
 // display number of people injured for pedestrians, motorists, cyclists for recent 12 years
 const pmcInjuredLabel = ["Pedestrians", "Motorists", "Cyclists"];
@@ -50,7 +50,7 @@ const pedestrianMotoristCyclistInjured = (years) => {
     pmcInjuredCount[2] += currentYear.cyclists.injured;
   })
   return pmcInjuredCount;
-}
+};
 
 // display number of people killed for pedestrians, motorists, cyclists for recent 12 years
 const pmcKilledLabel = ["Pedestrians", "Motorists", "Cyclists"];
@@ -63,7 +63,7 @@ const pedestrianMotoristCyclistKilled = (years) => {
     pmcKilledCount[2] += currentYear.cyclists.killed;
   })
   return pmcKilledCount;
-}
+};
 
 // bar displaying total number of crashes each year
 const TotalCrashesChart = ({years, isCompare}) => {
@@ -126,7 +126,7 @@ const TotalCrashesChart = ({years, isCompare}) => {
         {isCompare && <CompareDescription />}
       </div>
   )
-}
+};
 
 // line graph displaying percentages of crashes during rush hour in each year
 const RushHourPercentagesChart = ({years, isCompare}) => {
@@ -221,7 +221,7 @@ const RushHourPercentagesChart = ({years, isCompare}) => {
       {isCompare && <CompareDescription />}
     </div>
   )
-}
+};
 
 // bar graph displaying total number injured each year
 const TotalInjuredChart = ({years, isCompare}) => {
@@ -289,7 +289,7 @@ const TotalInjuredChart = ({years, isCompare}) => {
       {isCompare && <CompareDescription />}
     </div>
   )
-}
+};
 
 // bar graph displaying total number killed each year
 const TotalKilledChart = ({years, isCompare}) => {
@@ -359,7 +359,7 @@ const TotalKilledChart = ({years, isCompare}) => {
       {isCompare && <CompareDescription />}
     </div>
   )
-}
+};
 
 // bar/pie graph displaying number of pedestrians/cyclists/motorists injured throughout the years
 const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
@@ -409,7 +409,6 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
 
   const yearLabel = years.map((year) => year);
   //data for Bar
-  //REMINDER: understand why its [years[0]] instead of years[0] below
   const barData = () => {
     const data = {
       labels: pmcInjuredLabel,
@@ -485,7 +484,7 @@ const PedestriansMotoristsCyclistsInjuredChart = ({years, isCompare}) => {
       {!isCompare && pieData()} {/*Default is pie*/}
     </div>
   )
-}
+};
 
 // bar/pie graph displaying number of pedestrians/cyclists/motorists killed throughout the years
 const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
@@ -608,7 +607,7 @@ const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
       {!isCompare && pieData()} {/*Default is pie*/}
     </div>
   )
-}
+};
 
 // pie/bar graph displaying number of crashes in each borough throughout the years
 const CrashesByBoroughChart = ({years, isCompare}) => {
@@ -734,12 +733,13 @@ const CrashesByBoroughChart = ({years, isCompare}) => {
       {!isCompare && pieData()} {/*Default is pie*/}
     </div>
   )
-}
+};
 
+// display top 10 contributing factors
 const ContributingFactorsChart = ({years, isCompare}) => {
   if(!isCompare){
     const allFactors = factors_vehicles_visualization["contributing_factors"];
-    // take first 20 keys of contributing factors
+    // take first 10 keys of contributing factors
     const contriFactorRec10 = Object.keys(allFactors).slice(0, 10);
     // access each contributing factor's name
     const factorNames = contriFactorRec10.map((factor) => allFactors[factor][0]);
@@ -768,18 +768,7 @@ const ContributingFactorsChart = ({years, isCompare}) => {
       },
       aspectRatio: 1,
       plugins: {
-        // legend: {
-        //   position: 'top',
-        //   labels: {
-        //     padding: 10,  //within legend box
-        //     font: {
-        //       size: 11,
-        //       weight: 'bold',
-        //     }
-        //   }
-        // },
         legend: false,
-        
         title: {
           display: true,
           text: `Top 10 Contributing Factors of Crashes in NYC from ${years[0]} to ${years[9]}`,
@@ -842,8 +831,9 @@ const ContributingFactorsChart = ({years, isCompare}) => {
     })
     return bothCharts;
   }
-}
+};
 
+// display top 10 vehicle types
 const VehicleTypesChart = ({years, isCompare}) => {
   if(!isCompare){
     const allVehicles = factors_vehicles_visualization["vehicle_types"];
@@ -876,15 +866,6 @@ const VehicleTypesChart = ({years, isCompare}) => {
       },
       aspectRatio: 1,
       plugins: {
-        // legend: {
-        //   position: 'left',
-        //   labels: {
-        //     padding: 10,  //within legend box
-        //     font: {
-        //       size: 11,
-        //       weight: 'bold',
-        //     }
-        //   }
         // },
         legend: false,
         title: {
@@ -948,8 +929,9 @@ const VehicleTypesChart = ({years, isCompare}) => {
     })
     return bothCharts;
   }
-}
+};
 
+// section for recent 12 years
 function RecentTwelveYears(){
   // get the keys (year indexes) from the data and taking most recent 10 items
   const years = Object.keys(crashes_data_visualization).slice(-10);
@@ -985,8 +967,9 @@ function RecentTwelveYears(){
       </div>
     </div>
   )
-}
+};
 
+// section for comparing 2 years
 function CompareTwoYears(){
   // get the keys (year indexes) from the data
   const years = Object.keys(crashes_data_visualization); //ignore first 2 keys/indexes
@@ -1073,23 +1056,10 @@ function CompareTwoYears(){
       </div>
     </div>
   )
-}
+};
 
 export default function DataVisualization() {
-  const [activeData, setActiveData] = useState(() => {
-    // get the most recent graphs/charts section from local storage, default to recent 10 years
-    const savedData = localStorage.getItem('savedData');
-    return savedData ? JSON.parse(savedData) : "recent"
-  });
-
-  useEffect(() => {
-    // save the current graphs/charts section to local storage whenever it changes
-    localStorage.setItem('savedData', JSON.stringify(activeData));
-  }, [activeData]);
-
-  const switchData = () => {
-    setActiveData(prevActiveData => !prevActiveData);
-  }
+  const [activeData, setActiveData] = useState('recent');
 
   return (
     <section className="charts_graphs_section">
@@ -1111,39 +1081,4 @@ export default function DataVisualization() {
       {activeData === "recent" ? <RecentTwelveYears /> : <CompareTwoYears />}
     </section>
   )
-}
-
-{/* <div className="chart-graph">
-        <Bar //can change to <Doughnut <Line <Bar ***NEVER DO <Chart because crash
-          data={{
-            labels: years,
-            datasets: [
-              {
-                label: "Number of Crashes",
-                data: totalCrashes,
-                backgroundColor: 'lightblue',
-                borderColor: 'blue',
-                borderWidth: 1,
-                borderRadius: 3,
-              }
-            ],
-          }}
-          options={{
-            aspectRatio: 1,
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            },
-            plugins: {
-              title: {
-                display: true,
-                text: "Number of Crashes by Year in NYC",
-                font: {
-                  size: 16,
-                }
-              }
-            }
-          }}
-        />
-      </div> */}
+};

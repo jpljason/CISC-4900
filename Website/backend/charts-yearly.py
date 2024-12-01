@@ -10,6 +10,7 @@ import os
 def get_and_filter_data(params):
   url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json"
   all_data = []
+  # since API has a limit, we must loop through an offset to fetch all available data
   while True:
     response = requests.get(url, params)
     data = response.json()
@@ -20,12 +21,14 @@ def get_and_filter_data(params):
     all_data.extend(data)
     params["$offset"] += 5000
 
+  # columns to use for our table
   columns_to_use = ["crash_date", "crash_time", "collision_id", "borough", "zip_code", "latitude", "longitude", "on_street_name", "cross_street_name", "off_street_name", "number_of_persons_killed", 
   "number_of_persons_injured", 'number_of_pedestrians_injured', 'number_of_pedestrians_killed', 'number_of_cyclist_injured', 'number_of_cyclist_killed', 'number_of_motorist_injured',
   'number_of_motorist_killed', "contributing_factor_vehicle_1", "contributing_factor_vehicle_2", "vehicle_type_code1", "vehicle_type_code2"]
 
   collisions_data = pd.DataFrame(all_data, columns=columns_to_use)
 
+  # data types for each column 
   dtypes={
   'collision_id' : 'int64',
   'borough' : 'string',
@@ -63,6 +66,7 @@ def get_and_filter_data(params):
   
   return collisions_data
 
+# add new data to all JSON files whenever a new year begins and remove the data from the oldest year in the most recent 10 years
 def add_data_to_json():
   current_month = datetime.now().month
   current_day = datetime.now().day
@@ -118,7 +122,7 @@ def add_data_to_json():
     
     return [brooklyn, queens, bronx, manhattan, staten_island]
 
-  # count number of contributing factors
+  # count the top 10 contributing factors
   def contributingFactors(collisions_data):
     count = collisions_data["contributing_factor_vehicle_1"].value_counts()
     count2 = collisions_data["contributing_factor_vehicle_2"].value_counts()
@@ -136,6 +140,7 @@ def add_data_to_json():
         
     return top_10_factors
   
+  # calculate the top 10 vehicle types
   def vehicleTypes(collisions_data):
     count = collisions_data["vehicle_type_code1"].value_counts()
     count2 = collisions_data["vehicle_type_code2"].value_counts()
@@ -234,7 +239,6 @@ def add_data_to_json():
     combined_data = {}  # Dictionary to hold combined data
 
     # Loop through each year and combine data into the JSON structure
-
     combined_data[previous_year] = {
 
       "total_crashes": total_crashes,
@@ -270,6 +274,7 @@ def add_data_to_json():
       }
     }
 
+    # path for the JSON file
     file_path = os.path.join('..', 'front-end', 'src', 'data', 'crashes_data_visualization.json')
     
     # Write the results to a JSON file
@@ -278,7 +283,7 @@ def add_data_to_json():
 
     new_data = { str(previous_year): combined_data[previous_year] }
 
-    # if the previous year's data is not in the JSON file yet, add it
+    # if the new year's data is not in the JSON file yet, add it
     if (str(previous_year) not in data) and (current_month == 1 and current_day == 5):
       data.update(new_data)
 

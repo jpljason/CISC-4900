@@ -55,13 +55,16 @@ def get_previous_month_dates():
     first_day_of_previous_month = last_day_of_previous_month.replace(day=1) #first day of prev month
     return first_day_of_previous_month.strftime('%Y-%m-%d'), last_day_of_previous_month.strftime('%Y-%m-%d')
 
+# route for getting the data for a specific month and year searched by the user in the By Timeframe map
 @app.route("/api/collisions", methods=['POST'])
 # @cache.cached(timeout=3600) #Cache route for 3600s = 1 hour; If this function gets called again, it will refer to the cache in the next hour
 def get_collisions():
   data = request.get_json()
+  # function to get the last day of a month
   def get_last_day_of_month(month, year):
      _, last_day = calendar.monthrange(year, month)
      return last_day
+  
   month = int(data.get('month'))
   year = int(data.get('year'))
   last_day_of_month = get_last_day_of_month(month, year)
@@ -102,6 +105,7 @@ def get_collisions():
   # Convert to JSON and return
   return jsonify(Xandy.to_dict(orient='records'))
   
+# route for searching a location in By Location map
 @app.route("/submit", methods=['POST'])
 def predict():
   base_url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json"  #API
@@ -160,6 +164,7 @@ def predict():
   else:
      return {}
 
+# route for finding the nearest available location to the invalid one the user searched in the By Location map
 @app.route("/nearest", methods=['POST'])
 def predict_nearest():
   data = request.get_json()

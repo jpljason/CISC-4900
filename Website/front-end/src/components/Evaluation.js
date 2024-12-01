@@ -5,25 +5,14 @@ import L from "leaflet";
 
 //The main component of Evaluation
 export default function Evaluation() {
-  // localStorage.clear();
   //Switch between maps in the page
-  const [activeContent, setActiveContent] = useState(() => {
-    // get the recent active content from local storage
-    const savedContent = localStorage.getItem('activeContent');
-    // default is predicted severities map (true) if no recent active content was found
-    return savedContent ? JSON.parse(savedContent) : "predict"
-  });
+  const [activeContent, setActiveContent] = useState('byLocation');
 
   const [popupByLocation, setPopupByLocation] = useState(null);
 
-  useEffect(() => {
-    // save the recent active content to local storage whenever it changes
-    localStorage.setItem('activeContent', JSON.stringify(activeContent));
-  }, [activeContent]);
-
-  // switch between maps
+  // switch between maps when toggled
   const RenderContent = () => {
-    if (activeContent === 'predict') {
+    if (activeContent === 'byLocation') {
       return <ByLocationSection />;
     } else {
       setPopupByLocation(null); // hardcoded, if the user goes to By Timeframe section, just set popupByLocation to false
@@ -31,6 +20,7 @@ export default function Evaluation() {
     }
   }
 
+  // display a horizontal line
   const HorizontalLine = () => {
     return (
       <hr style={{
@@ -38,6 +28,7 @@ export default function Evaluation() {
       }}/>
     )
   }
+  // find zip code of a collision
   const ZipCode = ({collision}) => {
     if(collision.zip_code!=null){
       return (
@@ -49,6 +40,7 @@ export default function Evaluation() {
     }
     return null;
   }
+  // find borough of a collision
   const Borough = ({collision}) => {
     if(collision.borough!=null){
       return (
@@ -60,6 +52,7 @@ export default function Evaluation() {
     }
     return null;
   }
+  // find on street name of a collision
   const OnStreetName = ({collision}) => {
     if(collision.on_street_name!=null){
       return (
@@ -71,6 +64,7 @@ export default function Evaluation() {
     }
     return null;
   }
+  // find off street name of a collision
   const OffStreetName = ({collision}) => {
     if(collision.off_street_name!=null){
       return (
@@ -82,6 +76,7 @@ export default function Evaluation() {
     }
     return null;
   }
+  // find cross street name of a collision
   const CrossStreetName = ({collision}) => {
     if(collision.cross_street_name!=null){
       return (
@@ -98,27 +93,28 @@ export default function Evaluation() {
   const ByLocationMap = memo(({id, byLocation, setByLocation}) => {
     function PutMarker(){
       const markerRef = useRef();
-      console.log("ByLocationMap rendered");
 
+      // auto open popup when a new marker is placed on the map
       useEffect(() => {
         if(markerRef.current && (byLocation && JSON.stringify(byLocation[byLocation.length-1]) !== '{}')) {
-          console.log("Open Popup!");
           markerRef.current.openPopup();
         }
       }, []);
+
+      // put all the locations the user searched into markers on the map
       const allMarkers = byLocation.map((location) => {
         if(JSON.stringify(location) !== '{}'){
           return (
             <CircleMarker ref={markerRef} 
-              center={[location.latitude, location.longitude]}  //Location
+              center={[location.latitude, location.longitude]} //Location
               radius={7}  //Size of circle
-              color={location !== byLocation[byLocation.length-1] ? "blue" : "green"} //Outline
-              fillColor={location !== byLocation[byLocation.length-1] ? "blue" : "green"} //Fill
+              color={location !== byLocation[byLocation.length-1] ? "blue" : "green"} // most recent location searched is green, else blue
+              fillColor={location !== byLocation[byLocation.length-1] ? "blue" : "green"} 
               fillOpacity={1.0}
             >
-              <Popup className="predict-popup">
-                <div className="predicted-circlemarker-popup">
-                  <div className="predicted-section">
+              <Popup className="location-popup">
+                <div className="location-circlemarker-popup">
+                  <div className="location-section">
                     <div className="details-title">Details: </div>
                     <HorizontalLine />
                     <div>Location: ({location.latitude}, {location.longitude})</div>
@@ -138,14 +134,14 @@ export default function Evaluation() {
                     <OffStreetName collision={location} />
                     <CrossStreetName collision={location} />
                   </div>
-                  <div className="predicted-section">
+                  <div className="location-section">
                     <div className="predictions-title">Predictions:</div>
                     <HorizontalLine />
                     <div>Likelihood of Injury in a Crash : {Math.ceil((location.crashes_with_injuries/location.number_of_crashes)*100)} %</div>
                     <HorizontalLine />
                     <div>Likelihood of Death in a Crash : {Math.ceil((location.crashes_with_kills/location.number_of_crashes)*100)} %</div>
                     <div className="location-remove-button-wrapper"><button className="location-remove-button" onClick={() => {
-                      const updatedByLocation = byLocation.filter(aLocation => aLocation.latitude !== location.latitude && aLocation.longitude !== location.longitude);
+                      const updatedByLocation = byLocation.filter(aLocation => aLocation.latitude !== location.latitude && aLocation.longitude !== location.longitude); //option for the user to remove a marker from the map
                       setByLocation(updatedByLocation);
                     }}>Remove Location</button></div>
                   </div>
@@ -157,25 +153,26 @@ export default function Evaluation() {
       })
       return allMarkers;
     }
-  
+    
+    //if there are markers on the map, go to the center of most recent one
     const latCenter = byLocation && JSON.stringify(byLocation[byLocation.length-1]) !== '{}' ? byLocation[byLocation.length-1].latitude : 40.7128;
     const longCenter = byLocation && JSON.stringify(byLocation[byLocation.length-1]) !== '{}' ? byLocation[byLocation.length-1].longitude : -74.0060;
-  
-    // //Zooming into predicted marker using useMap() hook
-    // function ZoomToPrediction(props){
-    //   const map = useMap();
-    //   useEffect(() => {
-    //     if(map && byLocation){
-    //       map.flyTo([props.latCenter, props.longCenter], 16, {
-    //         animate: false
-    //       });
-    //     }
-    //     else if(map && !byLocation){
-    //       map.setView([props.latCenter, props.longCenter], 11);
-    //     }
-    //   }, []);
-    //   return null;
-    // }
+    
+    //Zooming into predicted marker using useMap() hook
+    function ZoomToLocation(props){
+      const map = useMap();
+      useEffect(() => {
+        if(map && byLocation){
+          map.flyTo([props.latCenter, props.longCenter], 11, {
+            animate: false
+          });
+        }
+        else if(map && !byLocation){
+          map.setView([props.latCenter, props.longCenter], 11);
+        }
+      }, []);
+      return null;
+    }
   
     return (
       <div className="map-div">
@@ -195,7 +192,7 @@ export default function Evaluation() {
               url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
             />
             {byLocation && <PutMarker />}
-            {/* <ZoomToPrediction byLocation={byLocation} latCenter={latCenter} longCenter={longCenter}/> */}
+            <ZoomToLocation byLocation={byLocation} latCenter={latCenter} longCenter={longCenter}/>
             <div className="location-map-info">
               <div><button onClick={() => {setByLocation([])}}>Clear All</button></div>
             </div>
@@ -205,52 +202,70 @@ export default function Evaluation() {
     )
   });
 
-  //Predicted severity map component
+  //By Location section's map component
   const ByLocationSection = () => {
     const latRef = useRef();
     const longRef = useRef();
-    // const [prediction1, setPrediction1] = useState(null);
     const [byLocation, setByLocation] = useState(() => {
       const savedPrediction = localStorage.getItem('byLocation');
 
-      return savedPrediction ? JSON.parse(savedPrediction) : [
-        {
-          "borough": "BROOKLYN",
-          "cross_street_name": "2933 BEDFORD AVENUE",
-          "crashes_with_injuries": 0,
-          "crashes_with_kills": 0,
-          "latitude": 40.631046,
-          "longitude": -73.95252,
-          "number_of_crashes": 1,
-          "number_of_persons_injured": 0.0,
-          "number_of_persons_killed": 0.0,
-          "off_street_name": null,
-          "on_street_name": null,
-          "zip_code": "11210"
-        }
-      ]
-  
+      return savedPrediction ? JSON.parse(savedPrediction) : [];
     });
+
     const [errorMessage, setErrorMessage] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    // open error message
     const openModal = () => {
       setErrorMessage(true);
     };
 
+    // close error message
     const closeModal = () => {
       //if the user presses no for nearest location or a location outside of NYC bounds was inserted, we remove it from the predictions array
       setByLocation((prevPrediction) => prevPrediction.slice(0, -1));
       setErrorMessage(false);
     };
 
+    const fetchLatest = async() => {
+      const latitude = 40.631046
+      const longitude = -73.95252
+      const data = { latitude,longitude };
+      try {
+        const response = await fetch('/submit', {
+          method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
+          headers: {
+            'Content-Type': 'application/json', // Informing the server that the data in body is JSON
+          },
+          body: JSON.stringify(data)  // Convert data to a JSON string
+        });
+
+        // Check if the response is ok (status code 200-299)
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonResponse = await response.json(); // Parse the JSON response
+        setByLocation([...byLocation, jsonResponse]);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    useEffect(() => {
+      console.log(byLocation);
+      if(byLocation.length == 0){
+        fetchLatest();
+      }
+    }, []);
+
     //if user wants to see more data for a location in the By Timeframe map, add it to the By Location map
     useEffect(() => {
       if(popupByLocation !== null){
         setByLocation([...byLocation, popupByLocation]);
       }
-    }, []);
+    }, [popupByLocation]);
 
+    // save all the markers inserted by the user into local storage
     useEffect(() => {
       localStorage.setItem('byLocation', JSON.stringify(byLocation));
       
@@ -268,7 +283,6 @@ export default function Evaluation() {
       const longitude = longRef.current.value;
       // Create an object with the latitude and longitude
       const data = { latitude , longitude };
-
       try {
         const response = await fetch('/submit', {
           method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
@@ -289,6 +303,7 @@ export default function Evaluation() {
       }
     };
 
+    // if the user chooses, find the nearest avaliable location to the one the user searched
     const handleNearest = async () => {
       const latitude = latRef.current.value;
       const longitude = longRef.current.value;
@@ -324,17 +339,18 @@ export default function Evaluation() {
       setLoading(false);
     }
 
+    // used to display a error message
     const ErrorMessage = () => {
       const latitude = latRef.current.value;
       const longitude = longRef.current.value;
-      //if latitude/longitude is within NYC bounds, return no predictions message
+      //if latitude/longitude is within NYC bounds, return an error message
       if((latitude >= 40.498947 && latitude <= 40.912884) && (longitude >= -74.25496 && longitude <= -73.70055)){
         return ( 
           <div>
             <div className="blur"></div>
             <dialog open className="popupMessage">
-              <div>No current predictions for latitude/longitude!</div>
-              <div className="nearest-message">Would you like predictions for the nearest location?</div>
+              <div>No current data for latitude/longitude!</div>
+              <div className="nearest-message">Would you like data for the nearest location?</div>
               <button onClick={handleNearest} className="error-button1">Yes</button>
               <button onClick={closeModal} className="error-button2">No</button>
             </dialog>
@@ -355,6 +371,7 @@ export default function Evaluation() {
       }
     };
 
+    // used to display a loading screen
     const Loading = () => {
       return (
         <div>
@@ -377,11 +394,11 @@ export default function Evaluation() {
           <p className="map-description">Indicates details of a specific location, including crashes details, and predicts the likelihood of injury or fatality in a crash at that location. The dataset must contain
             the entered latitude and longitude for the search. Default location is near Brooklyn College.
           </p>
-          <div className="timeframe-color-info">
+          <div className="location-color-info">
             <div className="color" id="green"></div>
             <div>Most recent location</div>
           </div>
-          <form onSubmit={handleSubmit} className="predict-form">
+          <form onSubmit={handleSubmit} className="location-form">
             <label htmlFor="latitude">Latitude:</label>
             <input type="text"
             ref = {latRef}  
@@ -401,9 +418,10 @@ export default function Evaluation() {
     );
   };
 
-  //Map for the By Timeframe
+  //Map for the By Timeframe section
   const ByTimeframeMap = memo(({data, id}) => {
     const collisionsData = data;
+    // states for the color counts and filter on top of the map
     const [red, setRed] = useState(0);
     const [yellow, setYellow] = useState(0);
     const [green, setGreen] = useState(0);
@@ -411,7 +429,8 @@ export default function Evaluation() {
     const [checkRed, setCheckRed] = useState(true);
     const [checkYellow, setCheckYellow] = useState(true);
     const [checkGreen, setCheckGreen] = useState(true);
-  
+    
+    // grab the counts of each color 
     useEffect(() => {
       const getColorCount = () => {
         let redCount = 0, yellowCount = 0, greenCount = 0;
@@ -443,8 +462,8 @@ export default function Evaluation() {
         return 'green';
     }
 
-    //if the user wants to see more data for specific location
-    const handlePredict = async(collision) => {
+    //if the user wants to see more data on the crashes for a specific location
+    const handleByLocation = async(collision) => {
       const latitude = collision.latitude
       const longitude = collision.longitude
       // Create an object with the latitude and longitude
@@ -464,7 +483,7 @@ export default function Evaluation() {
           throw new Error('Network response was not ok');
         }
         const jsonResponse = await response.json(); // Parse the JSON response
-        setActiveContent("predict");
+        setActiveContent("byLocation");  // go to "by location" section
         setPopupByLocation(jsonResponse) // Update the state with the response data
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -474,7 +493,7 @@ export default function Evaluation() {
     //returns all the marker components to insert onto the map
     function PutMarker(){
       const canvasRenderer = L.canvas();
-      const severities = collisionsData.map((collision, index) => {
+      const allMarkers = collisionsData.map((collision, index) => {
         const color = getSeverity(collision);
         if((color === 'red' && checkRed) || (color === 'green' && checkGreen) || (color === 'yellow' && checkYellow)){
           return (
@@ -488,7 +507,7 @@ export default function Evaluation() {
               renderer={canvasRenderer}
             >
             <Popup>
-              <div className="recorded-circlemarker-popup">
+              <div className="timeframe-circlemarker-popup">
                 <div>Injured : {collision.number_of_persons_injured}</div>
                 <HorizontalLine />
                 <div>Killed : {collision.number_of_persons_killed}</div>
@@ -499,14 +518,14 @@ export default function Evaluation() {
                 <OnStreetName collision={collision} />
                 <OffStreetName collision={collision} />
                 <CrossStreetName collision={collision} />
-                <button className="more-crashes-button" onClick={() => handlePredict(collision)}>More Crashes</button>
+                <button className="more-crashes-button" onClick={() => handleByLocation(collision)}>More Crashes</button> 
               </div>
             </Popup>
             </CircleMarker>
           )
         }
       })
-      return severities;
+      return allMarkers;
     }
   
     return (
@@ -522,7 +541,7 @@ export default function Evaluation() {
             maxBounds={[[40.4, -74.5], [41.2, -73.4]]}  //[South, West] [North, East]
             maxBoundsViscosity={1.0}
           >
-            <div className="recorded-crashes-info">
+            <div className="by-timeframe-info">
               <div className="color-counts">
                 <div className="total"><div className="total-crashes">Total: </div>{total}</div>
                 {checkRed && <div className="count-item"><div className="color" id="red"></div>{red}</div>}
@@ -559,7 +578,7 @@ export default function Evaluation() {
     )
   });
 
-  //By Timeframe map component
+  //By Timeframe section's map component
   const ByTimeframeSection = () => {
     const date = new Date();
     // initial month for the map is this month
@@ -663,11 +682,12 @@ export default function Evaluation() {
         setDisplayDate(`${monthLabels[month-1]} ${year}`);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setLoading(false);
-        setErrorMessage(true);
+        setLoading(false);  
+        setErrorMessage(true);  //display error message if data cannot be found
       }
     }
 
+    // display error message if there is no avaliable data for month and year
     const ErrorMessage = () => {
       return (
         <div>
@@ -716,7 +736,7 @@ export default function Evaluation() {
           </div>
           <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc. There is also an option to see more information on all the crashes in that location. Default timeframe is current month and year.
           </p>
-          <form className="recorded-crash-search" onSubmit={handleSubmit}>
+          <form className="by-timeframe-search" onSubmit={handleSubmit}>
             <label for="month">Select a month:  </label>
             <select className="select" onChange={(e) => {
               setMonth(e.target.value);
@@ -726,7 +746,7 @@ export default function Evaluation() {
               {monthOptions()}
             </select>
             {monthSet && (
-            <div className="recorded-search">
+            <div className="bytimeframe-search">
               <div>
                 <label for="year">Select a year:  </label>
                 <select className="select" onChange={(e) => setYear(e.target.value)}>
@@ -734,7 +754,7 @@ export default function Evaluation() {
                   {yearOptions()}
                 </select>
               </div>
-              <button className="recorded-crashes-button" type="submit">
+              <button className="by-timeframe-button" type="submit">
                 Go
               </button>
             </div>
@@ -754,15 +774,15 @@ export default function Evaluation() {
       <h1 className="evaluation-title">Evaluation<div className="horizontal-line"></div></h1>
       <ul className="toggle-section2">
         <li
-        style={{ backgroundColor: activeContent === "predict" ? "rgb(181, 0, 213)" : "rgb(23, 23, 23)"}}
-        onMouseEnter={(e) => e.target.style.backgroundColor = (activeContent !== "predict" ? "rgb(37, 37, 37)" : "rgb(181, 0, 213)")}
-        onMouseLeave = {(e) => e.target.style.backgroundColor = (activeContent !== "predict" ? "rgb(23, 23, 23)" : "rgb(181, 0, 213)")} 
-        onClick={() => setActiveContent("predict")}>By Location</li>
+        style={{ backgroundColor: activeContent === "byLocation" ? "rgb(181, 0, 213)" : "rgb(23, 23, 23)"}}
+        onMouseEnter={(e) => e.target.style.backgroundColor = (activeContent !== "byLocation" ? "rgb(37, 37, 37)" : "rgb(181, 0, 213)")}
+        onMouseLeave = {(e) => e.target.style.backgroundColor = (activeContent !== "byLocation" ? "rgb(23, 23, 23)" : "rgb(181, 0, 213)")} 
+        onClick={() => setActiveContent("byLocation")}>By Location</li>
         <li 
-        style={{ backgroundColor: activeContent === "recorded" ? "rgb(28, 28, 206)" : "rgb(23, 23, 23)"}}
-        onMouseEnter={(e) => e.target.style.backgroundColor = (activeContent !== "recorded" ? "rgb(37, 37, 37)" : "rgb(28, 28, 206)")}
-        onMouseLeave = {(e) => e.target.style.backgroundColor = (activeContent !== "recorded" ? "rgb(23, 23, 23)" : "rgb(28, 28, 206)")}
-        onClick={() => setActiveContent("recorded")}>By Timeframe</li>
+        style={{ backgroundColor: activeContent === "byTimeframe" ? "rgb(28, 28, 206)" : "rgb(23, 23, 23)"}}
+        onMouseEnter={(e) => e.target.style.backgroundColor = (activeContent !== "byTimeframe" ? "rgb(37, 37, 37)" : "rgb(28, 28, 206)")}
+        onMouseLeave = {(e) => e.target.style.backgroundColor = (activeContent !== "byTimeframe" ? "rgb(23, 23, 23)" : "rgb(28, 28, 206)")}
+        onClick={() => setActiveContent("byTimeframe")}>By Timeframe</li>
       </ul>
       <RenderContent />
     </section>

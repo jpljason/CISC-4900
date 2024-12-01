@@ -2,6 +2,7 @@ import React from "react";
 import '../styles/about-us.css'
 import about_data from "../data/about_data"
 
+// card component for each member in our about us section
 function AboutUsCards(props) {
   return (
     <div className="about-us-cards"> 
@@ -22,7 +23,6 @@ function AboutUsCards(props) {
 
 export default function AboutUs(){
   const cards = about_data.map(item => {
-    console.log(item);
     return (
       <AboutUsCards
         key={item.id}

@@ -4,6 +4,7 @@ import '../styles/header.css';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // turn the header's background color to black when page is being scrolled
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50){
