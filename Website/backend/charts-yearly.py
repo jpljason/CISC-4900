@@ -2,7 +2,6 @@ import pandas as pd
 import requests
 from datetime import datetime, time   #this "time" is for rush hour
 import time as Time
-import schedule
 import json
 import os
 
@@ -286,9 +285,12 @@ def add_data_to_json():
     # if the new year's data is not in the JSON file yet, add it
     if (str(previous_year) not in data) and (current_month == 1 and current_day == 5):
       data.update(new_data)
-
-    with open(file_path, 'w') as json_file:
-       json.dump(data, json_file, indent=4)
+      with open(file_path, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+      print("crashes_data_visualization.json updated")
+    else:
+       print("crashes_data_visualization.json is already updated")
+       return
   
   # function to dump all the data for the newest year and remove the data for the oldest year onto the JSON file for contributing factors and vehicle types
   def jsonDumpVehiclesFactors(factors_old_year, vehicles_old_year, factors_new_year, vehicles_new_year):
@@ -302,7 +304,7 @@ def add_data_to_json():
       data2 = json.load(json_file)
 
     # if new year is not in data, add new year's calculations and remove the oldest year's calculations
-    if (str(previous_year) not in data) and (current_month == 1 and current_day == 5):
+    if (str(previous_year) not in data):
       addRecentYearFactors(data2['contributing_factors'], factors_new_year)
       removeOldestYearFactors(data2['contributing_factors'], factors_old_year)
       addRecentYearVehicles(data2['vehicle_types'], vehicles_new_year)
@@ -324,6 +326,10 @@ def add_data_to_json():
       #write to json file
       with open(file_path2, 'w') as json_file:
         json.dump(data2, json_file, indent=4)
+      print("factors_vehicles_visualization.json updated")
+    else:
+      print("factors_vehicles_visualization.json is already updated")
+      return
   
   # Call the functions to gather data and process it
   factors_old_year = contributingFactorsAll(old_year_data)
@@ -344,9 +350,5 @@ def add_data_to_json():
   jsonDump(total_crash_counts, rush_hour_counts, injured_and_killed_count, borough_counts, contributing_factors_counts, 
            vehicle_types_counts, pedestrian_cyclist_motorist_injured_killed_counts)
 
-schedule.every().day.at("00:00").do(add_data_to_json)
-
-while True:
-  schedule.run_pending()
-  print("New data added!")
-  Time.sleep(10)
+if __name__ == "__main__":
+   add_data_to_json()
