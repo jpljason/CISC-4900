@@ -71,13 +71,13 @@ def add_data_to_json():
   # params for the previous year (newest year in the data)
   params = {
     "$where": f"crash_date between '{previous_year}-01-01T00:00:00' and '{previous_year}-12-31T23:59:59'",
-    "$limit": 5000,
+    "$limit": 5000, # You can adjust this limit as needed
     "$offset" : 0
   }
   # params for the oldest year (last year in the recent 10)
   params2 = {
     "$where": f"crash_date between '{oldest_year}-01-01T00:00:00' and '{oldest_year}-12-31T23:59:59'",
-    "$limit": 5000,
+    "$limit": 5000, # You can adjust this limit as needed
     "$offset" : 0
   }
   
@@ -278,7 +278,7 @@ def add_data_to_json():
     new_data = { str(previous_year): combined_data[previous_year] }
 
     # if the previous year's data is not in the JSON file yet, add it
-    if (str(previous_year) not in data or current_month > 1):
+    if (str(previous_year) not in data):
       data.update(new_data)
       with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
