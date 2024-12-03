@@ -1,5 +1,4 @@
 .evaluation-title{
-  font-family: Montserrat;
   color: rgb(184, 184, 184);
   font-weight: 600;
   font-size: 1.8rem;
@@ -89,7 +88,7 @@
 
 .map-description{
   color: gray;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .horizontal-line{
@@ -118,7 +117,6 @@
   color: white;
   text-align: center;
   align-items: center;
-  font-family: Montserrat;
   font-size: 12px;
   max-width: 130px;
   margin-left: auto;
@@ -145,7 +143,6 @@
 
 .location-circlemarker-popup {
   color: white;
-  font-family: Montserrat;
   font-size: 0.8rem;
   width: 550px;
   padding: 10px 15px 15px 15px;
@@ -181,7 +178,6 @@
   color: rgb(117, 117, 255);
   font-weight: 550;
   font-size: 17.5px;
-  
 }
 
 .line{
@@ -195,7 +191,7 @@
 .location-form{
   display: flex;
   flex-direction: column;
-  font-family: Montserrat;
+  
 }
 
 .location-form label{
@@ -221,7 +217,6 @@
   border: none;
   border-radius: 10px;
   background-color: rgb(181, 0, 213);
-  font-family: Montserrat;
   font-weight: 600;
   color: rgb(255, 255, 255);
 }
@@ -234,7 +229,7 @@
   border: none;
   border-radius: 10px;
   background-color: rgb(28, 28, 206);
-  font-family: Montserrat;
+  
   font-weight: 600;
   color: rgb(255, 255, 255);
 }
@@ -421,7 +416,6 @@
   left: 0;
   z-index: 1050;
   color: black;
-  font-family: Montserrat;
   font-size: 1.2rem;
   padding: 40px;
   font-weight: 600;
@@ -467,7 +461,6 @@
   font-size: 0.8rem;
   margin-right: auto;
   margin-top: 10px;
-  font-family: Montserrat;
 }
 
 .color{

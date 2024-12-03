@@ -1,6 +1,5 @@
 .overview-container{
   text-align: left;
-  font-family: Montserrat;
 }
 
 .overview-nav{
@@ -41,7 +40,6 @@
 }
 
 .overview-title{
-  font-family: Montserrat;
   color: rgb(184, 184, 184);
   font-weight: 600;
   font-size: 1.8rem;

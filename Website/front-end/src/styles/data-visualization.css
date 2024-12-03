@@ -83,7 +83,6 @@
   border: none;
   cursor: pointer;
   background-color: rgb(181, 0, 213);
-  font-family: Montserrat;
   font-weight: 600;
   color: rgb(255, 255, 255);
   margin-left: 10px;
@@ -98,7 +97,6 @@
   height: 60px;
   margin-top: 35px;
   font-size: 0.9rem;
-  font-family: Montserrat;
   color: rgb(196, 196, 196);
 }
 

@@ -2,7 +2,6 @@
   background-color: transparent;
   transition: background-color 0.2s ease-in-out;
   height: 85px;
-  font-family: Montserrat;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +25,6 @@
 
 .header-title{
   color: rgb(255, 233, 252);
-  font-family: Montserrat;
   margin-left: 30px;
   font-weight: 600;
   font-size: 1.2rem;

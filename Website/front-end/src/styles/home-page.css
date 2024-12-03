@@ -38,7 +38,6 @@
 .home-motto{
   opacity: 1;
   color: white;
-  font-family: Montserrat;
   font-size: 5rem;
   font-weight: 700;
   padding-left: 100px;
@@ -52,7 +51,6 @@
   border: none;
   border-radius: 10px;
   background-color: rgb(28, 28, 206);
-  font-family: Montserrat;
   font-weight: 600;
   color: rgb(255, 255, 255);
 }

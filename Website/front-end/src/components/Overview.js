@@ -114,6 +114,9 @@ export default function Overview() {
             <li className="limitations-description">
               We tried to include a whole year's worth of crashes onto our Recorded Crashes map so that there is more visual data for the user but the enormous amount of data caused our site to become very slow and unresponsive.
             </li>
+            <li className="limitations-description">
+              Although the dataset updates new crashes regularly, it is not technically up to date. The latest crashes listed in the dataset is approximately 3 days prior to the current date which means it is impossible to record real-time crashes, which was something we considered incorporating.
+            </li>
           </ul>
         </div>
       </div>

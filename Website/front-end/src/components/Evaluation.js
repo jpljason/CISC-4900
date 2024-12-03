@@ -734,7 +734,7 @@ export default function Evaluation() {
               <div className="color-description">Has deaths</div>
             </div>
           </div>
-          <p className="map-description">Clicking on each marker displays details about crashes recorded in that location including total number of crashes, total injured/killed, borough, street name, etc. There is also an option to see more information on all the crashes in that location. Default timeframe is current month and year.
+          <p className="map-description">Clicking on each marker displays details about crashes recorded in that location. There is also an option to see more information on all the crashes in that location. Crashes for a new month is usually updated around the fifth day. Default timeframe is current month and year.
           </p>
           <form className="by-timeframe-search" onSubmit={handleSubmit}>
             <label for="month">Select a month:  </label>

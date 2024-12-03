@@ -135,7 +135,6 @@ const RushHourPercentagesChart = ({years, isCompare}) => {
     labels: years,
     datasets: [
       {
-        // label: "Number of Crashes",
         data: rushHourCrashes(years),
         backgroundColor: 'lightblue',
         borderColor: 'blue',
@@ -306,7 +305,6 @@ const TotalKilledChart = ({years, isCompare}) => {
         pointRadius: 5,
         pointHoverRadius: 8,
         pointHoverBorderWidth: 3,
-        // hoverBackgroundColor: 'orange',
       }
     ],
   }
@@ -559,7 +557,6 @@ const PedestriansMotoristsCyclistsKilledChart = ({years, isCompare}) => {
               labels: {
                 padding: 20,  //within legend box
                 font: {
-                  // size: 16,
                   weight: 'bold',
                 }
               }
