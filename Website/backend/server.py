@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_caching import Cache
+from flask_cors import CORS
 from scipy.spatial import distance
 import pandas as pd
 import requests
@@ -7,6 +8,7 @@ import calendar
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
+CORS(app) #allow frontend to communicate with backend
 
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache', 'CACHE_DEFAULT_TIMEOUT': 300})  #5 minute timeout
 
