@@ -603,7 +603,7 @@ export default function Evaluation() {
         try {
           setLoading(true);
           const data = { month, year }
-          const response = await fetch('/api/collisions', {
+          const response = await fetch('https://sh13579.pythonanywhere.com/api/collisions',  {  //fetch from deployed backend 
             method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
             headers: {
               'Content-Type': 'application/json', // Informing the server that the data in body is JSON
