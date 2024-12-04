@@ -233,7 +233,7 @@ export default function Evaluation() {
       const longitude = -73.95252
       const data = { latitude,longitude };
       try {
-        const response = await fetch('/submit', {
+        const response = await fetch('https://sh13579.pythonanywhere.com/submit', {
           method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
           headers: {
             'Content-Type': 'application/json', // Informing the server that the data in body is JSON
@@ -285,7 +285,7 @@ export default function Evaluation() {
       // Create an object with the latitude and longitude
       const data = { latitude , longitude };
       try {
-        const response = await fetch('/submit', {
+        const response = await fetch('https://sh13579.pythonanywhere.com/submit', {
           method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
           headers: {
             'Content-Type': 'application/json', // Informing the server that the data in body is JSON
@@ -314,7 +314,7 @@ export default function Evaluation() {
       setErrorMessage(false);
 
       try {
-        const response = await fetch('/nearest', {
+        const response = await fetch('https://sh13579.pythonanywhere.com/nearest', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json', // Set the content type to JSON
@@ -471,7 +471,7 @@ export default function Evaluation() {
       const data = { latitude , longitude };
 
       try {
-        const response = await fetch('/submit', {
+        const response = await fetch('https://sh13579.pythonanywhere.com/submit', {
           method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
           headers: {
             'Content-Type': 'application/json', // Informing the server that the data in body is JSON
@@ -603,7 +603,7 @@ export default function Evaluation() {
         try {
           setLoading(true);
           const data = { month, year }
-          const response = await fetch('https://sh13579.pythonanywhere.com/api/collisions',  {  //fetch from deployed backend 
+          const response = await fetch('https://sh13579.pythonanywhere.com/api/collisions',  {
             method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
             headers: {
               'Content-Type': 'application/json', // Informing the server that the data in body is JSON
@@ -664,7 +664,7 @@ export default function Evaluation() {
       // Create an object with the month and year
       const data = { month, year };
       try {
-        const response = await fetch('/api/collisions', {
+        const response = await fetch('https://sh13579.pythonanywhere.com/api/collisions', {
           method: 'POST', // POST is a method that requests that a web server accepts the data enclosed in the body of the request message
           headers: {
             'Content-Type': 'application/json', // Informing the server that the data in body is JSON
