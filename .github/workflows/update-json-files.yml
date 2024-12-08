@@ -4,12 +4,9 @@ on:
   schedule:
     #Runs on January 7th
     - cron: '12 5 7 1 *' #12:12 AM / 1:12 AM U.S EST
-    - cron: '12 11 7 1 *' #6:12 AM / 7:12 AM U.S EST
     - cron: '12 17 7 1 *' #12:12 PM / 1:12 PM U.S EST
-    - cron: '12 23 7 1 *' #6:12 PM / 7:12 PM U.S EST
     
     - cron: '12 10 1 2-12 *' #12:12 AM / 1:12 AM U.S EST on first day of each month after January
-    - cron: '42 6 8 12 *'  #testing purposes
 
 jobs:
   run_script:
