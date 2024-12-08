@@ -21,6 +21,6 @@
 
 # Preview
 ### Cover Page
-![screenshot1](front-end/src/images/preview_ss_1.png)
+![screenshot1](Website/front-end/src/images/preview_ss_1.png)
 ### One of the maps
-![screenshot2](front-end/src/images/preview_ss_2.png)
+![screenshot2](Website/front-end/src/images/preview_ss_2.png)
