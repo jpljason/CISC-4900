@@ -44,7 +44,7 @@ export default function Overview() {
         <div className="text">
           <h2 className="title">Goals</h2>
           <div className="description">
-            Vehicle crashes occur frequently in New York City, posing risks to public safety. We aim to raise awareness and provide data analysis to assist officials identify the locations and causes of these crashes. Users are encouraged to explore, draw their own conclusions, and utilize this site for personal use.
+            Vehicle crashes occur frequently in New York City, posing risks to public safety. We aim to raise awareness and provide data analysis to assist officials in identifying the locations and causes of these crashes. Users are encouraged to explore, draw their own conclusions, and utilize this site for personal use.
           </div>
         </div>
       </div>
