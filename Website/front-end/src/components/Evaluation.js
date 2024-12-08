@@ -408,7 +408,7 @@ export default function Evaluation() {
             <input type="text"
             ref = {longRef}       
             required />
-            <button type="submit">Predict</button>
+            <button type="submit">Search</button>
           </form>
         </div>
         <div className="vertical-line"></div>
