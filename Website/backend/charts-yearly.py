@@ -252,54 +252,54 @@ def add_data_to_json():
             vehicle_types_counts, pedestrian_cyclist_motorist_injured_killed_counts):
     combined_data = {}  # Dictionary to hold combined data
 
-    # Loop through each year and combine data into the JSON structure
-    combined_data[previous_year] = {
-
-      "total_crashes": total_crashes,
-      "rush_hour_crashes": rush_hour_counts,
-      "injured": injured_and_killed_counts[0],
-      "killed": injured_and_killed_counts[1],
-      "boroughs": {
-          "brooklyn": borough_counts[0],
-          "queens": borough_counts[1],
-          "bronx": borough_counts[2],
-          "manhattan": borough_counts[3],
-          "staten_island": borough_counts[4]
-      },
-      "pedestrians": {
-          "injured": pedestrian_cyclist_motorist_injured_killed_counts[0][0],
-          "killed": pedestrian_cyclist_motorist_injured_killed_counts[0][1]
-      },
-      "cyclists": {
-          "injured": pedestrian_cyclist_motorist_injured_killed_counts[1][0],
-          "killed": pedestrian_cyclist_motorist_injured_killed_counts[1][1]
-      },
-      "motorists": {
-          "injured": pedestrian_cyclist_motorist_injured_killed_counts[2][0],
-          "killed": pedestrian_cyclist_motorist_injured_killed_counts[2][1]
-      },
-      "top_10": {
-          "contributing_factors": {
-              str(i+1): contributing_factors_counts[i] for i in range(10)
-          },
-          "vehicle_types": {
-              str(i+1): vehicle_types_counts[i] for i in range(10)
-          }
-      }
-    }
-
     # path for the JSON file
     file_path = os.path.join('..', 'front-end', 'src', 'data', 'crashes_data_visualization.json')
     
-    # Write the results to a JSON file
+    # read JSON file
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
 
-    new_data = { str(previous_year): combined_data[previous_year] }
-
     # if the new year's data is not in the JSON file yet, add it
     if (str(previous_year) not in data or current_month > 1):
+      # Loop through each year and combine data into the JSON structure
+      combined_data[previous_year] = {
+        "total_crashes": total_crashes,
+        "rush_hour_crashes": rush_hour_counts,
+        "injured": injured_and_killed_counts[0],
+        "killed": injured_and_killed_counts[1],
+        "boroughs": {
+            "brooklyn": borough_counts[0],
+            "queens": borough_counts[1],
+            "bronx": borough_counts[2],
+            "manhattan": borough_counts[3],
+            "staten_island": borough_counts[4]
+        },
+        "pedestrians": {
+            "injured": pedestrian_cyclist_motorist_injured_killed_counts[0][0],
+            "killed": pedestrian_cyclist_motorist_injured_killed_counts[0][1]
+        },
+        "cyclists": {
+            "injured": pedestrian_cyclist_motorist_injured_killed_counts[1][0],
+            "killed": pedestrian_cyclist_motorist_injured_killed_counts[1][1]
+        },
+        "motorists": {
+            "injured": pedestrian_cyclist_motorist_injured_killed_counts[2][0],
+            "killed": pedestrian_cyclist_motorist_injured_killed_counts[2][1]
+        },
+        "top_10": {
+            "contributing_factors": {
+                str(i+1): contributing_factors_counts[i] for i in range(10)
+            },
+            "vehicle_types": {
+                str(i+1): vehicle_types_counts[i] for i in range(10)
+            }
+        }
+      }
+
+      new_data = { str(previous_year): combined_data[previous_year] }
       data.update(new_data)
+
+      # write results to JSON file
       with open(file_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
       print("crashes_data_visualization.json updated")
