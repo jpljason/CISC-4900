@@ -9,7 +9,7 @@ on:
     - cron: '12 23 7 1 *' #6:12 PM / 7:12 PM U.S EST
     
     - cron: '12 10 1 2-12 *' #12:12 AM / 1:12 AM U.S EST on first day of each month after January
-    - cron: '42 3 8 12 *'  #10:42 PM U.S EST December 7th(testing purposes)
+    - cron: '42 6 8 12 *'  #testing purposes
 
 jobs:
   run_script:
@@ -38,6 +38,6 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add Website/front-end/src/data/crashes_data_visualization.json
-          git add Website/front-end/src/data/vehicles_visualization.json
+          git add Website/front-end/src/data/factors_vehicles_visualization.json
           git commit -m "Update JSON file"
           git push origin main
