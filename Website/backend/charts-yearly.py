@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 from datetime import datetime, time   #this "time" is for rush hour
+import time as Time
 import json
 import os
 
@@ -8,10 +9,25 @@ import os
 def get_and_filter_data(params):
   url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json"
   all_data = []
+  max_retries = 5
   # since API has a limit, we must loop through an offset to fetch all available data
   while True:
-    response = requests.get(url, params)
-    data = response.json()
+    for attempt in range(max_retries):
+      try:
+        response = requests.get(url, params)
+
+        if response.status_code != 200:
+          raise ValueError(f"API request failed with status code {response.status_code}: {response.text}")
+          
+        data = response.json()
+        break #if no error
+      
+      except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as e:
+        print(f'Request failed. Retrying. (Max Retries: {max_retries}): {e}')
+        if attempt < max_retries-1:
+          Time.sleep(30) #delay before retrying
+        else:
+          raise #raise exception if final attempt fails
 
     if not data:
         break
