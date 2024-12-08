@@ -109,7 +109,7 @@ export default function Overview() {
               Dataset had many rows of crashes that didn't contain a latitude/longitude. As a result, we cannot utilize these rows as markers in our map. This means that our maps doesn't cover all the crashes that occured in the month because some data may be missing.
             </li>
             <li className="limitations-description"> 
-              Our Predicted Severities map requires a latitude and longitude as coordinates for searching a location because we currently lack the ability to convert a real street address into their corresponding latitude/longitude coordinates for our map. 
+              Our By Location map requires a latitude and longitude as coordinates for searching a location because we currently lack the ability to convert a real street address into their corresponding latitude/longitude coordinates for our map. 
             </li>
             <li className="limitations-description">
               We tried to include a whole year's worth of crashes onto our By Timeframe map so that there is more visual data for the user but the enormous amount of data caused our site to become very slow and unresponsive.
