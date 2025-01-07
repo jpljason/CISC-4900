@@ -1219,5 +1219,116 @@
                 ]
             }
         }
+    },
+    "2024": {
+        "total_crashes": 83359,
+        "rush_hour_crashes": 31170,
+        "injured": 48935,
+        "killed": 219,
+        "boroughs": {
+            "brooklyn": 22357,
+            "queens": 17518,
+            "bronx": 9724,
+            "manhattan": 11558,
+            "staten_island": 2627
+        },
+        "pedestrians": {
+            "injured": 8984,
+            "killed": 105
+        },
+        "cyclists": {
+            "injured": 4707,
+            "killed": 24
+        },
+        "motorists": {
+            "injured": 33560,
+            "killed": 86
+        },
+        "top_10": {
+            "contributing_factors": {
+                "1": [
+                    "Driver Inattention/Distraction",
+                    23979
+                ],
+                "2": [
+                    "Failure to Yield Right-of-Way",
+                    6362
+                ],
+                "3": [
+                    "Following Too Closely",
+                    5511
+                ],
+                "4": [
+                    "Passing or Lane Usage Improper",
+                    3923
+                ],
+                "5": [
+                    "Other Vehicular",
+                    3722
+                ],
+                "6": [
+                    "Unsafe Speed",
+                    3616
+                ],
+                "7": [
+                    "Passing Too Closely",
+                    3131
+                ],
+                "8": [
+                    "Traffic Control Disregarded",
+                    2785
+                ],
+                "9": [
+                    "Backing Unsafely",
+                    2722
+                ],
+                "10": [
+                    "Turning Improperly",
+                    2182
+                ]
+            },
+            "vehicle_types": {
+                "1": [
+                    "Sedan",
+                    59110
+                ],
+                "2": [
+                    "Station Wagon/Sport Utility Vehicle",
+                    45177
+                ],
+                "3": [
+                    "Bike",
+                    5024
+                ],
+                "4": [
+                    "Pick-up Truck",
+                    3553
+                ],
+                "5": [
+                    "Taxi",
+                    3480
+                ],
+                "6": [
+                    "Bus",
+                    3100
+                ],
+                "7": [
+                    "Box Truck",
+                    3051
+                ],
+                "8": [
+                    "Moped",
+                    1805
+                ],
+                "9": [
+                    "Motorcycle",
+                    1668
+                ],
+                "10": [
+                    "E-Bike",
+                    1597
+                ]
+            }
+        }
     }
 }

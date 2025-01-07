@@ -2,239 +2,239 @@
     "contributing_factors": {
         "1": [
             "Driver Inattention/Distraction",
-            418088
+            415914
         ],
         "2": [
-            "Failure to Yield Right-of-Way",
-            113773
+            "Following Too Closely",
+            115024
         ],
         "3": [
-            "Following Too Closely",
-            109635
+            "Failure to Yield Right-of-Way",
+            110705
         ],
         "4": [
             "Other Vehicular",
-            74382
+            68293
         ],
         "5": [
             "Backing Unsafely",
-            69709
+            66528
         ],
         "6": [
             "Passing or Lane Usage Improper",
-            62498
+            66293
         ],
         "7": [
             "Passing Too Closely",
-            55632
+            58761
         ],
         "8": [
-            "Turning Improperly",
-            44595
+            "Unsafe Lane Changing",
+            41741
         ],
         "9": [
-            "Unsafe Lane Changing",
-            40086
+            "Turning Improperly",
+            41306
         ],
         "10": [
             "Traffic Control Disregarded",
-            35174
+            35167
         ],
         "11": [
-            "Fatigued/Drowsy",
-            31593
+            "Unsafe Speed",
+            33256
         ],
         "12": [
             "Driver Inexperience",
-            30694
+            29856
         ],
         "13": [
-            "Unsafe Speed",
-            29879
+            "Reaction to Uninvolved Vehicle",
+            21223
         ],
         "14": [
-            "Reaction to Uninvolved Vehicle",
-            20228
+            "Fatigued/Drowsy",
+            19839
         ],
         "15": [
             "Alcohol Involvement",
-            19312
+            19311
         ],
         "16": [
             "Pavement Slippery",
-            17640
+            15779
         ],
         "17": [
-            "Lost Consciousness",
-            15200
+            "View Obstructed/Limited",
+            14125
         ],
         "18": [
-            "View Obstructed/Limited",
-            13981
+            "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+            12135
         ],
         "19": [
             "Oversized Vehicle",
-            11457
+            10585
         ],
         "20": [
-            "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
-            10910
+            "Lost Consciousness",
+            9910
         ],
         "21": [
-            "Prescription Medication",
-            10026
+            "Aggressive Driving/Road Rage",
+            9299
         ],
         "22": [
-            "Aggressive Driving/Road Rage",
-            9122
+            "Outside Car Distraction",
+            6559
         ],
         "23": [
-            "Outside Car Distraction",
-            8896
+            "Passenger Distraction",
+            6188
         ],
         "24": [
-            "Passenger Distraction",
-            7110
+            "Prescription Medication",
+            5848
         ],
         "25": [
-            "Physical Disability",
-            6259
+            "Brakes Defective",
+            5405
         ],
         "26": [
-            "Brakes Defective",
-            5545
+            "Fell Asleep",
+            4839
         ],
         "27": [
-            "Fell Asleep",
-            4917
+            "Physical Disability",
+            3859
         ],
         "28": [
             "Obstruction/Debris",
-            3668
+            3485
         ],
         "29": [
             "Glare",
-            3453
+            3261
         ],
         "30": [
             "Failure to Keep Right",
-            2944
+            2570
         ],
         "31": [
             "Steering Failure",
-            2424
+            2409
         ],
         "32": [
             "Tire Failure/Inadequate",
-            2021
+            2006
         ],
         "33": [
             "Pavement Defective",
-            1969
+            1828
         ],
         "34": [
-            "Other Electronic Device",
-            1804
+            "Illnes",
+            1661
         ],
         "35": [
-            "Illness",
-            1556
+            "Driverless/Runaway Vehicle",
+            1367
         ],
         "36": [
-            "Illnes",
-            1523
+            "Animals Action",
+            1272
         ],
         "37": [
-            "Animals Action",
-            1296
+            "Other Electronic Device",
+            1205
         ],
         "38": [
-            "Driverless/Runaway Vehicle",
-            1256
+            "Lane Marking Improper/Inadequate",
+            1044
         ],
         "39": [
-            "Lane Marking Improper/Inadequate",
-            1139
+            "Drugs (illegal)",
+            898
         ],
         "40": [
-            "Reaction to Other Uninvolved Vehicle",
-            920
+            "Illness",
+            885
         ],
         "41": [
             "Accelerator Defective",
-            898
+            871
         ],
         "42": [
             "Traffic Control Device Improper/Non-Working",
-            895
+            847
         ],
         "43": [
-            "Drugs (illegal)",
-            829
+            "Cell Phone (hand-Held)",
+            582
         ],
         "44": [
-            "Cell Phone (hand-Held)",
-            530
+            "Reaction to Other Uninvolved Vehicle",
+            509
         ],
         "45": [
-            "Drugs (Illegal)",
-            295
+            "Tinted Windows",
+            206
         ],
         "46": [
-            "Cell Phone (hands-free)",
-            199
+            "Other Lighting Defects",
+            192
         ],
         "47": [
-            "Other Lighting Defects",
-            198
+            "Tow Hitch Defective",
+            177
         ],
         "48": [
-            "Tinted Windows",
-            185
+            "Drugs (Illegal)",
+            164
         ],
         "49": [
-            "Tow Hitch Defective",
-            176
+            "Cell Phone (hands-free)",
+            159
         ],
         "50": [
             "Headlights Defective",
-            153
+            150
         ],
         "51": [
             "Vehicle Vandalism",
-            137
+            147
         ],
         "52": [
             "Using On Board Navigation Device",
-            135
+            142
         ],
         "53": [
             "Eating or Drinking",
-            112
+            122
         ],
         "54": [
-            "Shoulders Defective/Improper",
-            74
-        ],
-        "55": [
             "80",
             74
         ],
+        "55": [
+            "Shoulders Defective/Improper",
+            72
+        ],
         "56": [
             "Windshield Inadequate",
-            68
+            58
         ],
         "57": [
-            "Cell Phone (hand-held)",
-            57
+            "Texting",
+            51
         ],
         "58": [
-            "Texting",
-            49
+            "Cell Phone (hand-held)",
+            38
         ],
         "59": [
             "Listening/Using Headphones",
-            31
+            35
         ],
         "60": [
             "1",
@@ -244,203 +244,203 @@
     "vehicle_types": {
         "1": [
             "Sedan",
-            889268
+            948271
         ],
         "2": [
             "Station Wagon/Sport Utility Vehicle",
-            700300
+            745430
         ],
         "3": [
             "PASSENGER VEHICLE",
-            357290
+            195868
         ],
         "4": [
             "SPORT UTILITY / STATION WAGON",
-            169220
+            98145
         ],
         "5": [
             "Taxi",
-            80834
+            84307
         ],
         "6": [
             "Pick-up Truck",
-            59222
+            62769
         ],
         "7": [
-            "4 dr sedan",
-            49575
+            "Box Truck",
+            50472
         ],
         "8": [
-            "Box Truck",
-            47425
+            "4 dr sedan",
+            49587
         ],
         "9": [
             "Bike",
-            42187
+            47206
         ],
         "10": [
             "Bus",
-            36497
+            39593
         ],
         "11": [
-            "TAXI",
-            32475
+            "Tractor Truck Diesel",
+            18820
         ],
         "12": [
-            "VAN",
-            25109
+            "TAXI",
+            17409
         ],
         "13": [
-            "OTHER",
-            24155
+            "Van",
+            16376
         ],
         "14": [
-            "Tractor Truck Diesel",
-            17676
+            "Motorcycle",
+            15069
         ],
         "15": [
-            "Van",
-            15501
+            "VAN",
+            13846
         ],
         "16": [
-            "LARGE COM VEH(6 OR MORE TIRES)",
-            14136
+            "OTHER",
+            13724
         ],
         "17": [
-            "SMALL COM VEH(4 TIRES) ",
-            14099
+            "E-Bike",
+            9913
         ],
         "18": [
-            "BUS",
-            13842
+            "LARGE COM VEH(6 OR MORE TIRES)",
+            7864
         ],
         "19": [
-            "Motorcycle",
-            13404
+            "SMALL COM VEH(4 TIRES) ",
+            7855
         ],
         "20": [
-            "PICK-UP TRUCK",
-            11209
+            "BUS",
+            7569
         ],
         "21": [
-            "LIVERY VEHICLE",
-            11130
+            "Dump",
+            7425
         ],
         "22": [
-            "BICYCLE",
-            10283
+            "Ambulance",
+            6955
         ],
         "23": [
-            "E-Bike",
-            8316
+            "LIVERY VEHICLE",
+            6765
         ],
         "24": [
-            "Dump",
-            6873
+            "PICK-UP TRUCK",
+            6531
         ],
         "25": [
-            "Ambulance",
-            6267
+            "E-Scooter",
+            6492
         ],
         "26": [
             "Convertible",
-            5500
+            5882
         ],
         "27": [
-            "E-Scooter",
-            5169
+            "Moped",
+            5592
         ],
         "28": [
-            "Flat Bed",
-            4392
+            "BICYCLE",
+            5571
         ],
         "29": [
-            "PK",
-            4158
+            "Flat Bed",
+            4713
         ],
         "30": [
-            "Garbage or Refuse",
-            4061
+            "PK",
+            4555
         ],
         "31": [
-            "Moped",
-            3787
+            "Garbage or Refuse",
+            4429
         ],
         "32": [
-            "MOTORCYCLE",
-            3752
+            "Carry All",
+            3706
         ],
         "33": [
-            "Carry All",
-            3476
+            "2 dr sedan",
+            3202
         ],
         "34": [
-            "2 dr sedan",
-            3203
+            "Tractor Truck Gasoline",
+            2966
         ],
         "35": [
-            "Tractor Truck Gasoline",
-            2785
+            "Tow Truck / Wrecker",
+            2511
         ],
         "36": [
-            "AMBULANCE",
-            2370
+            "MOTORCYCLE",
+            2006
         ],
         "37": [
-            "Tow Truck / Wrecker",
-            2310
+            "AMBULANCE",
+            1717
         ],
         "38": [
-            "Chassis Cab",
-            1520
+            "Motorscooter",
+            1673
         ],
         "39": [
-            "Motorscooter",
-            1459
+            "Chassis Cab",
+            1656
         ],
         "40": [
             "Tanker",
-            1406
+            1512
         ],
         "41": [
             "Motorbike",
-            1094
+            1236
         ],
         "42": [
             "Concrete Mixer",
-            922
+            969
         ],
         "43": [
-            "FIRE TRUCK",
-            904
+            "Refrigerated Van",
+            915
         ],
         "44": [
-            "Refrigerated Van",
-            892
+            "van",
+            775
         ],
         "45": [
-            "van",
-            753
+            "Flat Rack",
+            638
         ],
         "46": [
-            "Armored Truck",
-            591
+            "FIRE TRUCK",
+            630
         ],
         "47": [
-            "Flat Rack",
-            571
+            "Armored Truck",
+            618
         ],
         "48": [
+            "3-Door",
+            596
+        ],
+        "49": [
             "AMBUL",
             570
         ],
-        "49": [
+        "50": [
             "Beverage Truck",
             563
-        ],
-        "50": [
-            "3-Door",
-            543
         ]
     }
 }
