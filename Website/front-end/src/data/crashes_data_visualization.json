@@ -1221,80 +1221,80 @@
         }
     },
     "2024": {
-        "total_crashes": 83359,
-        "rush_hour_crashes": 31170,
-        "injured": 48935,
-        "killed": 219,
+        "total_crashes": 83605,
+        "rush_hour_crashes": 31246,
+        "injured": 49080,
+        "killed": 224,
         "boroughs": {
-            "brooklyn": 22357,
-            "queens": 17518,
-            "bronx": 9724,
-            "manhattan": 11558,
-            "staten_island": 2627
+            "brooklyn": 22416,
+            "queens": 17545,
+            "bronx": 9750,
+            "manhattan": 11621,
+            "staten_island": 2643
         },
         "pedestrians": {
-            "injured": 8984,
-            "killed": 105
+            "injured": 9012,
+            "killed": 110
         },
         "cyclists": {
-            "injured": 4707,
-            "killed": 24
+            "injured": 4716,
+            "killed": 23
         },
         "motorists": {
-            "injured": 33560,
-            "killed": 86
+            "injured": 33666,
+            "killed": 84
         },
         "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
-                    23979
+                    24044
                 ],
                 "2": [
                     "Failure to Yield Right-of-Way",
-                    6362
+                    6376
                 ],
                 "3": [
                     "Following Too Closely",
-                    5511
+                    5530
                 ],
                 "4": [
                     "Passing or Lane Usage Improper",
-                    3923
+                    3934
                 ],
                 "5": [
                     "Other Vehicular",
-                    3722
+                    3729
                 ],
                 "6": [
                     "Unsafe Speed",
-                    3616
+                    3630
                 ],
                 "7": [
                     "Passing Too Closely",
-                    3131
+                    3132
                 ],
                 "8": [
                     "Traffic Control Disregarded",
-                    2785
+                    2791
                 ],
                 "9": [
                     "Backing Unsafely",
-                    2722
+                    2730
                 ],
                 "10": [
                     "Turning Improperly",
-                    2182
+                    2189
                 ]
             },
             "vehicle_types": {
                 "1": [
                     "Sedan",
-                    59110
+                    59301
                 ],
                 "2": [
                     "Station Wagon/Sport Utility Vehicle",
-                    45177
+                    45301
                 ],
                 "3": [
                     "Bike",
@@ -1302,19 +1302,19 @@
                 ],
                 "4": [
                     "Pick-up Truck",
-                    3553
+                    3567
                 ],
                 "5": [
                     "Taxi",
-                    3480
+                    3492
                 ],
                 "6": [
                     "Bus",
-                    3100
+                    3109
                 ],
                 "7": [
                     "Box Truck",
-                    3051
+                    3061
                 ],
                 "8": [
                     "Moped",
@@ -1322,11 +1322,11 @@
                 ],
                 "9": [
                     "Motorcycle",
-                    1668
+                    1673
                 ],
                 "10": [
                     "E-Bike",
-                    1597
+                    1607
                 ]
             }
         }
