@@ -1221,15 +1221,15 @@
         }
     },
     "2024": {
-        "total_crashes": 83659,
-        "rush_hour_crashes": 31262,
-        "injured": 49116,
+        "total_crashes": 83665,
+        "rush_hour_crashes": 31264,
+        "injured": 49122,
         "killed": 225,
         "boroughs": {
-            "brooklyn": 22434,
-            "queens": 17549,
+            "brooklyn": 22436,
+            "queens": 17551,
             "bronx": 9753,
-            "manhattan": 11642,
+            "manhattan": 11643,
             "staten_island": 2643
         },
         "pedestrians": {
@@ -1241,22 +1241,22 @@
             "killed": 23
         },
         "motorists": {
-            "injured": 33685,
+            "injured": 33691,
             "killed": 85
         },
         "top_10": {
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
-                    24055
+                    24057
                 ],
                 "2": [
                     "Failure to Yield Right-of-Way",
-                    6378
+                    6379
                 ],
                 "3": [
                     "Following Too Closely",
-                    5534
+                    5535
                 ],
                 "4": [
                     "Passing or Lane Usage Improper",
@@ -1276,7 +1276,7 @@
                 ],
                 "8": [
                     "Traffic Control Disregarded",
-                    2794
+                    2793
                 ],
                 "9": [
                     "Backing Unsafely",
@@ -1290,11 +1290,11 @@
             "vehicle_types": {
                 "1": [
                     "Sedan",
-                    59333
+                    59338
                 ],
                 "2": [
                     "Station Wagon/Sport Utility Vehicle",
-                    45329
+                    45332
                 ],
                 "3": [
                     "Bike",
@@ -1302,7 +1302,7 @@
                 ],
                 "4": [
                     "Pick-up Truck",
-                    3567
+                    3568
                 ],
                 "5": [
                     "Taxi",
@@ -1310,7 +1310,7 @@
                 ],
                 "6": [
                     "Bus",
-                    3111
+                    3112
                 ],
                 "7": [
                     "Box Truck",
