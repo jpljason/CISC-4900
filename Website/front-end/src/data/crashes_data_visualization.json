@@ -1221,14 +1221,14 @@
         }
     },
     "2024": {
-        "total_crashes": 83665,
-        "rush_hour_crashes": 31264,
-        "injured": 49122,
+        "total_crashes": 83677,
+        "rush_hour_crashes": 31266,
+        "injured": 49125,
         "killed": 225,
         "boroughs": {
-            "brooklyn": 22436,
-            "queens": 17551,
-            "bronx": 9753,
+            "brooklyn": 22438,
+            "queens": 17555,
+            "bronx": 9755,
             "manhattan": 11643,
             "staten_island": 2643
         },
@@ -1237,7 +1237,7 @@
             "killed": 110
         },
         "cyclists": {
-            "injured": 4722,
+            "injured": 4725,
             "killed": 23
         },
         "motorists": {
@@ -1248,15 +1248,15 @@
             "contributing_factors": {
                 "1": [
                     "Driver Inattention/Distraction",
-                    24057
+                    24064
                 ],
                 "2": [
                     "Failure to Yield Right-of-Way",
-                    6379
+                    6380
                 ],
                 "3": [
                     "Following Too Closely",
-                    5535
+                    5537
                 ],
                 "4": [
                     "Passing or Lane Usage Improper",
@@ -1268,15 +1268,15 @@
                 ],
                 "6": [
                     "Unsafe Speed",
-                    3632
+                    3633
                 ],
                 "7": [
                     "Passing Too Closely",
-                    3136
+                    3137
                 ],
                 "8": [
                     "Traffic Control Disregarded",
-                    2793
+                    2794
                 ],
                 "9": [
                     "Backing Unsafely",
@@ -1290,15 +1290,15 @@
             "vehicle_types": {
                 "1": [
                     "Sedan",
-                    59338
+                    59347
                 ],
                 "2": [
                     "Station Wagon/Sport Utility Vehicle",
-                    45332
+                    45337
                 ],
                 "3": [
                     "Bike",
-                    5033
+                    5036
                 ],
                 "4": [
                     "Pick-up Truck",
@@ -1314,11 +1314,11 @@
                 ],
                 "7": [
                     "Box Truck",
-                    3064
+                    3065
                 ],
                 "8": [
                     "Moped",
-                    1806
+                    1807
                 ],
                 "9": [
                     "Motorcycle",
